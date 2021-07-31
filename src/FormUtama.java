@@ -80,6 +80,83 @@ public class FormUtama extends javax.swing.JFrame {
         ButtonNilaiTambah1 = new javax.swing.JButton();
         PanelSimulasiKasus = new javax.swing.JPanel();
         LabelTitleSimulasiKasus = new javax.swing.JLabel();
+        PanelAddMahasiswa = new javax.swing.JPanel();
+        LabelTitleAddMahasiswa = new javax.swing.JLabel();
+        LabelMahasiswaNIM = new javax.swing.JLabel();
+        FromMahasiswaNIM = new javax.swing.JTextField();
+        FromMahasiswaNama = new javax.swing.JTextField();
+        LabelMahasiswaNama = new javax.swing.JLabel();
+        LabelMahasiswaTempatLahir = new javax.swing.JLabel();
+        FromMahasiswaTempatLahir = new javax.swing.JTextField();
+        LabelMahasiswaTanggalLahir = new javax.swing.JLabel();
+        FromMahasiswaTanggalLahir = new javax.swing.JFormattedTextField();
+        LabelMahasiswaAlamat = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        FromMahasiswaAlamat = new javax.swing.JTextArea();
+        ButtonMahasiswaSimpan = new javax.swing.JButton();
+        ButtonMahasiswaCancel = new javax.swing.JButton();
+        PanelAddMataKuliah = new javax.swing.JPanel();
+        LabelTitleAddMataKuliah = new javax.swing.JLabel();
+        LabelFromMataKuliahNomor = new javax.swing.JLabel();
+        FromMataKuliahNomor = new javax.swing.JTextField();
+        LabelFromMataKuliahNama = new javax.swing.JLabel();
+        FromMataKuliahNama = new javax.swing.JTextField();
+        ButtonMataKuliahCancel = new javax.swing.JButton();
+        ButtonMataKuliahSimpan = new javax.swing.JButton();
+        PanelAddNilai = new javax.swing.JPanel();
+        LabelTitleAddNilai = new javax.swing.JLabel();
+        LabelNilaiNIM = new javax.swing.JLabel();
+        FormNilaiNIM = new javax.swing.JTextField();
+        FormNilaiNama = new javax.swing.JTextField();
+        FormNilaiKehadiran = new javax.swing.JTextField();
+        FormNilaiTugas1 = new javax.swing.JTextField();
+        FormNilaiTugas2 = new javax.swing.JTextField();
+        FormNilaiTugas3 = new javax.swing.JTextField();
+        LabelNilaiNama = new javax.swing.JLabel();
+        LabelNilaiKehadiran = new javax.swing.JLabel();
+        LabelNilaiTugas1 = new javax.swing.JLabel();
+        LabelNilaiTugas2 = new javax.swing.JLabel();
+        LabelNilaiTugas3 = new javax.swing.JLabel();
+        LabelNilaiNamaMataKuliah = new javax.swing.JLabel();
+        FormNilaiNamaMataKuliah = new javax.swing.JTextField();
+        FormNilaiKodeMataKuliah = new javax.swing.JTextField();
+        LabelNilaiKodeMataKuliah = new javax.swing.JLabel();
+        LabelNilaiUTS = new javax.swing.JLabel();
+        FormNilaiUTS = new javax.swing.JTextField();
+        LabelNilaiUAS = new javax.swing.JLabel();
+        FormNilaiUAS = new javax.swing.JTextField();
+        LabelNilaiAngkatan = new javax.swing.JLabel();
+        FormNilaiAngkatan = new javax.swing.JFormattedTextField();
+        LabelNilaiPertemuan = new javax.swing.JLabel();
+        ButtonNilaiCancel = new javax.swing.JButton();
+        ButtonNilaiSimpan = new javax.swing.JButton();
+        PanelAddSimulasiAkhir = new javax.swing.JPanel();
+        LabelTitleAddNilai1 = new javax.swing.JLabel();
+        LabelSimulasiAkhirKehadiran = new javax.swing.JLabel();
+        FormSimulasiAkhirKehadiran = new javax.swing.JTextField();
+        LabelSimulasiAkhirPertemuan = new javax.swing.JLabel();
+        LabelSimulasiAkhirTugas1 = new javax.swing.JLabel();
+        FormSimulasiAkhirTugas1 = new javax.swing.JTextField();
+        LabelSimulasiAkhirTugas2 = new javax.swing.JLabel();
+        FormSimulasiAkhirTugas2 = new javax.swing.JTextField();
+        LabelSimulasiAkhirTugas3 = new javax.swing.JLabel();
+        FormSimulasiAkhirTugas3 = new javax.swing.JTextField();
+        LabelSimulasiAkhirUTS = new javax.swing.JLabel();
+        FormSimulasiAkhirUTS = new javax.swing.JTextField();
+        LabelSimulasiAkhirUAS = new javax.swing.JLabel();
+        FormSimulasiAkhirUAS = new javax.swing.JTextField();
+        LabelSimulasiAkhirNamaMataKuliah = new javax.swing.JLabel();
+        FormSimulasiAkhirNamaMataKuliah = new javax.swing.JTextField();
+        LabelSimulasiAkhirKodeMataKuliah = new javax.swing.JLabel();
+        FormSimulasiAkhirKodeMataKuliah = new javax.swing.JTextField();
+        LabelSimulasiAkhirPresentaseAbsen = new javax.swing.JLabel();
+        FormSimulasiAkhirPresentaseAbsen = new javax.swing.JTextField();
+        LabelSimulasiAkhirPresentaseUTS = new javax.swing.JLabel();
+        FormSimulasiAkhirPresentaseUTS = new javax.swing.JTextField();
+        FormSimulasiAkhirPresentaseUAS = new javax.swing.JTextField();
+        LabelSimulasiAkhirPresentaseUAS = new javax.swing.JLabel();
+        ButtonSimulasiAkhirCancel = new javax.swing.JButton();
+        ButtonSimulasiAkhirSimpan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(244, 245, 246));
@@ -207,9 +284,9 @@ public class FormUtama extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
                 .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
                 .addGap(265, 265, 265))
             .addGroup(PanelHomepageLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
@@ -233,7 +310,7 @@ public class FormUtama extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addGap(24, 24, 24)
                         .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)))
                 .addContainerGap(280, Short.MAX_VALUE))
         );
@@ -487,9 +564,7 @@ public class FormUtama extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelSimulasiAkhirLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
-                                .addComponent(LabelTitleSimulasiAkhir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(LabelTitleSimulasiAkhir)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
                         .addContainerGap(480, Short.MAX_VALUE)
@@ -538,6 +613,453 @@ public class FormUtama extends javax.swing.JFrame {
         );
 
         PanelContent.add(PanelSimulasiKasus, "card7");
+
+        PanelAddMahasiswa.setBackground(new java.awt.Color(244, 245, 246));
+
+        LabelTitleAddMahasiswa.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LabelTitleAddMahasiswa.setText("Tambah Mahasiswa");
+
+        LabelMahasiswaNIM.setText("NIM");
+
+        LabelMahasiswaNama.setText("Nama");
+
+        LabelMahasiswaTempatLahir.setText("Tempat Lahir");
+
+        LabelMahasiswaTanggalLahir.setText("Tanggal Lahir");
+
+        LabelMahasiswaAlamat.setText("Alamat");
+
+        FromMahasiswaAlamat.setColumns(20);
+        FromMahasiswaAlamat.setRows(5);
+        jScrollPane5.setViewportView(FromMahasiswaAlamat);
+
+        ButtonMahasiswaSimpan.setText("Simpan");
+
+        ButtonMahasiswaCancel.setText("Cancel");
+        ButtonMahasiswaCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMahasiswaCancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelAddMahasiswaLayout = new javax.swing.GroupLayout(PanelAddMahasiswa);
+        PanelAddMahasiswa.setLayout(PanelAddMahasiswaLayout);
+        PanelAddMahasiswaLayout.setHorizontalGroup(
+            PanelAddMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAddMahasiswaLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(PanelAddMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddMahasiswaLayout.createSequentialGroup()
+                        .addComponent(ButtonMahasiswaCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonMahasiswaSimpan)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(PanelAddMahasiswaLayout.createSequentialGroup()
+                        .addComponent(LabelTitleAddMahasiswa)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PanelAddMahasiswaLayout.createSequentialGroup()
+                        .addGroup(PanelAddMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5)
+                            .addComponent(FromMahasiswaTanggalLahir)
+                            .addComponent(FromMahasiswaTempatLahir)
+                            .addComponent(FromMahasiswaNama)
+                            .addComponent(FromMahasiswaNIM)
+                            .addGroup(PanelAddMahasiswaLayout.createSequentialGroup()
+                                .addGroup(PanelAddMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LabelMahasiswaAlamat)
+                                    .addComponent(LabelMahasiswaTanggalLahir)
+                                    .addComponent(LabelMahasiswaTempatLahir)
+                                    .addComponent(LabelMahasiswaNama)
+                                    .addComponent(LabelMahasiswaNIM))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(66, 66, 66))))
+        );
+        PanelAddMahasiswaLayout.setVerticalGroup(
+            PanelAddMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAddMahasiswaLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(LabelTitleAddMahasiswa)
+                .addGap(36, 36, 36)
+                .addComponent(LabelMahasiswaNIM)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FromMahasiswaNIM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(LabelMahasiswaNama)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FromMahasiswaNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(LabelMahasiswaTempatLahir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FromMahasiswaTempatLahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(LabelMahasiswaTanggalLahir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FromMahasiswaTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(LabelMahasiswaAlamat)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(PanelAddMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonMahasiswaSimpan)
+                    .addComponent(ButtonMahasiswaCancel))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        PanelContent.add(PanelAddMahasiswa, "card8");
+
+        PanelAddMataKuliah.setBackground(new java.awt.Color(244, 245, 246));
+
+        LabelTitleAddMataKuliah.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LabelTitleAddMataKuliah.setText("Tambah Mahasiswa");
+
+        LabelFromMataKuliahNomor.setText("Nomor Mata Kuliah");
+
+        LabelFromMataKuliahNama.setText("Nama Mata Kuliah");
+
+        ButtonMataKuliahCancel.setText("Cancel");
+
+        ButtonMataKuliahSimpan.setText("Simpan");
+
+        javax.swing.GroupLayout PanelAddMataKuliahLayout = new javax.swing.GroupLayout(PanelAddMataKuliah);
+        PanelAddMataKuliah.setLayout(PanelAddMataKuliahLayout);
+        PanelAddMataKuliahLayout.setHorizontalGroup(
+            PanelAddMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAddMataKuliahLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(PanelAddMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddMataKuliahLayout.createSequentialGroup()
+                        .addComponent(ButtonMataKuliahCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonMataKuliahSimpan))
+                    .addGroup(PanelAddMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(FromMataKuliahNama)
+                        .addComponent(LabelFromMataKuliahNama)
+                        .addComponent(LabelFromMataKuliahNomor)
+                        .addComponent(LabelTitleAddMataKuliah)
+                        .addComponent(FromMataKuliahNomor, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+        PanelAddMataKuliahLayout.setVerticalGroup(
+            PanelAddMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAddMataKuliahLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(LabelTitleAddMataKuliah)
+                .addGap(35, 35, 35)
+                .addComponent(LabelFromMataKuliahNomor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FromMataKuliahNomor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(LabelFromMataKuliahNama)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FromMataKuliahNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(PanelAddMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonMataKuliahCancel)
+                    .addComponent(ButtonMataKuliahSimpan))
+                .addContainerGap(297, Short.MAX_VALUE))
+        );
+
+        PanelContent.add(PanelAddMataKuliah, "card9");
+
+        LabelTitleAddNilai.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LabelTitleAddNilai.setText("Tambah Nilai");
+
+        LabelNilaiNIM.setText("Nim");
+
+        LabelNilaiNama.setText("Nama");
+
+        LabelNilaiKehadiran.setText("Kehadiran");
+
+        LabelNilaiTugas1.setText("Tugas 1");
+
+        LabelNilaiTugas2.setText("Tugas 2");
+
+        LabelNilaiTugas3.setText("Tugas 3");
+
+        LabelNilaiNamaMataKuliah.setText("Nama Mata Kuliah");
+
+        LabelNilaiKodeMataKuliah.setText("Kode Mata Kuliah");
+
+        LabelNilaiUTS.setText("UTS");
+
+        LabelNilaiUAS.setText("UAS");
+
+        LabelNilaiAngkatan.setText("Angkatan");
+
+        LabelNilaiPertemuan.setText("Pertemuan");
+
+        ButtonNilaiCancel.setText("Cancel");
+
+        ButtonNilaiSimpan.setText("Simpan");
+        ButtonNilaiSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonNilaiSimpanActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelAddNilaiLayout = new javax.swing.GroupLayout(PanelAddNilai);
+        PanelAddNilai.setLayout(PanelAddNilaiLayout);
+        PanelAddNilaiLayout.setHorizontalGroup(
+            PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(LabelNilaiTugas3)
+                        .addComponent(LabelNilaiTugas2)
+                        .addComponent(LabelNilaiTugas1)
+                        .addComponent(LabelNilaiKehadiran)
+                        .addComponent(LabelNilaiNama)
+                        .addComponent(LabelNilaiNIM)
+                        .addComponent(LabelTitleAddNilai)
+                        .addComponent(FormNilaiNIM)
+                        .addComponent(FormNilaiNama)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddNilaiLayout.createSequentialGroup()
+                            .addComponent(FormNilaiKehadiran, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(LabelNilaiPertemuan)
+                            .addGap(6, 6, 6))
+                        .addComponent(FormNilaiTugas1)
+                        .addComponent(FormNilaiTugas2)
+                        .addComponent(FormNilaiTugas3))
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(ButtonNilaiCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonNilaiSimpan)
+                        .addGap(150, 150, 150)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LabelNilaiNamaMataKuliah)
+                    .addComponent(FormNilaiNamaMataKuliah, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                    .addComponent(LabelNilaiKodeMataKuliah)
+                    .addComponent(FormNilaiKodeMataKuliah, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                    .addComponent(LabelNilaiUTS)
+                    .addComponent(FormNilaiUTS, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                    .addComponent(LabelNilaiUAS)
+                    .addComponent(FormNilaiUAS, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                    .addComponent(LabelNilaiAngkatan)
+                    .addComponent(FormNilaiAngkatan))
+                .addGap(71, 71, 71))
+        );
+        PanelAddNilaiLayout.setVerticalGroup(
+            PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(LabelTitleAddNilai)
+                .addGap(36, 36, 36)
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelNilaiNIM)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormNilaiNIM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelNilaiNamaMataKuliah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormNilaiNamaMataKuliah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelNilaiNama)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormNilaiNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelNilaiKodeMataKuliah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormNilaiKodeMataKuliah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelNilaiKehadiran)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FormNilaiKehadiran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelNilaiPertemuan)))
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelNilaiUTS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormNilaiUTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelNilaiTugas1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormNilaiTugas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelNilaiUAS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormNilaiUAS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelNilaiTugas2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormNilaiTugas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LabelNilaiTugas3))
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelNilaiAngkatan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormNilaiAngkatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FormNilaiTugas3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonNilaiCancel)
+                    .addComponent(ButtonNilaiSimpan))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        PanelContent.add(PanelAddNilai, "card10");
+
+        PanelAddSimulasiAkhir.setBackground(new java.awt.Color(244, 245, 246));
+
+        LabelTitleAddNilai1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LabelTitleAddNilai1.setText("Tambah Simulasi Akhir");
+
+        LabelSimulasiAkhirKehadiran.setText("Kehadiran");
+
+        LabelSimulasiAkhirPertemuan.setText("Pertemuan");
+
+        LabelSimulasiAkhirTugas1.setText("Tugas 1");
+
+        LabelSimulasiAkhirTugas2.setText("Tugas 2");
+
+        LabelSimulasiAkhirTugas3.setText("Tugas 3");
+
+        LabelSimulasiAkhirUTS.setText("UTS");
+
+        LabelSimulasiAkhirUAS.setText("UAS");
+
+        LabelSimulasiAkhirNamaMataKuliah.setText("Nama Mata Kuliah");
+
+        LabelSimulasiAkhirKodeMataKuliah.setText("Kode Mata Kuliah");
+
+        LabelSimulasiAkhirPresentaseAbsen.setText("Presentase Absen");
+
+        LabelSimulasiAkhirPresentaseUTS.setText("Presentase UTS");
+
+        LabelSimulasiAkhirPresentaseUAS.setText("Presentase UAS");
+
+        ButtonSimulasiAkhirCancel.setText("Cancel");
+
+        ButtonSimulasiAkhirSimpan.setText("Simpan");
+        ButtonSimulasiAkhirSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSimulasiAkhirSimpanActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelAddSimulasiAkhirLayout = new javax.swing.GroupLayout(PanelAddSimulasiAkhir);
+        PanelAddSimulasiAkhir.setLayout(PanelAddSimulasiAkhirLayout);
+        PanelAddSimulasiAkhirLayout.setHorizontalGroup(
+            PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAddSimulasiAkhirLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddSimulasiAkhirLayout.createSequentialGroup()
+                        .addComponent(ButtonSimulasiAkhirCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonSimulasiAkhirSimpan)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PanelAddSimulasiAkhirLayout.createSequentialGroup()
+                        .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelSimulasiAkhirKodeMataKuliah)
+                            .addComponent(LabelSimulasiAkhirNamaMataKuliah)
+                            .addComponent(LabelTitleAddNilai1)
+                            .addComponent(LabelSimulasiAkhirPresentaseAbsen)
+                            .addComponent(FormSimulasiAkhirPresentaseAbsen, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelSimulasiAkhirPresentaseUTS)
+                            .addComponent(FormSimulasiAkhirPresentaseUTS, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelSimulasiAkhirPresentaseUAS)
+                            .addComponent(FormSimulasiAkhirPresentaseUAS, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(FormSimulasiAkhirNamaMataKuliah, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(FormSimulasiAkhirKodeMataKuliah, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                        .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelAddSimulasiAkhirLayout.createSequentialGroup()
+                                .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(LabelSimulasiAkhirKehadiran)
+                                    .addComponent(FormSimulasiAkhirKehadiran, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(LabelSimulasiAkhirPertemuan))
+                            .addComponent(LabelSimulasiAkhirTugas3)
+                            .addComponent(LabelSimulasiAkhirTugas2)
+                            .addComponent(LabelSimulasiAkhirTugas1)
+                            .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(FormSimulasiAkhirTugas3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(FormSimulasiAkhirTugas2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(FormSimulasiAkhirTugas1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LabelSimulasiAkhirUTS, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(FormSimulasiAkhirUTS, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LabelSimulasiAkhirUAS, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(FormSimulasiAkhirUAS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)))
+                        .addGap(61, 61, 61))))
+        );
+        PanelAddSimulasiAkhirLayout.setVerticalGroup(
+            PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAddSimulasiAkhirLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(LabelTitleAddNilai1)
+                .addGap(33, 33, 33)
+                .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelAddSimulasiAkhirLayout.createSequentialGroup()
+                        .addComponent(LabelSimulasiAkhirNamaMataKuliah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiAkhirNamaMataKuliah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelAddSimulasiAkhirLayout.createSequentialGroup()
+                        .addComponent(LabelSimulasiAkhirKehadiran)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FormSimulasiAkhirKehadiran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelSimulasiAkhirPertemuan))))
+                .addGap(18, 18, 18)
+                .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddSimulasiAkhirLayout.createSequentialGroup()
+                        .addComponent(LabelSimulasiAkhirTugas1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiAkhirTugas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelSimulasiAkhirTugas2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiAkhirTugas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LabelSimulasiAkhirTugas3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiAkhirTugas3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelSimulasiAkhirUTS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiAkhirUTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelSimulasiAkhirUAS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiAkhirUAS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelAddSimulasiAkhirLayout.createSequentialGroup()
+                        .addComponent(LabelSimulasiAkhirKodeMataKuliah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiAkhirKodeMataKuliah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelSimulasiAkhirPresentaseAbsen)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiAkhirPresentaseAbsen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelSimulasiAkhirPresentaseUTS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiAkhirPresentaseUTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelSimulasiAkhirPresentaseUAS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiAkhirPresentaseUAS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonSimulasiAkhirCancel)
+                    .addComponent(ButtonSimulasiAkhirSimpan))
+                .addGap(35, 35, 35))
+        );
+
+        PanelContent.add(PanelAddSimulasiAkhir, "card11");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -653,6 +1175,18 @@ public class FormUtama extends javax.swing.JFrame {
         PanelContent.revalidate();
     }//GEN-LAST:event_ButtonSimulasiKasusActionPerformed
 
+    private void ButtonMahasiswaCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaCancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonMahasiswaCancelActionPerformed
+
+    private void ButtonNilaiSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiSimpanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonNilaiSimpanActionPerformed
+
+    private void ButtonSimulasiAkhirSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirSimpanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonSimulasiAkhirSimpanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -693,29 +1227,105 @@ public class FormUtama extends javax.swing.JFrame {
     private javax.swing.JButton ButtonDataMahasiswa1;
     private javax.swing.JButton ButtonDataMatkul;
     private javax.swing.JButton ButtonDataNilai;
+    private javax.swing.JButton ButtonMahasiswaCancel;
     private javax.swing.JButton ButtonMahasiswaEdit;
     private javax.swing.JButton ButtonMahasiswaHapus;
+    private javax.swing.JButton ButtonMahasiswaSimpan;
     private javax.swing.JButton ButtonMahasiswaTambah;
+    private javax.swing.JButton ButtonMataKuliahCancel;
+    private javax.swing.JButton ButtonMataKuliahSimpan;
     private javax.swing.JButton ButtonMatkulEdit;
     private javax.swing.JButton ButtonMatkulHapus;
     private javax.swing.JButton ButtonMatkulTambah;
+    private javax.swing.JButton ButtonNilaiCancel;
     private javax.swing.JButton ButtonNilaiEdit;
     private javax.swing.JButton ButtonNilaiEdit1;
     private javax.swing.JButton ButtonNilaiHapus;
     private javax.swing.JButton ButtonNilaiHapus1;
+    private javax.swing.JButton ButtonNilaiSimpan;
     private javax.swing.JButton ButtonNilaiTambah;
     private javax.swing.JButton ButtonNilaiTambah1;
     private javax.swing.JButton ButtonSearchMahasiswa;
     private javax.swing.JButton ButtonSearchMatkul;
     private javax.swing.JButton ButtonSearchNilai;
     private javax.swing.JButton ButtonSimulasiAkhir;
+    private javax.swing.JButton ButtonSimulasiAkhirCancel;
+    private javax.swing.JButton ButtonSimulasiAkhirSimpan;
     private javax.swing.JButton ButtonSimulasiKasus;
+    private javax.swing.JFormattedTextField FormNilaiAngkatan;
+    private javax.swing.JTextField FormNilaiKehadiran;
+    private javax.swing.JTextField FormNilaiKodeMataKuliah;
+    private javax.swing.JTextField FormNilaiNIM;
+    private javax.swing.JTextField FormNilaiNama;
+    private javax.swing.JTextField FormNilaiNamaMataKuliah;
+    private javax.swing.JTextField FormNilaiTugas1;
+    private javax.swing.JTextField FormNilaiTugas2;
+    private javax.swing.JTextField FormNilaiTugas3;
+    private javax.swing.JTextField FormNilaiUAS;
+    private javax.swing.JTextField FormNilaiUTS;
+    private javax.swing.JTextField FormSimulasiAkhirKehadiran;
+    private javax.swing.JTextField FormSimulasiAkhirKodeMataKuliah;
+    private javax.swing.JTextField FormSimulasiAkhirNamaMataKuliah;
+    private javax.swing.JTextField FormSimulasiAkhirPresentaseAbsen;
+    private javax.swing.JTextField FormSimulasiAkhirPresentaseUAS;
+    private javax.swing.JTextField FormSimulasiAkhirPresentaseUTS;
+    private javax.swing.JTextField FormSimulasiAkhirTugas1;
+    private javax.swing.JTextField FormSimulasiAkhirTugas2;
+    private javax.swing.JTextField FormSimulasiAkhirTugas3;
+    private javax.swing.JTextField FormSimulasiAkhirUAS;
+    private javax.swing.JTextField FormSimulasiAkhirUTS;
+    private javax.swing.JTextArea FromMahasiswaAlamat;
+    private javax.swing.JTextField FromMahasiswaNIM;
+    private javax.swing.JTextField FromMahasiswaNama;
+    private javax.swing.JFormattedTextField FromMahasiswaTanggalLahir;
+    private javax.swing.JTextField FromMahasiswaTempatLahir;
+    private javax.swing.JTextField FromMataKuliahNama;
+    private javax.swing.JTextField FromMataKuliahNomor;
+    private javax.swing.JLabel LabelFromMataKuliahNama;
+    private javax.swing.JLabel LabelFromMataKuliahNomor;
+    private javax.swing.JLabel LabelMahasiswaAlamat;
+    private javax.swing.JLabel LabelMahasiswaNIM;
+    private javax.swing.JLabel LabelMahasiswaNama;
+    private javax.swing.JLabel LabelMahasiswaTanggalLahir;
+    private javax.swing.JLabel LabelMahasiswaTempatLahir;
+    private javax.swing.JLabel LabelNilaiAngkatan;
+    private javax.swing.JLabel LabelNilaiKehadiran;
+    private javax.swing.JLabel LabelNilaiKodeMataKuliah;
+    private javax.swing.JLabel LabelNilaiNIM;
+    private javax.swing.JLabel LabelNilaiNama;
+    private javax.swing.JLabel LabelNilaiNamaMataKuliah;
+    private javax.swing.JLabel LabelNilaiPertemuan;
+    private javax.swing.JLabel LabelNilaiTugas1;
+    private javax.swing.JLabel LabelNilaiTugas2;
+    private javax.swing.JLabel LabelNilaiTugas3;
+    private javax.swing.JLabel LabelNilaiUAS;
+    private javax.swing.JLabel LabelNilaiUTS;
+    private javax.swing.JLabel LabelSimulasiAkhirKehadiran;
+    private javax.swing.JLabel LabelSimulasiAkhirKodeMataKuliah;
+    private javax.swing.JLabel LabelSimulasiAkhirNamaMataKuliah;
+    private javax.swing.JLabel LabelSimulasiAkhirPertemuan;
+    private javax.swing.JLabel LabelSimulasiAkhirPresentaseAbsen;
+    private javax.swing.JLabel LabelSimulasiAkhirPresentaseUAS;
+    private javax.swing.JLabel LabelSimulasiAkhirPresentaseUTS;
+    private javax.swing.JLabel LabelSimulasiAkhirTugas1;
+    private javax.swing.JLabel LabelSimulasiAkhirTugas2;
+    private javax.swing.JLabel LabelSimulasiAkhirTugas3;
+    private javax.swing.JLabel LabelSimulasiAkhirUAS;
+    private javax.swing.JLabel LabelSimulasiAkhirUTS;
+    private javax.swing.JLabel LabelTitleAddMahasiswa;
+    private javax.swing.JLabel LabelTitleAddMataKuliah;
+    private javax.swing.JLabel LabelTitleAddNilai;
+    private javax.swing.JLabel LabelTitleAddNilai1;
     private javax.swing.JLabel LabelTitleHome;
     private javax.swing.JLabel LabelTitleMahasiswa;
     private javax.swing.JLabel LabelTitleMataKuliah;
     private javax.swing.JLabel LabelTitleNilai;
     private javax.swing.JLabel LabelTitleSimulasiAkhir;
     private javax.swing.JLabel LabelTitleSimulasiKasus;
+    private javax.swing.JPanel PanelAddMahasiswa;
+    private javax.swing.JPanel PanelAddMataKuliah;
+    private javax.swing.JPanel PanelAddNilai;
+    private javax.swing.JPanel PanelAddSimulasiAkhir;
     private javax.swing.JPanel PanelContent;
     private javax.swing.JPanel PanelDataNilai;
     private javax.swing.JPanel PanelHomepage;
@@ -743,5 +1353,6 @@ public class FormUtama extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     // End of variables declaration//GEN-END:variables
 }
