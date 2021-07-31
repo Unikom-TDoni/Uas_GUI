@@ -1,7 +1,12 @@
 
-import java.awt.Color;
+import edu.kemahasiswaan.helper.FieldNumberFormatHelper;
+import edu.kemahasiswaan.validation.*;
+import edu.kemahasiswaan.validation.key.*;
+import java.util.HashMap;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.text.JTextComponent;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,15 +19,40 @@ import javax.swing.JPanel;
  * @author Aris Prabowo
  * @author T Doni
  */
-public class FormUtama extends javax.swing.JFrame {
-
+public class FormUtama extends javax.swing.JFrame 
+{
+    private MahasiswaFormValidation _mahasiswaFormValidation;
+    private MataKuliahFormValidation _mataKuliahFormValidation;
+    
     /**
      * Creates new form FormUtama
      */
-    public FormUtama() {
+    public FormUtama() 
+    {
         initComponents();
+        InitFormValidation();
     }
-    public void NavigateTo(JPanel Destination){
+    
+    private void InitFormValidation()
+    {
+        _mahasiswaFormValidation = new MahasiswaFormValidation(new HashMap<MahasiswaFormValidationKey, JTextComponent>()
+        {{
+            put(MahasiswaFormValidationKey.Nim, FromMahasiswaNIM);
+            put(MahasiswaFormValidationKey.Nama, FromMahasiswaNama);
+            put(MahasiswaFormValidationKey.Alamat, FromMahasiswaAlamat);
+            put(MahasiswaFormValidationKey.TempatLahir, FromMahasiswaTempatLahir);
+            put(MahasiswaFormValidationKey.TanggalLahir, FromMahasiswaTanggalLahir);
+        }});
+        
+        _mataKuliahFormValidation = new MataKuliahFormValidation(new HashMap<MataKuliahFormValidationKey, JTextComponent>()
+        {{
+            put(MataKuliahFormValidationKey.No, FromMataKuliahNomor);
+            put(MataKuliahFormValidationKey.Nama, FromMataKuliahNama);
+        }});
+    }
+    
+    public void NavigateTo(JPanel Destination)
+    {
         PanelContent.removeAll();
         PanelContent.repaint();
         PanelContent.revalidate();
@@ -30,12 +60,16 @@ public class FormUtama extends javax.swing.JFrame {
         PanelContent.repaint();
         PanelContent.revalidate();
     }
-    public void CancelConfirmation(JPanel Destination){
+    
+    private void CancelConfirmation(JPanel Destination)
+    {
         int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin untuk membatalkan?", "Warning", JOptionPane.YES_NO_OPTION);
         if(CancelDialog == JOptionPane.YES_OPTION)
             NavigateTo(Destination);
     }
-    public void LogOutConfirmation(JPanel Destination){
+    
+    private void LogOutConfirmation(JPanel Destination)
+    {
         int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin untuk keluar?", "Warning", JOptionPane.YES_NO_OPTION);
         if(CancelDialog == JOptionPane.YES_OPTION)
             NavigateTo(Destination);
@@ -130,7 +164,6 @@ public class FormUtama extends javax.swing.JFrame {
         PanelAddNilai = new javax.swing.JPanel();
         LabelTitleAddNilai = new javax.swing.JLabel();
         LabelNilaiNIM = new javax.swing.JLabel();
-        FormNilaiNIM = new javax.swing.JTextField();
         FormNilaiNama = new javax.swing.JTextField();
         FormNilaiKehadiran = new javax.swing.JTextField();
         FormNilaiTugas1 = new javax.swing.JTextField();
@@ -142,7 +175,6 @@ public class FormUtama extends javax.swing.JFrame {
         LabelNilaiTugas2 = new javax.swing.JLabel();
         LabelNilaiTugas3 = new javax.swing.JLabel();
         LabelNilaiNamaMataKuliah = new javax.swing.JLabel();
-        FormNilaiNamaMataKuliah = new javax.swing.JTextField();
         FormNilaiKodeMataKuliah = new javax.swing.JTextField();
         LabelNilaiKodeMataKuliah = new javax.swing.JLabel();
         LabelNilaiUTS = new javax.swing.JLabel();
@@ -154,6 +186,8 @@ public class FormUtama extends javax.swing.JFrame {
         LabelNilaiPertemuan = new javax.swing.JLabel();
         ButtonNilaiCancel = new javax.swing.JButton();
         ButtonNilaiSimpan = new javax.swing.JButton();
+        FormNilaiNim = new javax.swing.JComboBox<>();
+        FormNilaiNamaMataKuliah = new javax.swing.JComboBox<>();
         PanelAddSimulasiAkhir = new javax.swing.JPanel();
         LabelTitleAddSimulasiAkhir = new javax.swing.JLabel();
         LabelSimulasiAkhirKehadiran = new javax.swing.JLabel();
@@ -237,8 +271,6 @@ public class FormUtama extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/aris/NetBeansProjects/IF10_10119914/kemahasiswaan_10119907_10119914/assets/logo 1.png")); // NOI18N
-
         javax.swing.GroupLayout PanelMenuLayout = new javax.swing.GroupLayout(PanelMenu);
         PanelMenu.setLayout(PanelMenuLayout);
         PanelMenuLayout.setHorizontalGroup(
@@ -255,7 +287,7 @@ public class FormUtama extends javax.swing.JFrame {
                     .addComponent(ButtonDataMahasiswa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenuLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(16, 16, 16))
         );
@@ -370,11 +402,10 @@ public class FormUtama extends javax.swing.JFrame {
 
         TableMahasiswa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "NIM", "Nama", "Tempat Lahir", "Tanggal Lahir", "Alamat"
+                "Nim", "Nama", "Tempat Lahir", "Tanggal Lahir", "Alamat"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -393,20 +424,24 @@ public class FormUtama extends javax.swing.JFrame {
             PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelMahasiswaLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LabelTitleMahasiswa)
+                .addGroup(PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelMahasiswaLayout.createSequentialGroup()
-                        .addComponent(SearchMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonSearchMahasiswa)
-                        .addGap(137, 137, 137)
-                        .addComponent(ButtonMahasiswaHapus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonMahasiswaEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonMahasiswaTambah))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addGroup(PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(PanelMahasiswaLayout.createSequentialGroup()
+                                .addComponent(SearchMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ButtonSearchMahasiswa)
+                                .addGap(137, 137, 137)
+                                .addComponent(ButtonMahasiswaHapus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ButtonMahasiswaEdit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ButtonMahasiswaTambah))
+                            .addComponent(jScrollPane1))
+                        .addContainerGap(140, Short.MAX_VALUE))
+                    .addGroup(PanelMahasiswaLayout.createSequentialGroup()
+                        .addComponent(LabelTitleMahasiswa)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         PanelMahasiswaLayout.setVerticalGroup(
             PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,7 +455,7 @@ public class FormUtama extends javax.swing.JFrame {
                     .addComponent(ButtonMahasiswaHapus)
                     .addComponent(ButtonMahasiswaEdit)
                     .addComponent(ButtonMahasiswaTambah))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
         );
@@ -450,8 +485,7 @@ public class FormUtama extends javax.swing.JFrame {
 
         TableMatkul.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Nomor MK", "Nama MK"
@@ -704,6 +738,11 @@ public class FormUtama extends javax.swing.JFrame {
         jScrollPane5.setViewportView(FromMahasiswaAlamat);
 
         ButtonMahasiswaSimpan.setText("Simpan");
+        ButtonMahasiswaSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMahasiswaSimpanActionPerformed(evt);
+            }
+        });
 
         ButtonMahasiswaCancel.setText("Cancel");
         ButtonMahasiswaCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -886,34 +925,31 @@ public class FormUtama extends javax.swing.JFrame {
             PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAddNilaiLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(LabelNilaiTugas3)
-                        .addComponent(LabelNilaiTugas2)
-                        .addComponent(LabelNilaiTugas1)
-                        .addComponent(LabelNilaiKehadiran)
-                        .addComponent(LabelNilaiNama)
-                        .addComponent(LabelNilaiNIM)
-                        .addComponent(LabelTitleAddNilai)
-                        .addComponent(FormNilaiNIM)
-                        .addComponent(FormNilaiNama)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddNilaiLayout.createSequentialGroup()
-                            .addComponent(FormNilaiKehadiran, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(LabelNilaiPertemuan)
-                            .addGap(6, 6, 6))
-                        .addComponent(FormNilaiTugas1)
-                        .addComponent(FormNilaiTugas2)
-                        .addComponent(FormNilaiTugas3))
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(FormNilaiNama)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(FormNilaiKehadiran, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LabelNilaiPertemuan)
+                        .addGap(6, 6, 6))
+                    .addComponent(FormNilaiTugas1)
+                    .addComponent(FormNilaiTugas2)
+                    .addComponent(FormNilaiTugas3)
+                    .addComponent(FormNilaiNim, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelAddNilaiLayout.createSequentialGroup()
                         .addComponent(ButtonNilaiCancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonNilaiSimpan)
-                        .addGap(150, 150, 150)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                        .addComponent(ButtonNilaiSimpan))
+                    .addComponent(LabelNilaiTugas3)
+                    .addComponent(LabelNilaiTugas2)
+                    .addComponent(LabelNilaiTugas1)
+                    .addComponent(LabelNilaiKehadiran)
+                    .addComponent(LabelNilaiNama)
+                    .addComponent(LabelNilaiNIM)
+                    .addComponent(LabelTitleAddNilai))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(LabelNilaiNamaMataKuliah)
-                    .addComponent(FormNilaiNamaMataKuliah, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                     .addComponent(LabelNilaiKodeMataKuliah)
                     .addComponent(FormNilaiKodeMataKuliah, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                     .addComponent(LabelNilaiUTS)
@@ -921,24 +957,25 @@ public class FormUtama extends javax.swing.JFrame {
                     .addComponent(LabelNilaiUAS)
                     .addComponent(FormNilaiUAS, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                     .addComponent(LabelNilaiAngkatan)
-                    .addComponent(FormNilaiAngkatan))
+                    .addComponent(FormNilaiAngkatan)
+                    .addComponent(FormNilaiNamaMataKuliah, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(71, 71, 71))
         );
         PanelAddNilaiLayout.setVerticalGroup(
             PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAddNilaiLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(LabelTitleAddNilai)
-                .addGap(36, 36, 36)
                 .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelAddNilaiLayout.createSequentialGroup()
-                        .addComponent(LabelNilaiNIM)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FormNilaiNIM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelTitleAddNilai)
+                        .addGap(36, 36, 36)
                         .addComponent(LabelNilaiNamaMataKuliah)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FormNilaiNamaMataKuliah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FormNilaiNim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FormNilaiNamaMataKuliah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                        .addComponent(LabelNilaiNIM)
+                        .addGap(25, 25, 25)))
                 .addGap(18, 18, 18)
                 .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelAddNilaiLayout.createSequentialGroup()
@@ -989,7 +1026,7 @@ public class FormUtama extends javax.swing.JFrame {
                 .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonNilaiCancel)
                     .addComponent(ButtonNilaiSimpan))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         PanelContent.add(PanelAddNilai, "card10");
@@ -1207,6 +1244,7 @@ public class FormUtama extends javax.swing.JFrame {
 
     private void ButtonNilaiSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiSimpanActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_ButtonNilaiSimpanActionPerformed
 
     private void ButtonSimulasiAkhirSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirSimpanActionPerformed
@@ -1292,6 +1330,11 @@ public class FormUtama extends javax.swing.JFrame {
         LogOutConfirmation(PanelHomepage);
     }//GEN-LAST:event_ButtonDataMahasiswa1ActionPerformed
 
+    private void ButtonMahasiswaSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaSimpanActionPerformed
+        // TODO add your handling code here:
+        _mahasiswaFormValidation.FormNullValidation();
+    }//GEN-LAST:event_ButtonMahasiswaSimpanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1361,9 +1404,9 @@ public class FormUtama extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField FormNilaiAngkatan;
     private javax.swing.JTextField FormNilaiKehadiran;
     private javax.swing.JTextField FormNilaiKodeMataKuliah;
-    private javax.swing.JTextField FormNilaiNIM;
     private javax.swing.JTextField FormNilaiNama;
-    private javax.swing.JTextField FormNilaiNamaMataKuliah;
+    private javax.swing.JComboBox<String> FormNilaiNamaMataKuliah;
+    private javax.swing.JComboBox<String> FormNilaiNim;
     private javax.swing.JTextField FormNilaiTugas1;
     private javax.swing.JTextField FormNilaiTugas2;
     private javax.swing.JTextField FormNilaiTugas3;

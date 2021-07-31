@@ -8,7 +8,7 @@ package edu.kemahasiswaan.repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import edu.kemahasiswaan.model.MahasiswaModel;
-import edu.kemahasiswaan.config.DatabaseConnection;
+import edu.kemahasiswaan.connection.DatabaseConnection;
 
 /**
  *

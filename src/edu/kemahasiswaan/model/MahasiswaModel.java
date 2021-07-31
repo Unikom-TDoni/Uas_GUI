@@ -26,23 +26,28 @@ public final class MahasiswaModel
         _tanggalLahir = tanggalLahir;
     }
 
-    public String GetNim() {
+    public String GetNim() 
+    {
         return _nim;
     }
 
-    public String GetNama() {
+    public String GetNama() 
+    {
         return _nama;
     }
 
-    public String GetAlamat() {
+    public String GetAlamat() 
+    {
         return _alamat;
     }
 
-    public String GetTempatLahir() {
+    public String GetTempatLahir() 
+    {
         return _tempatLahir;
     }
 
-    public String GetTanggalLahir() {
+    public String GetTanggalLahir() 
+    {
         return _tanggalLahir;
     }
 }

@@ -7,7 +7,7 @@ package edu.kemahasiswaan.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import edu.kemahasiswaan.config.DatabaseConnection;
+import edu.kemahasiswaan.connection.DatabaseConnection;
 import edu.kemahasiswaan.model.MataKuliahModel;
 
 /**

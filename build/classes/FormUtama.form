@@ -70,7 +70,7 @@
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               </Group>
@@ -158,11 +158,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/aris/NetBeansProjects/IF10_10119914/kemahasiswaan_10119907_10119914/assets/logo 1.png"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -293,22 +288,29 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="LabelTitleMahasiswa" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="SearchMahasiswa" min="-2" pref="227" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ButtonSearchMahasiswa" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
-                              <Component id="ButtonMahasiswaHapus" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ButtonMahasiswaEdit" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ButtonMahasiswaTambah" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="SearchMahasiswa" min="-2" pref="227" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="ButtonSearchMahasiswa" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+                                      <Component id="ButtonMahasiswaHapus" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="ButtonMahasiswaEdit" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="ButtonMahasiswaTambah" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="140" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="LabelTitleMahasiswa" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -325,7 +327,7 @@
                           <Component id="ButtonMahasiswaEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonMahasiswaTambah" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="392" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                   </Group>
@@ -379,8 +381,8 @@
                 <Component class="javax.swing.JTable" name="TableMahasiswa">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="2">
-                        <Column editable="false" title="NIM" type="java.lang.Object"/>
+                      <Table columnCount="5" rowCount="0">
+                        <Column editable="false" title="Nim" type="java.lang.Object"/>
                         <Column editable="false" title="Nama" type="java.lang.Object"/>
                         <Column editable="false" title="Tempat Lahir" type="java.lang.Object"/>
                         <Column editable="false" title="Tanggal Lahir" type="java.lang.Object"/>
@@ -523,7 +525,7 @@
                 <Component class="javax.swing.JTable" name="TableMatkul">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="2" rowCount="2">
+                      <Table columnCount="2" rowCount="0">
                         <Column editable="false" title="Nomor MK" type="java.lang.Object"/>
                         <Column editable="false" title="Nama MK" type="java.lang.Object"/>
                       </Table>
@@ -1155,6 +1157,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Simpan"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonMahasiswaSimpanActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonMahasiswaCancel">
               <Properties>
@@ -1279,38 +1284,34 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="LabelNilaiTugas3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabelNilaiTugas2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabelNilaiTugas1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabelNilaiKehadiran" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabelNilaiNama" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabelNilaiNIM" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabelTitleAddNilai" min="-2" max="-2" attributes="0"/>
-                              <Component id="FormNilaiNIM" alignment="0" max="32767" attributes="0"/>
-                              <Component id="FormNilaiNama" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="FormNilaiKehadiran" pref="206" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="LabelNilaiPertemuan" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="FormNilaiTugas1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="FormNilaiTugas2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="FormNilaiTugas3" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="FormNilaiNama" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="FormNilaiKehadiran" pref="206" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="LabelNilaiPertemuan" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="FormNilaiTugas1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="FormNilaiTugas2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="FormNilaiTugas3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="FormNilaiNim" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="ButtonNilaiCancel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="ButtonNilaiSimpan" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="LabelNilaiTugas3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelNilaiTugas2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelNilaiTugas1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelNilaiKehadiran" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelNilaiNama" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelNilaiNIM" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelTitleAddNilai" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="65" max="32767" attributes="0"/>
+                      <EmptySpace pref="79" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="LabelNilaiNamaMataKuliah" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="FormNilaiNamaMataKuliah" alignment="0" pref="286" max="32767" attributes="0"/>
                           <Component id="LabelNilaiKodeMataKuliah" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="FormNilaiKodeMataKuliah" alignment="0" pref="286" max="32767" attributes="0"/>
                           <Component id="LabelNilaiUTS" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1319,6 +1320,7 @@
                           <Component id="FormNilaiUAS" alignment="0" pref="286" max="32767" attributes="0"/>
                           <Component id="LabelNilaiAngkatan" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="FormNilaiAngkatan" alignment="0" max="32767" attributes="0"/>
+                          <Component id="FormNilaiNamaMataKuliah" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
@@ -1327,19 +1329,20 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="LabelTitleAddNilai" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="LabelNilaiNIM" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FormNilaiNIM" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="LabelTitleAddNilai" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                               <Component id="LabelNilaiNamaMataKuliah" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FormNilaiNamaMataKuliah" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="FormNilaiNim" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FormNilaiNamaMataKuliah" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="LabelNilaiNIM" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -1406,7 +1409,7 @@
                           <Component id="ButtonNilaiCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonNilaiSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="52" max="32767" attributes="0"/>
+                      <EmptySpace pref="87" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1424,8 +1427,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nim"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="FormNilaiNIM">
             </Component>
             <Component class="javax.swing.JTextField" name="FormNilaiNama">
             </Component>
@@ -1466,8 +1467,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nama Mata Kuliah"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="FormNilaiNamaMataKuliah">
             </Component>
             <Component class="javax.swing.JTextField" name="FormNilaiKodeMataKuliah">
             </Component>
@@ -1517,6 +1516,26 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonNilaiSimpanActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="FormNilaiNim">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="FormNilaiNamaMataKuliah">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

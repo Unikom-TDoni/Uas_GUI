@@ -1,4 +1,4 @@
-package edu.kemahasiswaan.config;
+package edu.kemahasiswaan.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
