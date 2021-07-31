@@ -327,6 +327,11 @@ public class FormUtama extends javax.swing.JFrame {
         ButtonMahasiswaEdit.setText("Edit");
 
         ButtonMahasiswaTambah.setText("Tambah");
+        ButtonMahasiswaTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMahasiswaTambahActionPerformed(evt);
+            }
+        });
 
         TableMahasiswa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -397,6 +402,11 @@ public class FormUtama extends javax.swing.JFrame {
         ButtonMatkulEdit.setText("Edit");
 
         ButtonMatkulTambah.setText("Tambah");
+        ButtonMatkulTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMatkulTambahActionPerformed(evt);
+            }
+        });
 
         TableMatkul.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -467,6 +477,11 @@ public class FormUtama extends javax.swing.JFrame {
         ButtonNilaiEdit.setText("Edit");
 
         ButtonNilaiTambah.setText("Tambah");
+        ButtonNilaiTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonNilaiTambahActionPerformed(evt);
+            }
+        });
 
         TableNilai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -554,6 +569,11 @@ public class FormUtama extends javax.swing.JFrame {
         ButtonNilaiEdit1.setText("Edit");
 
         ButtonNilaiTambah1.setText("Tambah");
+        ButtonNilaiTambah1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonNilaiTambah1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelSimulasiAkhirLayout = new javax.swing.GroupLayout(PanelSimulasiAkhir);
         PanelSimulasiAkhir.setLayout(PanelSimulasiAkhirLayout);
@@ -1186,6 +1206,46 @@ public class FormUtama extends javax.swing.JFrame {
     private void ButtonSimulasiAkhirSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirSimpanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtonSimulasiAkhirSimpanActionPerformed
+
+    private void ButtonMahasiswaTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaTambahActionPerformed
+        // TODO add your handling code here:
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelAddMahasiswa);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+    }//GEN-LAST:event_ButtonMahasiswaTambahActionPerformed
+
+    private void ButtonMatkulTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMatkulTambahActionPerformed
+        // TODO add your handling code here:
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelAddMataKuliah);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+    }//GEN-LAST:event_ButtonMatkulTambahActionPerformed
+
+    private void ButtonNilaiTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiTambahActionPerformed
+        // TODO add your handling code here:
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelAddNilai);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+    }//GEN-LAST:event_ButtonNilaiTambahActionPerformed
+
+    private void ButtonNilaiTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiTambah1ActionPerformed
+        // TODO add your handling code here:
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelAddSimulasiAkhir);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+    }//GEN-LAST:event_ButtonNilaiTambah1ActionPerformed
 
     /**
      * @param args the command line arguments
