@@ -6,6 +6,7 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="f6" green="f5" red="f4" type="rgb"/>
     </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -58,7 +59,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ButtonHomePage" alignment="0" max="32767" attributes="0"/>
                       <Component id="ButtonDataMatkul" alignment="0" max="32767" attributes="0"/>
                       <Component id="ButtonDataNilai" alignment="0" max="32767" attributes="0"/>
                       <Component id="ButtonSimulasiAkhir" alignment="0" max="32767" attributes="0"/>
@@ -80,19 +81,19 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="ButtonHomePage" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="ButtonDataMahasiswa" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="ButtonDataMatkul" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ButtonDataNilai" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="ButtonSimulasiAkhir" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="ButtonSimulasiKasus" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                   <Component id="ButtonDataMahasiswa1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
@@ -100,12 +101,12 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="ButtonHomePage">
           <Properties>
             <Property name="text" type="java.lang.String" value="Home Page"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonHomePageActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ButtonDataMahasiswa">
@@ -194,7 +195,7 @@
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="382" max="32767" attributes="0"/>
+                      <EmptySpace pref="260" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -227,7 +228,7 @@
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -252,12 +253,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nim"/>
+                <Property name="text" type="java.lang.String" value="10119907"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nama"/>
+                <Property name="text" type="java.lang.String" value="T Doni Indrapasta"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
@@ -267,12 +268,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nama"/>
+                <Property name="text" type="java.lang.String" value="Aris Prabowo"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nim"/>
+                <Property name="text" type="java.lang.String" value="10119914"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -353,6 +354,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonMahasiswaEditActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonMahasiswaTambah">
               <Properties>
@@ -494,6 +498,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonMatkulEditActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonMatkulTambah">
               <Properties>
@@ -617,6 +624,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonNilaiEditActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonNilaiTambah">
               <Properties>
@@ -763,11 +773,11 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace pref="480" max="32767" attributes="0"/>
-                              <Component id="ButtonNilaiHapus1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ButtonSimulasiAkhirHapus" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ButtonNilaiEdit1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ButtonSimulasiAkhirEdit" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ButtonNilaiTambah1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ButtonSimulasiAkhirTambah" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -781,9 +791,9 @@
                       <Component id="LabelTitleSimulasiAkhir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ButtonNilaiHapus1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ButtonNilaiEdit1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ButtonNilaiTambah1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ButtonSimulasiAkhirHapus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ButtonSimulasiAkhirEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ButtonSimulasiAkhirTambah" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="392" max="-2" attributes="0"/>
@@ -933,22 +943,25 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="ButtonNilaiHapus1">
+            <Component class="javax.swing.JButton" name="ButtonSimulasiAkhirHapus">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Hapus"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="ButtonNilaiEdit1">
+            <Component class="javax.swing.JButton" name="ButtonSimulasiAkhirEdit">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSimulasiAkhirEditActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="ButtonNilaiTambah1">
+            <Component class="javax.swing.JButton" name="ButtonSimulasiAkhirTambah">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tambah"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonNilaiTambah1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSimulasiAkhirTambahActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -1244,6 +1257,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="PanelAddNilai">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f6" green="f5" red="f4" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card10"/>
@@ -1521,7 +1539,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="LabelSimulasiAkhirKodeMataKuliah" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="LabelSimulasiAkhirNamaMataKuliah" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="LabelTitleAddNilai1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelTitleAddSimulasiAkhir" min="-2" max="-2" attributes="0"/>
                                   <Component id="LabelSimulasiAkhirPresentaseAbsen" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="FormSimulasiAkhirPresentaseAbsen" alignment="0" min="-2" pref="286" max="-2" attributes="0"/>
                                   <Component id="LabelSimulasiAkhirPresentaseUTS" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1566,7 +1584,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="LabelTitleAddNilai1" min="-2" max="-2" attributes="0"/>
+                      <Component id="LabelTitleAddSimulasiAkhir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
@@ -1635,7 +1653,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="LabelTitleAddNilai1">
+            <Component class="javax.swing.JLabel" name="LabelTitleAddSimulasiAkhir">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="24" style="1"/>

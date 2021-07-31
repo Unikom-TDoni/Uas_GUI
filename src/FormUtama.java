@@ -27,7 +27,7 @@ public class FormUtama extends javax.swing.JFrame {
     private void initComponents() {
 
         PanelMenu = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        ButtonHomePage = new javax.swing.JButton();
         ButtonDataMahasiswa = new javax.swing.JButton();
         ButtonDataMatkul = new javax.swing.JButton();
         ButtonDataNilai = new javax.swing.JButton();
@@ -75,9 +75,9 @@ public class FormUtama extends javax.swing.JFrame {
         LabelTitleSimulasiAkhir = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         TableSimulasiAkhir = new javax.swing.JTable();
-        ButtonNilaiHapus1 = new javax.swing.JButton();
-        ButtonNilaiEdit1 = new javax.swing.JButton();
-        ButtonNilaiTambah1 = new javax.swing.JButton();
+        ButtonSimulasiAkhirHapus = new javax.swing.JButton();
+        ButtonSimulasiAkhirEdit = new javax.swing.JButton();
+        ButtonSimulasiAkhirTambah = new javax.swing.JButton();
         PanelSimulasiKasus = new javax.swing.JPanel();
         LabelTitleSimulasiKasus = new javax.swing.JLabel();
         PanelAddMahasiswa = new javax.swing.JPanel();
@@ -131,7 +131,7 @@ public class FormUtama extends javax.swing.JFrame {
         ButtonNilaiCancel = new javax.swing.JButton();
         ButtonNilaiSimpan = new javax.swing.JButton();
         PanelAddSimulasiAkhir = new javax.swing.JPanel();
-        LabelTitleAddNilai1 = new javax.swing.JLabel();
+        LabelTitleAddSimulasiAkhir = new javax.swing.JLabel();
         LabelSimulasiAkhirKehadiran = new javax.swing.JLabel();
         FormSimulasiAkhirKehadiran = new javax.swing.JTextField();
         LabelSimulasiAkhirPertemuan = new javax.swing.JLabel();
@@ -160,13 +160,14 @@ public class FormUtama extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(244, 245, 246));
+        setResizable(false);
 
         PanelMenu.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setText("Home Page");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonHomePage.setText("Home Page");
+        ButtonHomePage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ButtonHomePageActionPerformed(evt);
             }
         });
 
@@ -216,7 +217,7 @@ public class FormUtama extends javax.swing.JFrame {
             .addGroup(PanelMenuLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonHomePage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonDataMatkul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonDataNilai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonSimulasiAkhir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -234,19 +235,19 @@ public class FormUtama extends javax.swing.JFrame {
             .addGroup(PanelMenuLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
-                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtonHomePage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonDataMahasiswa)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonDataMatkul)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonDataNilai)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonSimulasiAkhir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonSimulasiKasus)
-                .addGap(50, 50, 50)
+                .addGap(74, 74, 74)
                 .addComponent(ButtonDataMahasiswa1)
                 .addGap(51, 51, 51))
         );
@@ -262,15 +263,15 @@ public class FormUtama extends javax.swing.JFrame {
 
         jLabel3.setText("Photo");
 
-        jLabel4.setText("Nim");
+        jLabel4.setText("10119907");
 
-        jLabel5.setText("Nama");
+        jLabel5.setText("T Doni Indrapasta");
 
         jLabel6.setText("Photo");
 
-        jLabel7.setText("Nama");
+        jLabel7.setText("Aris Prabowo");
 
-        jLabel8.setText("Nim");
+        jLabel8.setText("10119914");
 
         javax.swing.GroupLayout PanelHomepageLayout = new javax.swing.GroupLayout(PanelHomepage);
         PanelHomepage.setLayout(PanelHomepageLayout);
@@ -282,7 +283,7 @@ public class FormUtama extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
                 .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
@@ -310,7 +311,7 @@ public class FormUtama extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addGap(24, 24, 24)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel8)))
                 .addContainerGap(280, Short.MAX_VALUE))
         );
@@ -325,6 +326,11 @@ public class FormUtama extends javax.swing.JFrame {
         ButtonMahasiswaHapus.setText("Hapus");
 
         ButtonMahasiswaEdit.setText("Edit");
+        ButtonMahasiswaEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMahasiswaEditActionPerformed(evt);
+            }
+        });
 
         ButtonMahasiswaTambah.setText("Tambah");
         ButtonMahasiswaTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -400,6 +406,11 @@ public class FormUtama extends javax.swing.JFrame {
         ButtonMatkulHapus.setText("Hapus");
 
         ButtonMatkulEdit.setText("Edit");
+        ButtonMatkulEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMatkulEditActionPerformed(evt);
+            }
+        });
 
         ButtonMatkulTambah.setText("Tambah");
         ButtonMatkulTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -475,6 +486,11 @@ public class FormUtama extends javax.swing.JFrame {
         ButtonNilaiHapus.setText("Hapus");
 
         ButtonNilaiEdit.setText("Edit");
+        ButtonNilaiEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonNilaiEditActionPerformed(evt);
+            }
+        });
 
         ButtonNilaiTambah.setText("Tambah");
         ButtonNilaiTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -564,14 +580,19 @@ public class FormUtama extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(TableSimulasiAkhir);
 
-        ButtonNilaiHapus1.setText("Hapus");
+        ButtonSimulasiAkhirHapus.setText("Hapus");
 
-        ButtonNilaiEdit1.setText("Edit");
-
-        ButtonNilaiTambah1.setText("Tambah");
-        ButtonNilaiTambah1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonSimulasiAkhirEdit.setText("Edit");
+        ButtonSimulasiAkhirEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonNilaiTambah1ActionPerformed(evt);
+                ButtonSimulasiAkhirEditActionPerformed(evt);
+            }
+        });
+
+        ButtonSimulasiAkhirTambah.setText("Tambah");
+        ButtonSimulasiAkhirTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSimulasiAkhirTambahActionPerformed(evt);
             }
         });
 
@@ -588,11 +609,11 @@ public class FormUtama extends javax.swing.JFrame {
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
                         .addContainerGap(480, Short.MAX_VALUE)
-                        .addComponent(ButtonNilaiHapus1)
+                        .addComponent(ButtonSimulasiAkhirHapus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonNilaiEdit1)
+                        .addComponent(ButtonSimulasiAkhirEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonNilaiTambah1)))
+                        .addComponent(ButtonSimulasiAkhirTambah)))
                 .addGap(33, 33, 33))
         );
         PanelSimulasiAkhirLayout.setVerticalGroup(
@@ -602,9 +623,9 @@ public class FormUtama extends javax.swing.JFrame {
                 .addComponent(LabelTitleSimulasiAkhir)
                 .addGap(18, 18, 18)
                 .addGroup(PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonNilaiHapus1)
-                    .addComponent(ButtonNilaiEdit1)
-                    .addComponent(ButtonNilaiTambah1))
+                    .addComponent(ButtonSimulasiAkhirHapus)
+                    .addComponent(ButtonSimulasiAkhirEdit)
+                    .addComponent(ButtonSimulasiAkhirTambah))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(57, Short.MAX_VALUE))
@@ -782,6 +803,8 @@ public class FormUtama extends javax.swing.JFrame {
 
         PanelContent.add(PanelAddMataKuliah, "card9");
 
+        PanelAddNilai.setBackground(new java.awt.Color(244, 245, 246));
+
         LabelTitleAddNilai.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         LabelTitleAddNilai.setText("Tambah Nilai");
 
@@ -934,8 +957,8 @@ public class FormUtama extends javax.swing.JFrame {
 
         PanelAddSimulasiAkhir.setBackground(new java.awt.Color(244, 245, 246));
 
-        LabelTitleAddNilai1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        LabelTitleAddNilai1.setText("Tambah Simulasi Akhir");
+        LabelTitleAddSimulasiAkhir.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LabelTitleAddSimulasiAkhir.setText("Tambah Simulasi Akhir");
 
         LabelSimulasiAkhirKehadiran.setText("Kehadiran");
 
@@ -986,7 +1009,7 @@ public class FormUtama extends javax.swing.JFrame {
                         .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelSimulasiAkhirKodeMataKuliah)
                             .addComponent(LabelSimulasiAkhirNamaMataKuliah)
-                            .addComponent(LabelTitleAddNilai1)
+                            .addComponent(LabelTitleAddSimulasiAkhir)
                             .addComponent(LabelSimulasiAkhirPresentaseAbsen)
                             .addComponent(FormSimulasiAkhirPresentaseAbsen, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelSimulasiAkhirPresentaseUTS)
@@ -1021,7 +1044,7 @@ public class FormUtama extends javax.swing.JFrame {
             PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAddSimulasiAkhirLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(LabelTitleAddNilai1)
+                .addComponent(LabelTitleAddSimulasiAkhir)
                 .addGap(33, 33, 33)
                 .addGroup(PanelAddSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelAddSimulasiAkhirLayout.createSequentialGroup()
@@ -1149,7 +1172,7 @@ public class FormUtama extends javax.swing.JFrame {
         PanelContent.revalidate();
     }//GEN-LAST:event_ButtonDataNilaiActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ButtonHomePageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHomePageActionPerformed
         // TODO add your handling code here:
         
         /*
@@ -1163,7 +1186,7 @@ public class FormUtama extends javax.swing.JFrame {
         PanelContent.add(PanelHomepage);
         PanelContent.repaint();
         PanelContent.revalidate();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ButtonHomePageActionPerformed
 
     private void ButtonSimulasiAkhirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirActionPerformed
         // TODO add your handling code here:
@@ -1215,6 +1238,7 @@ public class FormUtama extends javax.swing.JFrame {
         PanelContent.add(PanelAddMahasiswa);
         PanelContent.repaint();
         PanelContent.revalidate();
+        LabelTitleAddMahasiswa.setText("Tambah Mahasiswa");
     }//GEN-LAST:event_ButtonMahasiswaTambahActionPerformed
 
     private void ButtonMatkulTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMatkulTambahActionPerformed
@@ -1225,6 +1249,7 @@ public class FormUtama extends javax.swing.JFrame {
         PanelContent.add(PanelAddMataKuliah);
         PanelContent.repaint();
         PanelContent.revalidate();
+        LabelTitleAddMataKuliah.setText("Tambah Mata Kuliah");
     }//GEN-LAST:event_ButtonMatkulTambahActionPerformed
 
     private void ButtonNilaiTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiTambahActionPerformed
@@ -1235,9 +1260,10 @@ public class FormUtama extends javax.swing.JFrame {
         PanelContent.add(PanelAddNilai);
         PanelContent.repaint();
         PanelContent.revalidate();
+        LabelTitleAddNilai.setText("Tambah Nilai");
     }//GEN-LAST:event_ButtonNilaiTambahActionPerformed
 
-    private void ButtonNilaiTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiTambah1ActionPerformed
+    private void ButtonSimulasiAkhirTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirTambahActionPerformed
         // TODO add your handling code here:
         PanelContent.removeAll();
         PanelContent.repaint();
@@ -1245,7 +1271,56 @@ public class FormUtama extends javax.swing.JFrame {
         PanelContent.add(PanelAddSimulasiAkhir);
         PanelContent.repaint();
         PanelContent.revalidate();
-    }//GEN-LAST:event_ButtonNilaiTambah1ActionPerformed
+        LabelTitleAddSimulasiAkhir.setText("Tambah Simulasi Akhir");
+    }//GEN-LAST:event_ButtonSimulasiAkhirTambahActionPerformed
+
+    private void ButtonMahasiswaEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaEditActionPerformed
+        // TODO add your handling code here:
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelAddMahasiswa);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        
+        LabelTitleAddMahasiswa.setText("Edit Mahasiswa");
+    }//GEN-LAST:event_ButtonMahasiswaEditActionPerformed
+
+    private void ButtonMatkulEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMatkulEditActionPerformed
+        // TODO add your handling code here:
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelAddMataKuliah);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        
+        LabelTitleAddMataKuliah.setText("Edit Mata Kuliah");
+    }//GEN-LAST:event_ButtonMatkulEditActionPerformed
+
+    private void ButtonNilaiEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiEditActionPerformed
+        // TODO add your handling code here:
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelAddNilai);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        
+        LabelTitleAddNilai.setText("Edit Nilai");
+    }//GEN-LAST:event_ButtonNilaiEditActionPerformed
+
+    private void ButtonSimulasiAkhirEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirEditActionPerformed
+        // TODO add your handling code here:
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelAddSimulasiAkhir);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        
+        LabelTitleAddSimulasiAkhir.setText("Edit Simulasi Akhir");
+    }//GEN-LAST:event_ButtonSimulasiAkhirEditActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1287,6 +1362,7 @@ public class FormUtama extends javax.swing.JFrame {
     private javax.swing.JButton ButtonDataMahasiswa1;
     private javax.swing.JButton ButtonDataMatkul;
     private javax.swing.JButton ButtonDataNilai;
+    private javax.swing.JButton ButtonHomePage;
     private javax.swing.JButton ButtonMahasiswaCancel;
     private javax.swing.JButton ButtonMahasiswaEdit;
     private javax.swing.JButton ButtonMahasiswaHapus;
@@ -1299,18 +1375,18 @@ public class FormUtama extends javax.swing.JFrame {
     private javax.swing.JButton ButtonMatkulTambah;
     private javax.swing.JButton ButtonNilaiCancel;
     private javax.swing.JButton ButtonNilaiEdit;
-    private javax.swing.JButton ButtonNilaiEdit1;
     private javax.swing.JButton ButtonNilaiHapus;
-    private javax.swing.JButton ButtonNilaiHapus1;
     private javax.swing.JButton ButtonNilaiSimpan;
     private javax.swing.JButton ButtonNilaiTambah;
-    private javax.swing.JButton ButtonNilaiTambah1;
     private javax.swing.JButton ButtonSearchMahasiswa;
     private javax.swing.JButton ButtonSearchMatkul;
     private javax.swing.JButton ButtonSearchNilai;
     private javax.swing.JButton ButtonSimulasiAkhir;
     private javax.swing.JButton ButtonSimulasiAkhirCancel;
+    private javax.swing.JButton ButtonSimulasiAkhirEdit;
+    private javax.swing.JButton ButtonSimulasiAkhirHapus;
     private javax.swing.JButton ButtonSimulasiAkhirSimpan;
+    private javax.swing.JButton ButtonSimulasiAkhirTambah;
     private javax.swing.JButton ButtonSimulasiKasus;
     private javax.swing.JFormattedTextField FormNilaiAngkatan;
     private javax.swing.JTextField FormNilaiKehadiran;
@@ -1375,7 +1451,7 @@ public class FormUtama extends javax.swing.JFrame {
     private javax.swing.JLabel LabelTitleAddMahasiswa;
     private javax.swing.JLabel LabelTitleAddMataKuliah;
     private javax.swing.JLabel LabelTitleAddNilai;
-    private javax.swing.JLabel LabelTitleAddNilai1;
+    private javax.swing.JLabel LabelTitleAddSimulasiAkhir;
     private javax.swing.JLabel LabelTitleHome;
     private javax.swing.JLabel LabelTitleMahasiswa;
     private javax.swing.JLabel LabelTitleMataKuliah;
@@ -1401,7 +1477,6 @@ public class FormUtama extends javax.swing.JFrame {
     private javax.swing.JTable TableMatkul;
     private javax.swing.JTable TableNilai;
     private javax.swing.JTable TableSimulasiAkhir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
