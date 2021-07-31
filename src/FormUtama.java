@@ -36,33 +36,14 @@ public class FormUtama extends javax.swing.JFrame {
         ButtonDataMahasiswa1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         PanelContent = new javax.swing.JPanel();
-        PanelSimulasiKasus = new javax.swing.JPanel();
-        LabelTitleSimulasiKasus = new javax.swing.JLabel();
-        PanelSimulasiAkhir = new javax.swing.JPanel();
-        LabelTitleSimulasiAkhir = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        TableSimulasiAkhir = new javax.swing.JTable();
-        ButtonNilaiHapus1 = new javax.swing.JButton();
-        ButtonNilaiEdit1 = new javax.swing.JButton();
-        ButtonNilaiTambah1 = new javax.swing.JButton();
-        PanelDataNilai = new javax.swing.JPanel();
-        LabelTitleNilai = new javax.swing.JLabel();
-        SearchNilai = new javax.swing.JTextField();
-        ButtonSearchNilai = new javax.swing.JButton();
-        ButtonNilaiHapus = new javax.swing.JButton();
-        ButtonNilaiEdit = new javax.swing.JButton();
-        ButtonNilaiTambah = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        TableNilai = new javax.swing.JTable();
-        PanelMataKuliah = new javax.swing.JPanel();
-        LabelTitleMataKuliah = new javax.swing.JLabel();
-        SearchMatkul = new javax.swing.JTextField();
-        ButtonSearchMatkul = new javax.swing.JButton();
-        ButtonMatkulHapus = new javax.swing.JButton();
-        ButtonMatkulEdit = new javax.swing.JButton();
-        ButtonMatkulTambah = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TableMatkul = new javax.swing.JTable();
+        PanelHomepage = new javax.swing.JPanel();
+        LabelTitleHome = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         PanelMahasiswa = new javax.swing.JPanel();
         LabelTitleMahasiswa = new javax.swing.JLabel();
         SearchMahasiswa = new javax.swing.JTextField();
@@ -72,14 +53,33 @@ public class FormUtama extends javax.swing.JFrame {
         ButtonMahasiswaTambah = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableMahasiswa = new javax.swing.JTable();
-        PanelHomepage = new javax.swing.JPanel();
-        LabelTitleHome = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        PanelMataKuliah = new javax.swing.JPanel();
+        LabelTitleMataKuliah = new javax.swing.JLabel();
+        SearchMatkul = new javax.swing.JTextField();
+        ButtonSearchMatkul = new javax.swing.JButton();
+        ButtonMatkulHapus = new javax.swing.JButton();
+        ButtonMatkulEdit = new javax.swing.JButton();
+        ButtonMatkulTambah = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TableMatkul = new javax.swing.JTable();
+        PanelDataNilai = new javax.swing.JPanel();
+        LabelTitleNilai = new javax.swing.JLabel();
+        SearchNilai = new javax.swing.JTextField();
+        ButtonSearchNilai = new javax.swing.JButton();
+        ButtonNilaiHapus = new javax.swing.JButton();
+        ButtonNilaiEdit = new javax.swing.JButton();
+        ButtonNilaiTambah = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TableNilai = new javax.swing.JTable();
+        PanelSimulasiAkhir = new javax.swing.JPanel();
+        LabelTitleSimulasiAkhir = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TableSimulasiAkhir = new javax.swing.JTable();
+        ButtonNilaiHapus1 = new javax.swing.JButton();
+        ButtonNilaiEdit1 = new javax.swing.JButton();
+        ButtonNilaiTambah1 = new javax.swing.JButton();
+        PanelSimulasiKasus = new javax.swing.JPanel();
+        LabelTitleSimulasiKasus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(244, 245, 246));
@@ -87,6 +87,11 @@ public class FormUtama extends javax.swing.JFrame {
         PanelMenu.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton1.setText("Home Page");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         ButtonDataMahasiswa.setText("Data Mahasiswa");
         ButtonDataMahasiswa.addActionListener(new java.awt.event.ActionListener() {
@@ -96,12 +101,32 @@ public class FormUtama extends javax.swing.JFrame {
         });
 
         ButtonDataMatkul.setText("Data Mata Kuliah");
+        ButtonDataMatkul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonDataMatkulActionPerformed(evt);
+            }
+        });
 
         ButtonDataNilai.setText("Data Nilai");
+        ButtonDataNilai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonDataNilaiActionPerformed(evt);
+            }
+        });
 
         ButtonSimulasiAkhir.setText("Simulasi Akhir");
+        ButtonSimulasiAkhir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSimulasiAkhirActionPerformed(evt);
+            }
+        });
 
         ButtonSimulasiKasus.setText("Simulasi Kasus");
+        ButtonSimulasiKasus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSimulasiKasusActionPerformed(evt);
+            }
+        });
 
         ButtonDataMahasiswa1.setText("Keluar");
 
@@ -136,9 +161,9 @@ public class FormUtama extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ButtonDataMahasiswa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(ButtonDataMatkul)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonDataNilai)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonSimulasiAkhir)
@@ -153,234 +178,67 @@ public class FormUtama extends javax.swing.JFrame {
         PanelContent.setToolTipText("");
         PanelContent.setLayout(new java.awt.CardLayout());
 
-        LabelTitleSimulasiKasus.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        LabelTitleSimulasiKasus.setText("Simulasi Kasus");
+        PanelHomepage.setBackground(new java.awt.Color(244, 245, 246));
 
-        javax.swing.GroupLayout PanelSimulasiKasusLayout = new javax.swing.GroupLayout(PanelSimulasiKasus);
-        PanelSimulasiKasus.setLayout(PanelSimulasiKasusLayout);
-        PanelSimulasiKasusLayout.setHorizontalGroup(
-            PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(LabelTitleSimulasiKasus)
+        LabelTitleHome.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LabelTitleHome.setText("Home Page");
+
+        jLabel3.setText("Photo");
+
+        jLabel4.setText("Nim");
+
+        jLabel5.setText("Nama");
+
+        jLabel6.setText("Photo");
+
+        jLabel7.setText("Nama");
+
+        jLabel8.setText("Nim");
+
+        javax.swing.GroupLayout PanelHomepageLayout = new javax.swing.GroupLayout(PanelHomepage);
+        PanelHomepage.setLayout(PanelHomepageLayout);
+        PanelHomepageLayout.setHorizontalGroup(
+            PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelHomepageLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
+                .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addGap(265, 265, 265))
+            .addGroup(PanelHomepageLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(LabelTitleHome)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        PanelSimulasiKasusLayout.setVerticalGroup(
-            PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(LabelTitleSimulasiKasus)
-                .addContainerGap(508, Short.MAX_VALUE))
-        );
-
-        PanelContent.add(PanelSimulasiKasus, "card7");
-
-        LabelTitleSimulasiAkhir.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        LabelTitleSimulasiAkhir.setText("Simulasi Akhir");
-
-        TableSimulasiAkhir.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nama MK", "Absen (%)", "Tugas (%)", "UTS (%)", "UAS (%)", "Absensi", "Tgs1", "Tgs2", "Tgs3", "UTS", "UAS", "Nilai Absen", "Nilai Tugas", "Niali UTS", "Nilai UAS", "Nilai Akhir", "Indeks", "Keterangan"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(TableSimulasiAkhir);
-
-        ButtonNilaiHapus1.setText("Hapus");
-
-        ButtonNilaiEdit1.setText("Edit");
-
-        ButtonNilaiTambah1.setText("Tambah");
-
-        javax.swing.GroupLayout PanelSimulasiAkhirLayout = new javax.swing.GroupLayout(PanelSimulasiAkhir);
-        PanelSimulasiAkhir.setLayout(PanelSimulasiAkhirLayout);
-        PanelSimulasiAkhirLayout.setHorizontalGroup(
-            PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSimulasiAkhirLayout.createSequentialGroup()
-                .addGroup(PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelSimulasiAkhirLayout.createSequentialGroup()
+        PanelHomepageLayout.setVerticalGroup(
+            PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelHomepageLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(LabelTitleHome)
+                .addGap(143, 143, 143)
+                .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelHomepageLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
                         .addGap(24, 24, 24)
-                        .addGroup(PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
-                                .addComponent(LabelTitleSimulasiAkhir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
-                        .addContainerGap(480, Short.MAX_VALUE)
-                        .addComponent(ButtonNilaiHapus1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonNilaiEdit1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonNilaiTambah1)))
-                .addGap(33, 33, 33))
-        );
-        PanelSimulasiAkhirLayout.setVerticalGroup(
-            PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(LabelTitleSimulasiAkhir)
-                .addGap(18, 18, 18)
-                .addGroup(PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonNilaiHapus1)
-                    .addComponent(ButtonNilaiEdit1)
-                    .addComponent(ButtonNilaiTambah1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4))
+                    .addGroup(PanelHomepageLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
-        PanelContent.add(PanelSimulasiAkhir, "card6");
-
-        LabelTitleNilai.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        LabelTitleNilai.setText("Data Nilai");
-
-        ButtonSearchNilai.setText("Cari");
-
-        ButtonNilaiHapus.setText("Hapus");
-
-        ButtonNilaiEdit.setText("Edit");
-
-        ButtonNilaiTambah.setText("Tambah");
-
-        TableNilai.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nama", "Mata Kuliah", "Absensi", "Tgs1", "Tgs2", "Tgs3", "UTS", "UAS", "Nilai Absen", "Nilai Tugas", "Nilai UTS", "Nilai UAS", "Nilai Akhir", "Indeks", "Keterengan"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, true, true, true, true, true, true, true, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(TableNilai);
-
-        javax.swing.GroupLayout PanelDataNilaiLayout = new javax.swing.GroupLayout(PanelDataNilai);
-        PanelDataNilai.setLayout(PanelDataNilaiLayout);
-        PanelDataNilaiLayout.setHorizontalGroup(
-            PanelDataNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDataNilaiLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(PanelDataNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDataNilaiLayout.createSequentialGroup()
-                        .addComponent(SearchNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonSearchNilai)
-                        .addGap(137, 137, 137)
-                        .addComponent(ButtonNilaiHapus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonNilaiEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonNilaiTambah))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelTitleNilai))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        PanelDataNilaiLayout.setVerticalGroup(
-            PanelDataNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDataNilaiLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(LabelTitleNilai)
-                .addGap(30, 30, 30)
-                .addGroup(PanelDataNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchNilai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonSearchNilai)
-                    .addComponent(ButtonNilaiHapus)
-                    .addComponent(ButtonNilaiEdit)
-                    .addComponent(ButtonNilaiTambah))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-        );
-
-        PanelContent.add(PanelDataNilai, "card5");
-
-        LabelTitleMataKuliah.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        LabelTitleMataKuliah.setText("Data Mata Kuliah");
-
-        ButtonSearchMatkul.setText("Cari");
-
-        ButtonMatkulHapus.setText("Hapus");
-
-        ButtonMatkulEdit.setText("Edit");
-
-        ButtonMatkulTambah.setText("Tambah");
-
-        TableMatkul.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Nomor MK", "Nama MK"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(TableMatkul);
-
-        javax.swing.GroupLayout PanelMataKuliahLayout = new javax.swing.GroupLayout(PanelMataKuliah);
-        PanelMataKuliah.setLayout(PanelMataKuliahLayout);
-        PanelMataKuliahLayout.setHorizontalGroup(
-            PanelMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelMataKuliahLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(PanelMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelMataKuliahLayout.createSequentialGroup()
-                        .addComponent(SearchMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonSearchMatkul)
-                        .addGap(137, 137, 137)
-                        .addComponent(ButtonMatkulHapus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonMatkulEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonMatkulTambah))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelTitleMataKuliah))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        PanelMataKuliahLayout.setVerticalGroup(
-            PanelMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelMataKuliahLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(LabelTitleMataKuliah)
-                .addGap(27, 27, 27)
-                .addGroup(PanelMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonSearchMatkul)
-                    .addComponent(ButtonMatkulHapus)
-                    .addComponent(ButtonMatkulEdit)
-                    .addComponent(ButtonMatkulTambah))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
-        );
-
-        PanelContent.add(PanelMataKuliah, "card4");
+        PanelContent.add(PanelHomepage, "card2");
 
         LabelTitleMahasiswa.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         LabelTitleMahasiswa.setText("Data Mahasiswa");
@@ -452,67 +310,234 @@ public class FormUtama extends javax.swing.JFrame {
 
         PanelContent.add(PanelMahasiswa, "card3");
 
-        PanelHomepage.setBackground(new java.awt.Color(244, 245, 246));
+        LabelTitleMataKuliah.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LabelTitleMataKuliah.setText("Data Mata Kuliah");
 
-        LabelTitleHome.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        LabelTitleHome.setText("Home Page");
+        ButtonSearchMatkul.setText("Cari");
 
-        jLabel3.setText("Photo");
+        ButtonMatkulHapus.setText("Hapus");
 
-        jLabel4.setText("Nim");
+        ButtonMatkulEdit.setText("Edit");
 
-        jLabel5.setText("Nama");
+        ButtonMatkulTambah.setText("Tambah");
 
-        jLabel6.setText("Photo");
+        TableMatkul.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nomor MK", "Nama MK"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-        jLabel7.setText("Nama");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(TableMatkul);
 
-        jLabel8.setText("Nim");
+        javax.swing.GroupLayout PanelMataKuliahLayout = new javax.swing.GroupLayout(PanelMataKuliah);
+        PanelMataKuliah.setLayout(PanelMataKuliahLayout);
+        PanelMataKuliahLayout.setHorizontalGroup(
+            PanelMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelMataKuliahLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(PanelMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelMataKuliahLayout.createSequentialGroup()
+                        .addComponent(SearchMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonSearchMatkul)
+                        .addGap(137, 137, 137)
+                        .addComponent(ButtonMatkulHapus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonMatkulEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonMatkulTambah))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelTitleMataKuliah))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        PanelMataKuliahLayout.setVerticalGroup(
+            PanelMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelMataKuliahLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(LabelTitleMataKuliah)
+                .addGap(27, 27, 27)
+                .addGroup(PanelMataKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SearchMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonSearchMatkul)
+                    .addComponent(ButtonMatkulHapus)
+                    .addComponent(ButtonMatkulEdit)
+                    .addComponent(ButtonMatkulTambah))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
+        );
 
-        javax.swing.GroupLayout PanelHomepageLayout = new javax.swing.GroupLayout(PanelHomepage);
-        PanelHomepage.setLayout(PanelHomepageLayout);
-        PanelHomepageLayout.setHorizontalGroup(
-            PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelHomepageLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
-                .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addGap(265, 265, 265))
-            .addGroup(PanelHomepageLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(LabelTitleHome)
+        PanelContent.add(PanelMataKuliah, "card4");
+
+        LabelTitleNilai.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LabelTitleNilai.setText("Data Nilai");
+
+        ButtonSearchNilai.setText("Cari");
+
+        ButtonNilaiHapus.setText("Hapus");
+
+        ButtonNilaiEdit.setText("Edit");
+
+        ButtonNilaiTambah.setText("Tambah");
+
+        TableNilai.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nama", "Mata Kuliah", "Absensi", "Tgs1", "Tgs2", "Tgs3", "UTS", "UAS", "Nilai Absen", "Nilai Tugas", "Nilai UTS", "Nilai UAS", "Nilai Akhir", "Indeks", "Keterengan"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true, true, true, true, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(TableNilai);
+
+        javax.swing.GroupLayout PanelDataNilaiLayout = new javax.swing.GroupLayout(PanelDataNilai);
+        PanelDataNilai.setLayout(PanelDataNilaiLayout);
+        PanelDataNilaiLayout.setHorizontalGroup(
+            PanelDataNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDataNilaiLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(PanelDataNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDataNilaiLayout.createSequentialGroup()
+                        .addComponent(SearchNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonSearchNilai)
+                        .addGap(137, 137, 137)
+                        .addComponent(ButtonNilaiHapus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonNilaiEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonNilaiTambah))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelTitleNilai))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        PanelDataNilaiLayout.setVerticalGroup(
+            PanelDataNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDataNilaiLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(LabelTitleNilai)
+                .addGap(30, 30, 30)
+                .addGroup(PanelDataNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SearchNilai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonSearchNilai)
+                    .addComponent(ButtonNilaiHapus)
+                    .addComponent(ButtonNilaiEdit)
+                    .addComponent(ButtonNilaiTambah))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
+        );
+
+        PanelContent.add(PanelDataNilai, "card5");
+
+        LabelTitleSimulasiAkhir.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LabelTitleSimulasiAkhir.setText("Simulasi Akhir");
+
+        TableSimulasiAkhir.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nama MK", "Absen (%)", "Tugas (%)", "UTS (%)", "UAS (%)", "Absensi", "Tgs1", "Tgs2", "Tgs3", "UTS", "UAS", "Nilai Absen", "Nilai Tugas", "Niali UTS", "Nilai UAS", "Nilai Akhir", "Indeks", "Keterangan"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(TableSimulasiAkhir);
+
+        ButtonNilaiHapus1.setText("Hapus");
+
+        ButtonNilaiEdit1.setText("Edit");
+
+        ButtonNilaiTambah1.setText("Tambah");
+
+        javax.swing.GroupLayout PanelSimulasiAkhirLayout = new javax.swing.GroupLayout(PanelSimulasiAkhir);
+        PanelSimulasiAkhir.setLayout(PanelSimulasiAkhirLayout);
+        PanelSimulasiAkhirLayout.setHorizontalGroup(
+            PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSimulasiAkhirLayout.createSequentialGroup()
+                .addGroup(PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelSimulasiAkhirLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
+                                .addComponent(LabelTitleSimulasiAkhir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
+                        .addContainerGap(480, Short.MAX_VALUE)
+                        .addComponent(ButtonNilaiHapus1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonNilaiEdit1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonNilaiTambah1)))
+                .addGap(33, 33, 33))
+        );
+        PanelSimulasiAkhirLayout.setVerticalGroup(
+            PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(LabelTitleSimulasiAkhir)
+                .addGap(18, 18, 18)
+                .addGroup(PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonNilaiHapus1)
+                    .addComponent(ButtonNilaiEdit1)
+                    .addComponent(ButtonNilaiTambah1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+
+        PanelContent.add(PanelSimulasiAkhir, "card6");
+
+        LabelTitleSimulasiKasus.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LabelTitleSimulasiKasus.setText("Simulasi Kasus");
+
+        javax.swing.GroupLayout PanelSimulasiKasusLayout = new javax.swing.GroupLayout(PanelSimulasiKasus);
+        PanelSimulasiKasus.setLayout(PanelSimulasiKasusLayout);
+        PanelSimulasiKasusLayout.setHorizontalGroup(
+            PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(LabelTitleSimulasiKasus)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        PanelHomepageLayout.setVerticalGroup(
-            PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelHomepageLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(LabelTitleHome)
-                .addGap(143, 143, 143)
-                .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelHomepageLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4))
-                    .addGroup(PanelHomepageLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)))
-                .addContainerGap(280, Short.MAX_VALUE))
+        PanelSimulasiKasusLayout.setVerticalGroup(
+            PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(LabelTitleSimulasiKasus)
+                .addContainerGap(508, Short.MAX_VALUE))
         );
 
-        PanelContent.add(PanelHomepage, "card2");
+        PanelContent.add(PanelSimulasiKasus, "card7");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -537,7 +562,96 @@ public class FormUtama extends javax.swing.JFrame {
 
     private void ButtonDataMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDataMahasiswaActionPerformed
         // TODO add your handling code here:
+        
+        /*
+        This section is to make navigation works
+        If we click Data Mahasiswa button it will show Data Mahasiswa Content
+        */
+        //
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelMahasiswa);
+        PanelContent.repaint();
+        PanelContent.revalidate();
     }//GEN-LAST:event_ButtonDataMahasiswaActionPerformed
+
+    private void ButtonDataMatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDataMatkulActionPerformed
+        // TODO add your handling code here:
+        
+        /*
+        This section is to make navigation works
+        If we click Data Mata Kuliah button it will show Data Mata Kuliah Content
+        */
+        //
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelMataKuliah);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+    }//GEN-LAST:event_ButtonDataMatkulActionPerformed
+
+    private void ButtonDataNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDataNilaiActionPerformed
+        // TODO add your handling code here:
+        /*
+        This section is to make navigation works
+        If we click Data Nilai Mahasiswa button it will show Data Nilai Mahasiswa Content
+        */
+        //
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelDataNilai);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+    }//GEN-LAST:event_ButtonDataNilaiActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        /*
+        This section is to make navigation works
+        If we click Homepage button it will show Homepage Content
+        */
+        //
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelHomepage);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ButtonSimulasiAkhirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirActionPerformed
+        // TODO add your handling code here:
+        /*
+        This section is to make navigation works
+        If we click Simulasi Akhir button it will show Simulasi Akhir Content
+        */
+        //
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelSimulasiAkhir);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+    }//GEN-LAST:event_ButtonSimulasiAkhirActionPerformed
+
+    private void ButtonSimulasiKasusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusActionPerformed
+        // TODO add your handling code here:
+        /*
+        This section is to make navigation works
+        If we click Simulasi Kasus it will show Simulasi Kasus Content
+        */
+        //
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(PanelSimulasiKasus);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+    }//GEN-LAST:event_ButtonSimulasiKasusActionPerformed
 
     /**
      * @param args the command line arguments
