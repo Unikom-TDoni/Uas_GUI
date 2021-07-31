@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -30,12 +31,14 @@ public class FormUtama extends javax.swing.JFrame {
         PanelContent.revalidate();
     }
     public void CancelConfirmation(JPanel Destination){
-        int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah yakin untuk membatalkan?");
-        switch(CancelDialog){
-        case JOptionPane.YES_OPTION:
-                NavigateTo(Destination);
-            break;
-        }
+        int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin untuk membatalkan?", "Warning", JOptionPane.YES_NO_OPTION);
+        if(CancelDialog == JOptionPane.YES_OPTION)
+            NavigateTo(Destination);
+    }
+    public void LogOutConfirmation(JPanel Destination){
+        int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin untuk keluar?", "Warning", JOptionPane.YES_NO_OPTION);
+        if(CancelDialog == JOptionPane.YES_OPTION)
+            NavigateTo(Destination);
     }
     
     /**
@@ -228,6 +231,11 @@ public class FormUtama extends javax.swing.JFrame {
         });
 
         ButtonDataMahasiswa1.setText("Keluar");
+        ButtonDataMahasiswa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonDataMahasiswa1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon("/Users/aris/NetBeansProjects/IF10_10119914/kemahasiswaan_10119907_10119914/assets/logo 1.png")); // NOI18N
 
@@ -780,6 +788,11 @@ public class FormUtama extends javax.swing.JFrame {
         LabelFromMataKuliahNama.setText("Nama Mata Kuliah");
 
         ButtonMataKuliahCancel.setText("Cancel");
+        ButtonMataKuliahCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMataKuliahCancelActionPerformed(evt);
+            }
+        });
 
         ButtonMataKuliahSimpan.setText("Simpan");
 
@@ -854,6 +867,11 @@ public class FormUtama extends javax.swing.JFrame {
         LabelNilaiPertemuan.setText("Pertemuan");
 
         ButtonNilaiCancel.setText("Cancel");
+        ButtonNilaiCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonNilaiCancelActionPerformed(evt);
+            }
+        });
 
         ButtonNilaiSimpan.setText("Simpan");
         ButtonNilaiSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -1006,6 +1024,11 @@ public class FormUtama extends javax.swing.JFrame {
         LabelSimulasiAkhirPresentaseUAS.setText("Presentase UAS");
 
         ButtonSimulasiAkhirCancel.setText("Cancel");
+        ButtonSimulasiAkhirCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSimulasiAkhirCancelActionPerformed(evt);
+            }
+        });
 
         ButtonSimulasiAkhirSimpan.setText("Simpan");
         ButtonSimulasiAkhirSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -1148,70 +1171,38 @@ public class FormUtama extends javax.swing.JFrame {
 
     private void ButtonDataMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDataMahasiswaActionPerformed
         // TODO add your handling code here:
-        
-        /*
-        This section is to make navigation works
-        If we click Data Mahasiswa button it will show Data Mahasiswa Content
-        */
-        //
         NavigateTo(PanelMahasiswa);
     }//GEN-LAST:event_ButtonDataMahasiswaActionPerformed
 
     private void ButtonDataMatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDataMatkulActionPerformed
         // TODO add your handling code here:
-        
-        /*
-        This section is to make navigation works
-        If we click Data Mata Kuliah button it will show Data Mata Kuliah Content
-        */
-        //
         NavigateTo(PanelMataKuliah);
     }//GEN-LAST:event_ButtonDataMatkulActionPerformed
 
     private void ButtonDataNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDataNilaiActionPerformed
         // TODO add your handling code here:
-        /*
-        This section is to make navigation works
-        If we click Data Nilai Mahasiswa button it will show Data Nilai Mahasiswa Content
-        */
-        //
         NavigateTo(PanelDataNilai); 
     }//GEN-LAST:event_ButtonDataNilaiActionPerformed
 
     private void ButtonHomePageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHomePageActionPerformed
         // TODO add your handling code here:
-        
-        /*
-        This section is to make navigation works
-        If we click Homepage button it will show Homepage Content
-        */
-        //
         NavigateTo(PanelHomepage);
     }//GEN-LAST:event_ButtonHomePageActionPerformed
 
     private void ButtonSimulasiAkhirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirActionPerformed
         // TODO add your handling code here:
-        /*
-        This section is to make navigation works
-        If we click Simulasi Akhir button it will show Simulasi Akhir Content
-        */
-        //
         NavigateTo(PanelSimulasiAkhir);
     }//GEN-LAST:event_ButtonSimulasiAkhirActionPerformed
 
     private void ButtonSimulasiKasusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusActionPerformed
         // TODO add your handling code here:
-        /*
-        This section is to make navigation works
-        If we click Simulasi Kasus it will show Simulasi Kasus Content
-        */
-        //
         NavigateTo(PanelSimulasiKasus);
     }//GEN-LAST:event_ButtonSimulasiKasusActionPerformed
 
     private void ButtonMahasiswaCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaCancelActionPerformed
         // TODO add your handling code here:
         CancelConfirmation(PanelMahasiswa);
+        ButtonDataMahasiswa.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMahasiswaCancelActionPerformed
 
     private void ButtonNilaiSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiSimpanActionPerformed
@@ -1226,49 +1217,80 @@ public class FormUtama extends javax.swing.JFrame {
         // TODO add your handling code here:
         NavigateTo(PanelAddMahasiswa);
         LabelTitleAddMahasiswa.setText("Tambah Mahasiswa");
+        ButtonDataMahasiswa.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMahasiswaTambahActionPerformed
 
     private void ButtonMatkulTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMatkulTambahActionPerformed
         // TODO add your handling code here:
         NavigateTo(PanelAddMataKuliah);
         LabelTitleAddMataKuliah.setText("Tambah Mata Kuliah");
+        ButtonDataMatkul.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMatkulTambahActionPerformed
 
     private void ButtonNilaiTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiTambahActionPerformed
         // TODO add your handling code here:
         NavigateTo(PanelAddNilai);
         LabelTitleAddNilai.setText("Tambah Nilai");
+        ButtonDataNilai.requestFocusInWindow();
     }//GEN-LAST:event_ButtonNilaiTambahActionPerformed
 
     private void ButtonSimulasiAkhirTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirTambahActionPerformed
         // TODO add your handling code here:
         NavigateTo(PanelAddSimulasiAkhir);
         LabelTitleAddSimulasiAkhir.setText("Tambah Simulasi Akhir");
+        ButtonSimulasiAkhir.requestFocusInWindow();
     }//GEN-LAST:event_ButtonSimulasiAkhirTambahActionPerformed
 
     private void ButtonMahasiswaEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaEditActionPerformed
         // TODO add your handling code here:
         NavigateTo(PanelAddMahasiswa);      
         LabelTitleAddMahasiswa.setText("Edit Mahasiswa");
+        ButtonDataMahasiswa.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMahasiswaEditActionPerformed
 
     private void ButtonMatkulEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMatkulEditActionPerformed
         // TODO add your handling code here:
         NavigateTo(PanelAddMataKuliah);
         LabelTitleAddMataKuliah.setText("Edit Mata Kuliah");
+        ButtonDataMatkul.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMatkulEditActionPerformed
 
     private void ButtonNilaiEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiEditActionPerformed
         // TODO add your handling code here:
         NavigateTo(PanelAddNilai);
         LabelTitleAddNilai.setText("Edit Nilai");
+        ButtonDataNilai.requestFocusInWindow();
     }//GEN-LAST:event_ButtonNilaiEditActionPerformed
 
     private void ButtonSimulasiAkhirEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirEditActionPerformed
         // TODO add your handling code here:
         NavigateTo(PanelAddSimulasiAkhir);
         LabelTitleAddSimulasiAkhir.setText("Edit Simulasi Akhir");
+        ButtonSimulasiAkhir.requestFocusInWindow();
     }//GEN-LAST:event_ButtonSimulasiAkhirEditActionPerformed
+
+    private void ButtonMataKuliahCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMataKuliahCancelActionPerformed
+        // TODO add your handling code here:
+        CancelConfirmation(PanelMahasiswa);
+        ButtonDataMatkul.requestFocusInWindow();
+    }//GEN-LAST:event_ButtonMataKuliahCancelActionPerformed
+
+    private void ButtonNilaiCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiCancelActionPerformed
+        // TODO add your handling code here:
+        CancelConfirmation(PanelDataNilai);
+        ButtonDataNilai.requestFocusInWindow();
+    }//GEN-LAST:event_ButtonNilaiCancelActionPerformed
+
+    private void ButtonSimulasiAkhirCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirCancelActionPerformed
+        // TODO add your handling code here:
+        CancelConfirmation(PanelSimulasiAkhir);
+        ButtonSimulasiAkhir.requestFocusInWindow();
+    }//GEN-LAST:event_ButtonSimulasiAkhirCancelActionPerformed
+
+    private void ButtonDataMahasiswa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDataMahasiswa1ActionPerformed
+        // TODO add your handling code here:
+        LogOutConfirmation(PanelHomepage);
+    }//GEN-LAST:event_ButtonDataMahasiswa1ActionPerformed
 
     /**
      * @param args the command line arguments
