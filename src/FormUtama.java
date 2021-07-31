@@ -1,3 +1,7 @@
+
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,7 +21,23 @@ public class FormUtama extends javax.swing.JFrame {
     public FormUtama() {
         initComponents();
     }
-
+    public void NavigateTo(JPanel Destination){
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        PanelContent.add(Destination);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+    }
+    public void CancelConfirmation(JPanel Destination){
+        int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah yakin untuk membatalkan?");
+        switch(CancelDialog){
+        case JOptionPane.YES_OPTION:
+                NavigateTo(Destination);
+            break;
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1134,12 +1154,7 @@ public class FormUtama extends javax.swing.JFrame {
         If we click Data Mahasiswa button it will show Data Mahasiswa Content
         */
         //
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelMahasiswa);
-        PanelContent.repaint();
-        PanelContent.revalidate();
+        NavigateTo(PanelMahasiswa);
     }//GEN-LAST:event_ButtonDataMahasiswaActionPerformed
 
     private void ButtonDataMatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDataMatkulActionPerformed
@@ -1150,12 +1165,7 @@ public class FormUtama extends javax.swing.JFrame {
         If we click Data Mata Kuliah button it will show Data Mata Kuliah Content
         */
         //
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelMataKuliah);
-        PanelContent.repaint();
-        PanelContent.revalidate();
+        NavigateTo(PanelMataKuliah);
     }//GEN-LAST:event_ButtonDataMatkulActionPerformed
 
     private void ButtonDataNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDataNilaiActionPerformed
@@ -1165,12 +1175,7 @@ public class FormUtama extends javax.swing.JFrame {
         If we click Data Nilai Mahasiswa button it will show Data Nilai Mahasiswa Content
         */
         //
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelDataNilai);
-        PanelContent.repaint();
-        PanelContent.revalidate();
+        NavigateTo(PanelDataNilai); 
     }//GEN-LAST:event_ButtonDataNilaiActionPerformed
 
     private void ButtonHomePageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHomePageActionPerformed
@@ -1181,12 +1186,7 @@ public class FormUtama extends javax.swing.JFrame {
         If we click Homepage button it will show Homepage Content
         */
         //
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelHomepage);
-        PanelContent.repaint();
-        PanelContent.revalidate();
+        NavigateTo(PanelHomepage);
     }//GEN-LAST:event_ButtonHomePageActionPerformed
 
     private void ButtonSimulasiAkhirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirActionPerformed
@@ -1196,12 +1196,7 @@ public class FormUtama extends javax.swing.JFrame {
         If we click Simulasi Akhir button it will show Simulasi Akhir Content
         */
         //
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelSimulasiAkhir);
-        PanelContent.repaint();
-        PanelContent.revalidate();
+        NavigateTo(PanelSimulasiAkhir);
     }//GEN-LAST:event_ButtonSimulasiAkhirActionPerformed
 
     private void ButtonSimulasiKasusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusActionPerformed
@@ -1211,16 +1206,12 @@ public class FormUtama extends javax.swing.JFrame {
         If we click Simulasi Kasus it will show Simulasi Kasus Content
         */
         //
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelSimulasiKasus);
-        PanelContent.repaint();
-        PanelContent.revalidate();
+        NavigateTo(PanelSimulasiKasus);
     }//GEN-LAST:event_ButtonSimulasiKasusActionPerformed
 
     private void ButtonMahasiswaCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaCancelActionPerformed
         // TODO add your handling code here:
+        CancelConfirmation(PanelMahasiswa);
     }//GEN-LAST:event_ButtonMahasiswaCancelActionPerformed
 
     private void ButtonNilaiSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiSimpanActionPerformed
@@ -1233,93 +1224,49 @@ public class FormUtama extends javax.swing.JFrame {
 
     private void ButtonMahasiswaTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaTambahActionPerformed
         // TODO add your handling code here:
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelAddMahasiswa);
-        PanelContent.repaint();
-        PanelContent.revalidate();
+        NavigateTo(PanelAddMahasiswa);
         LabelTitleAddMahasiswa.setText("Tambah Mahasiswa");
     }//GEN-LAST:event_ButtonMahasiswaTambahActionPerformed
 
     private void ButtonMatkulTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMatkulTambahActionPerformed
         // TODO add your handling code here:
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelAddMataKuliah);
-        PanelContent.repaint();
-        PanelContent.revalidate();
+        NavigateTo(PanelAddMataKuliah);
         LabelTitleAddMataKuliah.setText("Tambah Mata Kuliah");
     }//GEN-LAST:event_ButtonMatkulTambahActionPerformed
 
     private void ButtonNilaiTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiTambahActionPerformed
         // TODO add your handling code here:
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelAddNilai);
-        PanelContent.repaint();
-        PanelContent.revalidate();
+        NavigateTo(PanelAddNilai);
         LabelTitleAddNilai.setText("Tambah Nilai");
     }//GEN-LAST:event_ButtonNilaiTambahActionPerformed
 
     private void ButtonSimulasiAkhirTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirTambahActionPerformed
         // TODO add your handling code here:
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelAddSimulasiAkhir);
-        PanelContent.repaint();
-        PanelContent.revalidate();
+        NavigateTo(PanelAddSimulasiAkhir);
         LabelTitleAddSimulasiAkhir.setText("Tambah Simulasi Akhir");
     }//GEN-LAST:event_ButtonSimulasiAkhirTambahActionPerformed
 
     private void ButtonMahasiswaEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaEditActionPerformed
         // TODO add your handling code here:
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelAddMahasiswa);
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        
+        NavigateTo(PanelAddMahasiswa);      
         LabelTitleAddMahasiswa.setText("Edit Mahasiswa");
     }//GEN-LAST:event_ButtonMahasiswaEditActionPerformed
 
     private void ButtonMatkulEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMatkulEditActionPerformed
         // TODO add your handling code here:
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelAddMataKuliah);
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        
+        NavigateTo(PanelAddMataKuliah);
         LabelTitleAddMataKuliah.setText("Edit Mata Kuliah");
     }//GEN-LAST:event_ButtonMatkulEditActionPerformed
 
     private void ButtonNilaiEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiEditActionPerformed
         // TODO add your handling code here:
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelAddNilai);
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        
+        NavigateTo(PanelAddNilai);
         LabelTitleAddNilai.setText("Edit Nilai");
     }//GEN-LAST:event_ButtonNilaiEditActionPerformed
 
     private void ButtonSimulasiAkhirEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirEditActionPerformed
         // TODO add your handling code here:
-        PanelContent.removeAll();
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        PanelContent.add(PanelAddSimulasiAkhir);
-        PanelContent.repaint();
-        PanelContent.revalidate();
-        
+        NavigateTo(PanelAddSimulasiAkhir);
         LabelTitleAddSimulasiAkhir.setText("Edit Simulasi Akhir");
     }//GEN-LAST:event_ButtonSimulasiAkhirEditActionPerformed
 
