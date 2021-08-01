@@ -32,6 +32,9 @@ public abstract class FormValidation<T extends Enum>
             if(value.getText().equals(""))
                 stringJoiner.add(PascalCaseFormatHelper.SplitCamelCase(key.toString()));
         });
-        JOptionPane.showMessageDialog(null, "Field " + stringJoiner.toString() + " Harus Diisi Dahulu", "Warning", JOptionPane.OK_OPTION);
+        
+        var result = stringJoiner.toString();
+        if(result == null)
+            JOptionPane.showMessageDialog(null, "Field " + result + " Harus Diisi Dahulu", "Warning", JOptionPane.OK_OPTION);
     }
 }

@@ -1,12 +1,18 @@
 
-import edu.kemahasiswaan.helper.FieldNumberFormatHelper;
+import edu.kemahasiswaan.handler.TableHandler;
+import edu.kemahasiswaan.repository.MahasiswaRepository;
 import edu.kemahasiswaan.validation.*;
 import edu.kemahasiswaan.validation.key.*;
 import java.util.HashMap;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.text.JTextComponent;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.function.Supplier;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,13 +30,17 @@ public class FormUtama extends javax.swing.JFrame
     private MahasiswaFormValidation _mahasiswaFormValidation;
     private MataKuliahFormValidation _mataKuliahFormValidation;
     
+    private TableHandler _mahasiswaTableHandler;
+    
     /**
      * Creates new form FormUtama
      */
     public FormUtama() 
     {
         initComponents();
+        InitTableHandler();
         InitFormValidation();
+        LoadAllTable();
     }
     
     private void InitFormValidation()
@@ -49,6 +59,24 @@ public class FormUtama extends javax.swing.JFrame
             put(MataKuliahFormValidationKey.No, FromMataKuliahNomor);
             put(MataKuliahFormValidationKey.Nama, FromMataKuliahNama);
         }});
+    }
+    
+    private void InitTableHandler()
+    {
+        _mahasiswaTableHandler = new TableHandler(TableMahasiswa);
+    }
+    
+    private void LoadAllTable()
+    {
+        try
+        {
+            MahasiswaRepository a = new MahasiswaRepository();
+            _mahasiswaTableHandler.LoadData(a.GetAll());
+        }
+        catch(SQLException exception)
+        {
+        
+        }
     }
     
     public void NavigateTo(JPanel Destination)
