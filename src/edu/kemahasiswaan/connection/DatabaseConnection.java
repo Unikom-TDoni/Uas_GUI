@@ -1,14 +1,14 @@
 package edu.kemahasiswaan.connection;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.Statement;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.sql.Connection;
 import java.util.Properties;
+import java.sql.SQLException;
+import java.sql.DriverManager;
+import java.io.FileInputStream;
 import javax.swing.JOptionPane;
+import java.io.FileNotFoundException;
 
 /**
  *
@@ -44,13 +44,18 @@ public final class DatabaseConnection
     
     public void CloseConnection() throws SQLException
     {
-        connection.close();
         statement.close();
+        connection.close();
     }
     
     public Statement GetStatement()
     {
         return statement;
+    }
+    
+    public Connection GetConnection()
+    {
+        return connection;
     }
     
     private String GetPanelSetting (String panelName) throws FileNotFoundException, IOException

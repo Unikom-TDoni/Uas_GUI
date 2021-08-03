@@ -5,50 +5,57 @@
  */
 package edu.kemahasiswaan.repository;
 
+import java.util.Map;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import edu.kemahasiswaan.database.table.MataKuliah;
 import edu.kemahasiswaan.connection.DatabaseConnection;
-import edu.kemahasiswaan.model.MataKuliahModel;
+
 
 /**
  *
  * @author Theod
  */
-public final class MataKuliahRepository extends KemahasiswaanRepository<MataKuliahModel>
-{
-    @Override
-    public void Create(MataKuliahModel model) throws SQLException
+public final class MataKuliahRepository extends Repository<MataKuliah>
+{   
+    public MataKuliahRepository()
     {
-        var query = String.format("insert into mata_kuliah values = (%s, %s)", 
-                model.GetNo(), model.GetNama());
-        DatabaseConnection.GetInstance().GetStatement().executeQuery(query);
+        super(MataKuliah.class);
     }
     
     @Override
-    public ResultSet GetAll() throws SQLException
+    public void Create(Map<MataKuliah, Object> validData) throws SQLException
     {
-        var query = "select * from mata_kuliah";
-        return DatabaseConnection.GetInstance().GetStatement().executeQuery(query);
+        var query = String.format("insert into %s values (?, ?)", TableName);
+        var statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query);
+        statement.setString(1, validData.get(MataKuliah.No).toString());
+        statement.setString(2, validData.get(MataKuliah.Nama).toString());
+        statement.executeUpdate();
     }
     
     @Override
-    public ResultSet Find(String key) throws SQLException
+    public ResultSet SelectAll() throws SQLException
     {
-        var query = String.format("select * from mata_kuliah where no = %s", key);
-        return DatabaseConnection.GetInstance().GetStatement().executeQuery(query);
+        var query = String.format("select * from %s", TableName);
+        return DatabaseConnection.GetInstance().GetConnection().prepareStatement(query).executeQuery(query);
     }
     
     @Override
-    public void Update(MataKuliahModel model)
+    public void Update(Map<MataKuliah, Object> validData) throws SQLException
     {
-        var query = String.format("update mata_kuliah set nama = %s where no = %s", 
-            model.GetNama(), model.GetNo());
+        var query = String.format("update %s set %s = ? where %s = ?", TableName, MataKuliah.Nama.toString(), MataKuliah.No.toString());
+        var statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query);
+        statement.setString(1, validData.get(MataKuliah.Nama).toString());
+        statement.setString(2, validData.get(MataKuliah.No).toString());
+        statement.executeUpdate();
     }
     
     @Override
-    public void Delete(String key) throws SQLException
+    public void Delete(Map.Entry<MataKuliah, Object> validData) throws SQLException
     {
-        var query = String.format("delete from mata_kuliah where no = %s", key);
-        DatabaseConnection.GetInstance().GetStatement().executeQuery(query);
+        var query = String.format("delete from %s where %s = ?", TableName, validData.getKey().toString());
+        var statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query);
+        statement.setString(1, validData.getValue().toString());
+        statement.executeUpdate();
     }
 }
