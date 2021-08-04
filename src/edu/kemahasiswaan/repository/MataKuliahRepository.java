@@ -8,7 +8,7 @@ package edu.kemahasiswaan.repository;
 import java.util.Map;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import edu.kemahasiswaan.database.table.MataKuliah;
+import edu.kemahasiswaan.table.MataKuliah;
 import edu.kemahasiswaan.connection.DatabaseConnection;
 
 
@@ -17,6 +17,7 @@ import edu.kemahasiswaan.connection.DatabaseConnection;
  * @author Theod
  */
 public final class MataKuliahRepository extends Repository<MataKuliah>
+    implements IResourceRepository<MataKuliah>
 {   
     public MataKuliahRepository()
     {
@@ -31,6 +32,7 @@ public final class MataKuliahRepository extends Repository<MataKuliah>
         statement.setString(1, validData.get(MataKuliah.No).toString());
         statement.setString(2, validData.get(MataKuliah.Nama).toString());
         statement.executeUpdate();
+        statement.close();
     }
     
     @Override
@@ -48,6 +50,7 @@ public final class MataKuliahRepository extends Repository<MataKuliah>
         statement.setString(1, validData.get(MataKuliah.Nama).toString());
         statement.setString(2, validData.get(MataKuliah.No).toString());
         statement.executeUpdate();
+        statement.close();
     }
     
     @Override
@@ -57,5 +60,6 @@ public final class MataKuliahRepository extends Repository<MataKuliah>
         var statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query);
         statement.setString(1, validData.getValue().toString());
         statement.executeUpdate();
+        statement.close();
     }
 }

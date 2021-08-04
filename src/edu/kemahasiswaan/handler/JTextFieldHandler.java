@@ -6,8 +6,10 @@
 package edu.kemahasiswaan.handler;
 
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.LinkedHashMap;
 import javax.swing.text.JTextComponent;
+import edu.kemahasiswaan.helper.StringCaseFormatHelper;
 
 /**
  *
@@ -38,8 +40,26 @@ public final class JTextFieldHandler<T extends Enum>
         });
     }
     
-    public LinkedHashMap<T, JTextComponent> GetTextFields()
+    public LinkedHashMap<T, String> GetTextFieldsValue()
     {
-        return _textFields;
+        var result = new LinkedHashMap<T, String>();
+        _textFields.entrySet().forEach(item ->
+        {
+            result.put(item.getKey(), item.getValue().getText());
+        });
+        return result;
+    }
+    
+    public final String GetNullField()
+    {
+        var stringJoiner = new StringJoiner(", ");
+        
+        _textFields.forEach((key, value) -> 
+        {
+            if(value.getText().equals(""))
+                stringJoiner.add(StringCaseFormatHelper.GetSplitedCamelCase(key.toString(), " "));
+        });
+        
+        return stringJoiner.toString();
     }
 }

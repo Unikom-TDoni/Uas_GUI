@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
  */
 public final class DateFormatHelper 
 {
-    public static final String DefaultDateFormat = "yyyy-mm-dd";
+    public static final String DefaultDateFormat = "MMMM-d-y";
     
     public static String GetFormatedDate(Date date)
     {
@@ -27,7 +27,7 @@ public final class DateFormatHelper
         try
         {
             var formatter = new SimpleDateFormat(DefaultDateFormat);
-            java.util.Date dateStr = formatter.parse(date);
+            var dateStr = formatter.parse(date);
             return new java.sql.Date(dateStr.getTime());
         }
         catch(ParseException exception)

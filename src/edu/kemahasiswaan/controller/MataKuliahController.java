@@ -5,8 +5,10 @@
  */
 package edu.kemahasiswaan.controller;
 
+import java.util.HashMap;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import edu.kemahasiswaan.table.MataKuliah;
 import edu.kemahasiswaan.response.MataKuliahResponse;
 import edu.kemahasiswaan.repository.MataKuliahRepository;
 import edu.kemahasiswaan.validation.MataKuliahValidation;
@@ -15,11 +17,14 @@ import edu.kemahasiswaan.validation.MataKuliahValidation;
  *
  * @author Theod
  */
-public final class MataKuliahController extends Controller<MataKuliahValidation, MataKuliahRepository, MataKuliahResponse>
+public final class MataKuliahController extends Controller<MataKuliahRepository>
+        implements IResourceController<MataKuliahResponse>
 {
+    private final MataKuliahValidation _validation;
+    
     public MataKuliahController(MataKuliahValidation validation) 
     {
-        super(validation);
+        _validation = validation;
         Repository = new MataKuliahRepository();
     }
 
@@ -28,10 +33,10 @@ public final class MataKuliahController extends Controller<MataKuliahValidation,
     {
         try
         {
-            var validationResult = Validation.ValidateCreateUpdateData();
+            var validationResult = _validation.ValidateForm();
             if(validationResult.isEmpty()) return null;
             Repository.Create(validationResult);
-            return new MataKuliahResponse(validationResult);
+            return new MataKuliahResponse().GenerateResultFromValidation(validationResult);
         }
         catch(SQLException exception)
         {
@@ -48,7 +53,7 @@ public final class MataKuliahController extends Controller<MataKuliahValidation,
     {
         try
         {
-            return new MataKuliahResponse(Repository.SelectAll());
+            return new MataKuliahResponse().GenerateResultFromQuery(Repository.SelectAll());
         }
         catch(SQLException exception)
         {
@@ -65,10 +70,10 @@ public final class MataKuliahController extends Controller<MataKuliahValidation,
     {
         try
         {
-            var validationResult = Validation.ValidateCreateUpdateData();
+            var validationResult = _validation.ValidateForm();
             if(validationResult.isEmpty()) return null;
             Repository.Update(validationResult);
-            return new MataKuliahResponse(validationResult);
+            return new MataKuliahResponse().GenerateResultFromValidation(validationResult);
         }
         catch(SQLException exception)
         {
@@ -85,10 +90,14 @@ public final class MataKuliahController extends Controller<MataKuliahValidation,
     {
         try
         {
-            var validationResult = Validation.ValidateDeleteData();
+            var validationResult = _validation.ValidateTable();
             if(validationResult == null) return null;
             Repository.Delete(validationResult);
-            return new MataKuliahResponse(validationResult.getValue());
+            var validationResponseResult = new HashMap<MataKuliah, Object>()
+            {{
+                put(validationResult.getKey(), validationResult.getValue());
+            }};
+            return new MataKuliahResponse().GenerateResultFromValidation(validationResponseResult);
         }
         catch(SQLException exception)
         {

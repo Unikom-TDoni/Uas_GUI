@@ -5,8 +5,10 @@
  */
 package edu.kemahasiswaan.controller;
 
+import java.util.HashMap;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import edu.kemahasiswaan.table.Mahasiswa;
 import edu.kemahasiswaan.response.MahasiswaResponse;
 import edu.kemahasiswaan.repository.MahasiswaRepository;
 import edu.kemahasiswaan.validation.MahasiswaValidation;
@@ -15,11 +17,14 @@ import edu.kemahasiswaan.validation.MahasiswaValidation;
  *
  * @author Theod
  */
-public final class MahasiswaController extends Controller<MahasiswaValidation, MahasiswaRepository, MahasiswaResponse>
+public final class MahasiswaController extends Controller<MahasiswaRepository>
+        implements IResourceController<MahasiswaResponse>
 {
+    private final MahasiswaValidation _validation;
+    
     public MahasiswaController(MahasiswaValidation validation)
     {
-        super(validation);
+        _validation = validation;
         Repository = new MahasiswaRepository();
     }
     
@@ -28,10 +33,10 @@ public final class MahasiswaController extends Controller<MahasiswaValidation, M
     {
         try
         {
-            var validationResult = Validation.ValidateCreateUpdateData();
+            var validationResult = _validation.ValidateForm();
             if(validationResult.isEmpty()) return null;
             Repository.Create(validationResult);
-            return new MahasiswaResponse(validationResult);
+            return new MahasiswaResponse().GenerateResultFromValidation(validationResult);
         }
         catch(SQLException exception)
         {
@@ -48,7 +53,7 @@ public final class MahasiswaController extends Controller<MahasiswaValidation, M
     {
         try
         {
-            return new MahasiswaResponse(Repository.SelectAll());
+            return new MahasiswaResponse().GenerateResultFromQuery(Repository.SelectAll());
         }
         catch(SQLException exception)
         {
@@ -65,10 +70,10 @@ public final class MahasiswaController extends Controller<MahasiswaValidation, M
     {
         try
         {
-            var validationResult = Validation.ValidateCreateUpdateData();
+            var validationResult = _validation.ValidateForm();
             if(validationResult.isEmpty()) return null;
             Repository.Update(validationResult);
-            return new MahasiswaResponse(validationResult);
+            return new MahasiswaResponse().GenerateResultFromValidation(validationResult);
         }
         catch(SQLException exception)
         {
@@ -85,10 +90,14 @@ public final class MahasiswaController extends Controller<MahasiswaValidation, M
     {
         try
         {
-            var validationResult = Validation.ValidateDeleteData();
+            var validationResult = _validation.ValidateTable();
             if(validationResult == null) return null;
             Repository.Delete(validationResult);
-            return new MahasiswaResponse(validationResult.getValue());
+            var responseResult = new HashMap<Mahasiswa, Object>()
+            {{
+                put(validationResult.getKey(), validationResult.getValue());
+            }};
+            return new MahasiswaResponse().GenerateResultFromValidation(responseResult);
         }
         catch(SQLException exception)
         {

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.kemahasiswaan.database.table;
+package edu.kemahasiswaan.table;
 
-import edu.kemahasiswaan.helper.StringFormatHelper;
+import edu.kemahasiswaan.helper.StringCaseFormatHelper;
 
 /**
  *
@@ -19,6 +19,6 @@ public enum MataKuliah
     @Override
     public String toString() 
     {
-        return StringFormatHelper.GetSplitedCamelCase(super.toString().toLowerCase(), "_");
+        return StringCaseFormatHelper.GetSplitedCamelCase(super.toString().toLowerCase(), "_");
     }
 }

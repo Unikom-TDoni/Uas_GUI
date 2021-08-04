@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.kemahasiswaan.database.table;
+package edu.kemahasiswaan.table;
 
-import edu.kemahasiswaan.helper.StringFormatHelper;
+import edu.kemahasiswaan.helper.StringCaseFormatHelper;
 
 public enum Mahasiswa
 {
@@ -18,6 +18,6 @@ public enum Mahasiswa
     @Override
     public String toString() 
     {
-        return StringFormatHelper.GetSplitedCamelCase(super.toString(), "_").toLowerCase();
+        return StringCaseFormatHelper.GetSplitedCamelCase(super.toString(), "_").toLowerCase();
     }
 }

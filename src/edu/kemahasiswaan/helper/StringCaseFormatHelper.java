@@ -9,7 +9,7 @@ package edu.kemahasiswaan.helper;
  *
  * @author Theod
  */
-public final class StringFormatHelper 
+public final class StringCaseFormatHelper 
 {
     public static String GetSplitedCamelCase(String value, String separator) 
     {
@@ -34,7 +34,6 @@ public final class StringFormatHelper
             String remainingLetters = word.substring(1);
             result += firstLetter.toUpperCase() + remainingLetters + outputSeparator;
         }
-        
         return result;
     }
 }

@@ -8,7 +8,7 @@ package edu.kemahasiswaan.repository;
 import java.util.Map;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import edu.kemahasiswaan.helper.StringFormatHelper;
+import edu.kemahasiswaan.helper.StringCaseFormatHelper;
 
 /**
  *
@@ -21,14 +21,6 @@ public abstract class Repository<T extends Enum<T>>
     
     protected Repository(Class<T> enumClass)
     {
-        TableName = StringFormatHelper.GetSplitedCamelCase(enumClass.getSimpleName(), "_").toLowerCase();
+        TableName = StringCaseFormatHelper.GetSplitedCamelCase(enumClass.getSimpleName(), "_").toLowerCase();
     }
-    
-    public abstract void Create(Map<T, Object> validData) throws SQLException;
-    
-    public abstract ResultSet SelectAll() throws SQLException;
-    
-    public abstract void Update(Map<T, Object> validData) throws SQLException;
-    
-    public abstract void Delete(Map.Entry<T, Object> validData) throws SQLException;
 }

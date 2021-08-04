@@ -6,8 +6,7 @@
 package edu.kemahasiswaan.response;
 
 import java.util.Map;
-import java.util.HashSet;
-import java.sql.ResultSet;
+import java.util.LinkedList;
 
 /**
  *
@@ -16,34 +15,10 @@ import java.sql.ResultSet;
  */
 public abstract class Response<T extends Enum> 
 {
-    protected Object DeleteOperationResult;
-    protected ResultSet SelectOperationResult;
-    protected Map<T, Object> CreateUpdateOperationResult;
+    protected LinkedList<Map<T, Object>> Result = new LinkedList<>();
     
-    public Response(ResultSet resultSet)
+    public LinkedList<Map<T, Object>> GetResult()
     {
-        SelectOperationResult = resultSet;
-    } 
-    
-    public Response(Map<T, Object> createUpdateResult)
-    {
-        CreateUpdateOperationResult = createUpdateResult;
-    }
-    
-    public Response(Object deleteResult)
-    {
-        DeleteOperationResult = deleteResult;
-    } 
-    
-    public Map<T, Object> GetCreateUpdateOperationResult()
-    {
-        return CreateUpdateOperationResult;
-    }
-    
-    public Object GetDeleteOperationResult()
-    {
-        return DeleteOperationResult;
-    }
-    
-    public abstract HashSet<Map<T, Object>> GetSelectOperationResult();
+        return Result;
+    }  
 }

@@ -1,12 +1,14 @@
+import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
 import java.util.LinkedHashMap;
+import edu.kemahasiswaan.table.*;
 import edu.kemahasiswaan.handler.*;
-import edu.kemahasiswaan.validation.*;
 import edu.kemahasiswaan.controller.*;
+import edu.kemahasiswaan.validation.*;
 import javax.swing.text.JTextComponent;
-import edu.kemahasiswaan.database.table.*;
 import edu.kemahasiswaan.helper.DateFormatHelper;
+import edu.kemahasiswaan.response.Response;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -87,20 +89,20 @@ public class FormUtama extends javax.swing.JFrame
     // </editor-fold>
     
     // <editor-fold desc="Button Callback">
-    private void CreateFormButtonCallback(Controller controller, JTableHandler tableHandler, JTextFieldHandler textFieldHandler)
+    private void CreateFormButtonCallback(Response response, JTableHandler tableHandler, JTextFieldHandler textFieldHandler, JPanel panel)
     {
-        var response = controller.Create();
         if(response == null) return;
-        tableHandler.Add(response.GetCreateUpdateOperationResult());
+        tableHandler.Add((Map) response.GetResult().getFirst());
         textFieldHandler.ResetAllText();
+        NavigateTo(panel);
     }
     
-    private void UpdateFormButtonCallback(Controller controller, JTableHandler tableHandler, JTextFieldHandler textFieldHandler)
+    private void UpdateFormButtonCallback(Response response, JTableHandler tableHandler, JTextFieldHandler textFieldHandler, JPanel panel)
     {
-        var response = controller.Update();
         if(response == null) return;
-        tableHandler.Update(response.GetCreateUpdateOperationResult());
+        tableHandler.Update((Map) response.GetResult().getFirst());
         textFieldHandler.ResetAllText();
+        NavigateTo(panel);
     }
     
     private void UpdateButtonCallback(JTableHandler tableHandler, JTextFieldHandler textFieldHandler)
@@ -110,21 +112,19 @@ public class FormUtama extends javax.swing.JFrame
         textFieldHandler.SetAllText(rowData);
     }
     
-    private void DeleteButtonCallback(Controller controller, JTableHandler tableHandler)
+    private void DeleteButtonCallback(Response response, JTableHandler tableHandler)
     {
-        var response = controller.Delete();
         if(response == null) return;
-        var result = response.GetDeleteOperationResult();
-        tableHandler.Delete(result);
+        tableHandler.Delete((Map)response.GetResult().getFirst());
     }
     // </editor-fold>
     
     private void LoadTable()
     {
-        var tableMahasiswaData = _mahasiswaController.SelectAll().GetSelectOperationResult();
+        var tableMahasiswaData = _mahasiswaController.SelectAll().GetResult();
         _mahasiswaTableHandler.Load(tableMahasiswaData);
         
-        var tableMataKuliahData = _mataKuliahController.SelectAll().GetSelectOperationResult();
+        var tableMataKuliahData = _mataKuliahController.SelectAll().GetResult();
         _mataKuliahTableHandler.Load(tableMataKuliahData);
     }
     
@@ -138,11 +138,13 @@ public class FormUtama extends javax.swing.JFrame
         PanelContent.revalidate();
     }
     
-    private void CancelConfirmation(JPanel Destination)
+    private void CancelConfirmation(JTextFieldHandler textFieldHandler, JPanel Destination)
     {
         int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin untuk membatalkan?", "Warning", JOptionPane.YES_NO_OPTION);
-        if(CancelDialog == JOptionPane.YES_OPTION)
+        if(CancelDialog == JOptionPane.YES_OPTION){
+            textFieldHandler.ResetAllText();
             NavigateTo(Destination);
+        }
     }
     
     private void LogOutConfirmation(JPanel Destination)
@@ -184,7 +186,7 @@ public class FormUtama extends javax.swing.JFrame
         jLabel8 = new javax.swing.JLabel();
         PanelMahasiswa = new javax.swing.JPanel();
         LabelTitleMahasiswa = new javax.swing.JLabel();
-        SearchMahasiswa = new javax.swing.JTextField();
+        FormSearchMahasiswa = new javax.swing.JTextField();
         ButtonSearchMahasiswa = new javax.swing.JButton();
         ButtonMahasiswaHapus = new javax.swing.JButton();
         ButtonMahasiswaEdit = new javax.swing.JButton();
@@ -464,6 +466,11 @@ public class FormUtama extends javax.swing.JFrame
         LabelTitleMahasiswa.setText("Data Mahasiswa");
 
         ButtonSearchMahasiswa.setText("Cari");
+        ButtonSearchMahasiswa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSearchMahasiswaActionPerformed(evt);
+            }
+        });
 
         ButtonMahasiswaHapus.setText("Hapus");
         ButtonMahasiswaHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -513,7 +520,7 @@ public class FormUtama extends javax.swing.JFrame
                 .addGroup(PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(PanelMahasiswaLayout.createSequentialGroup()
-                            .addComponent(SearchMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FormSearchMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(ButtonSearchMahasiswa)
                             .addGap(137, 137, 137)
@@ -533,7 +540,7 @@ public class FormUtama extends javax.swing.JFrame
                 .addComponent(LabelTitleMahasiswa)
                 .addGap(26, 26, 26)
                 .addGroup(PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FormSearchMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButtonSearchMahasiswa)
                     .addComponent(ButtonMahasiswaHapus)
                     .addComponent(ButtonMahasiswaEdit)
@@ -660,7 +667,7 @@ public class FormUtama extends javax.swing.JFrame
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, true, true, true, true, true, true, true, true, true
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -839,6 +846,7 @@ public class FormUtama extends javax.swing.JFrame
             }
         });
 
+        FormChooserTanggalLahir.setDateFormatString("MMMM d, y");
         FormChooserTanggalLahir.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 FormChooserTanggalLahirPropertyChange(evt);
@@ -1337,7 +1345,7 @@ public class FormUtama extends javax.swing.JFrame
     }//GEN-LAST:event_ButtonSimulasiKasusActionPerformed
 
     private void ButtonMahasiswaCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaCancelActionPerformed
-        CancelConfirmation(PanelMahasiswa);
+        CancelConfirmation(_mahasiswaTextFieldHandler, PanelMahasiswa);
         ButtonDataMahasiswa.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMahasiswaCancelActionPerformed
 
@@ -1399,17 +1407,17 @@ public class FormUtama extends javax.swing.JFrame
     }//GEN-LAST:event_ButtonSimulasiAkhirEditActionPerformed
 
     private void ButtonMataKuliahCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMataKuliahCancelActionPerformed
-        CancelConfirmation(PanelMahasiswa);
+        CancelConfirmation(_mataKuliahTextFieldHandler, PanelMahasiswa);
         ButtonDataMatkul.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMataKuliahCancelActionPerformed
 
     private void ButtonNilaiCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiCancelActionPerformed
-        CancelConfirmation(PanelDataNilai);
+        CancelConfirmation(null, PanelDataNilai);
         ButtonDataNilai.requestFocusInWindow();
     }//GEN-LAST:event_ButtonNilaiCancelActionPerformed
 
     private void ButtonSimulasiAkhirCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirCancelActionPerformed
-        CancelConfirmation(PanelSimulasiAkhir);
+        CancelConfirmation(null, PanelSimulasiAkhir);
         ButtonSimulasiAkhir.requestFocusInWindow();
     }//GEN-LAST:event_ButtonSimulasiAkhirCancelActionPerformed
 
@@ -1418,9 +1426,8 @@ public class FormUtama extends javax.swing.JFrame
     }//GEN-LAST:event_ButtonDataMahasiswa1ActionPerformed
 
     private void ButtonMahasiswaSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaSimpanActionPerformed
-        //UpdateFormButtonCallback(_mahasiswaController, _mahasiswaTableHandler, _mahasiswaTextFieldHandler);
-        CreateFormButtonCallback(_mahasiswaController, _mahasiswaTableHandler, _mahasiswaTextFieldHandler);
-        NavigateTo(PanelMahasiswa);
+        //UpdateFormButtonCallback(_mahasiswaController.Update(), _mahasiswaTableHandler, _mahasiswaTextFieldHandler, PanelMahasiswa);
+        CreateFormButtonCallback(_mahasiswaController.Create(), _mahasiswaTableHandler, _mahasiswaTextFieldHandler, PanelMahasiswa);
     }//GEN-LAST:event_ButtonMahasiswaSimpanActionPerformed
     
     private void FormChooserTanggalLahirPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FormChooserTanggalLahirPropertyChange
@@ -1432,18 +1439,22 @@ public class FormUtama extends javax.swing.JFrame
     }//GEN-LAST:event_FormChooserTanggalLahirPropertyChange
 
     private void ButtonMahasiswaHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaHapusActionPerformed
-        DeleteButtonCallback(_mahasiswaController, _mahasiswaTableHandler);
+        DeleteButtonCallback(_mahasiswaController.Delete(), _mahasiswaTableHandler);
     }//GEN-LAST:event_ButtonMahasiswaHapusActionPerformed
 
     private void ButtonMatkulHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMatkulHapusActionPerformed
-        DeleteButtonCallback(_mataKuliahController, _mataKuliahTableHandler);
+        DeleteButtonCallback(_mataKuliahController.Delete(), _mataKuliahTableHandler);
     }//GEN-LAST:event_ButtonMatkulHapusActionPerformed
 
     private void ButtonMataKuliahSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMataKuliahSimpanActionPerformed
-        //UpdateFormButtonCallback(_mataKuliahController, _mataKuliahTableHandler, _mataKuliahTextFieldHandler);
-        CreateFormButtonCallback(_mataKuliahController, _mataKuliahTableHandler, _mataKuliahTextFieldHandler);
-        NavigateTo(PanelMataKuliah);
+        //UpdateFormButtonCallback(_mataKuliahController.Update(), _mataKuliahTableHandler, _mataKuliahTextFieldHandler, PanelMataKuliah);
+        CreateFormButtonCallback(_mataKuliahController.Create(), _mataKuliahTableHandler, _mataKuliahTextFieldHandler, PanelMataKuliah);
     }//GEN-LAST:event_ButtonMataKuliahSimpanActionPerformed
+
+    private void ButtonSearchMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSearchMahasiswaActionPerformed
+        // TODO add your handling code here:
+        _mahasiswaTableHandler.FilterTable(FormSearchMahasiswa.getText());
+    }//GEN-LAST:event_ButtonSearchMahasiswaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1523,6 +1534,7 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JTextField FormNilaiTugas3;
     private javax.swing.JTextField FormNilaiUAS;
     private javax.swing.JTextField FormNilaiUTS;
+    private javax.swing.JTextField FormSearchMahasiswa;
     private javax.swing.JTextField FormSimulasiAkhirKehadiran;
     private javax.swing.JTextField FormSimulasiAkhirKodeMataKuliah;
     private javax.swing.JTextField FormSimulasiAkhirNamaMataKuliah;
@@ -1594,7 +1606,6 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JPanel PanelMenu;
     private javax.swing.JPanel PanelSimulasiAkhir;
     private javax.swing.JPanel PanelSimulasiKasus;
-    private javax.swing.JTextField SearchMahasiswa;
     private javax.swing.JTextField SearchMatkul;
     private javax.swing.JTextField SearchNilai;
     private javax.swing.JTable TableMahasiswa;

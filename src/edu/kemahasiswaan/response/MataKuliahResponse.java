@@ -7,11 +7,10 @@ package edu.kemahasiswaan.response;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import edu.kemahasiswaan.database.table.MataKuliah;
+import edu.kemahasiswaan.table.MataKuliah;
 
 /**
  *
@@ -19,35 +18,18 @@ import edu.kemahasiswaan.database.table.MataKuliah;
  */
 public class MataKuliahResponse extends Response<MataKuliah>
 {
-    public MataKuliahResponse(ResultSet selectOperationResult)
+    public MataKuliahResponse GenerateResultFromQuery(ResultSet queryResult)
     {
-        super(selectOperationResult);
-    } 
-    
-    public MataKuliahResponse(Map<MataKuliah, Object> createUpdateOperationResult)
-    {
-        super(createUpdateOperationResult);
-    }
-    
-    public MataKuliahResponse(Object deleteOperationResult)
-    {
-        super(deleteOperationResult);
-    } 
-    
-    @Override
-    public HashSet<Map<MataKuliah, Object>> GetSelectOperationResult()
-    {
-        var result = new HashSet<Map<MataKuliah, Object>>();
         try
         {
-            while (SelectOperationResult.next())
+            while (queryResult.next())
             {
                 var rowData = new HashMap<MataKuliah, Object>()
                 {{
-                    put(MataKuliah.No, SelectOperationResult.getString(MataKuliah.No.toString()));
-                    put(MataKuliah.Nama, SelectOperationResult.getString(MataKuliah.Nama.toString()));
+                    put(MataKuliah.No, queryResult.getString(MataKuliah.No.toString()));
+                    put(MataKuliah.Nama, queryResult.getString(MataKuliah.Nama.toString()));
                 }};
-                result.add(rowData);
+                Result.add(rowData);
             }
         }
         catch(SQLException exception)
@@ -59,8 +41,14 @@ public class MataKuliahResponse extends Response<MataKuliah>
         }
         finally
         {
-            try { SelectOperationResult.close(); } catch (SQLException exception) { }
+            try { queryResult.close(); } catch (SQLException exception) { }
         }
-        return result;
+        return this;
+    }
+    
+    public MataKuliahResponse GenerateResultFromValidation(Map<MataKuliah, Object> validationResult)
+    {
+        Result.add(validationResult);
+        return this;
     }
 }

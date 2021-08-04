@@ -1,3 +1,10 @@
+
+import edu.kemahasiswaan.handler.JTextFieldHandler;
+import edu.kemahasiswaan.table.Pengguna;
+import edu.kemahasiswaan.validation.PenggunaLoginValidation;
+import java.util.LinkedHashMap;
+import javax.swing.text.JTextComponent;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,12 +16,19 @@
  * @author Aris Prabowo
  */
 public class LoginFrame extends javax.swing.JFrame {
-
+    
+    public JTextFieldHandler<Pengguna> _textHandler;
+    public PenggunaLoginValidation _FormValidation;
     /**
      * Creates new form LoginFrame
      */
     public LoginFrame() {
         initComponents();
+        _textHandler = new JTextFieldHandler<>(new LinkedHashMap<Pengguna, JTextComponent>()
+        {{
+            put(Pengguna.Username, TextFieldUsername);
+            put(Pengguna.Password, PasswordFieldLogin);
+        }});
     }
 
     /**

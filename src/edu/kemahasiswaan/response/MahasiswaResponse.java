@@ -7,11 +7,11 @@ package edu.kemahasiswaan.response;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import edu.kemahasiswaan.database.table.Mahasiswa;
+import edu.kemahasiswaan.table.Mahasiswa;
+import edu.kemahasiswaan.helper.DateFormatHelper;
 
 
 /**
@@ -20,38 +20,21 @@ import edu.kemahasiswaan.database.table.Mahasiswa;
  */
 public final class MahasiswaResponse extends Response<Mahasiswa>
 {
-    public MahasiswaResponse(ResultSet selectOperationResult)
+    public MahasiswaResponse GenerateResultFromQuery(ResultSet queryResult)
     {
-        super(selectOperationResult);
-    } 
-    
-    public MahasiswaResponse(Map<Mahasiswa, Object> createUpdateOperationResult)
-    {
-        super(createUpdateOperationResult);
-    }
-    
-    public MahasiswaResponse(Object deleteOperationResult)
-    {
-        super(deleteOperationResult);
-    } 
-    
-    @Override
-    public HashSet<Map<Mahasiswa, Object>> GetSelectOperationResult()
-    {
-        var result = new HashSet<Map<Mahasiswa, Object>>();
         try
         {
-            while (SelectOperationResult.next())
+            while (queryResult.next())
             {
                 var rowData = new HashMap<Mahasiswa, Object>()
                 {{
-                    put(Mahasiswa.Nim, SelectOperationResult.getString(Mahasiswa.Nim.toString()));
-                    put(Mahasiswa.Nama, SelectOperationResult.getString(Mahasiswa.Nama.toString()));
-                    put(Mahasiswa.Alamat, SelectOperationResult.getString(Mahasiswa.Alamat.toString()));
-                    put(Mahasiswa.TempatLahir, SelectOperationResult.getString(Mahasiswa.TempatLahir.toString()));
-                    put(Mahasiswa.TanggalLahir, SelectOperationResult.getDate(Mahasiswa.TanggalLahir.toString()));
+                    put(Mahasiswa.Nim, queryResult.getString(Mahasiswa.Nim.toString()));
+                    put(Mahasiswa.Nama, queryResult.getString(Mahasiswa.Nama.toString()));
+                    put(Mahasiswa.Alamat, queryResult.getString(Mahasiswa.Alamat.toString()));
+                    put(Mahasiswa.TempatLahir, queryResult.getString(Mahasiswa.TempatLahir.toString()));
+                    put(Mahasiswa.TanggalLahir, DateFormatHelper.GetFormatedDate(queryResult.getDate(Mahasiswa.TanggalLahir.toString())));
                 }};
-                result.add(rowData);
+                Result.add(rowData);
             }
         }
         catch(SQLException exception)
@@ -63,8 +46,14 @@ public final class MahasiswaResponse extends Response<Mahasiswa>
         }
         finally
         {
-            try { SelectOperationResult.close(); } catch (SQLException exception) { }
+            try { queryResult.close(); } catch (SQLException exception) { }
         }
-        return result;
+        return this;
+    }
+    
+    public MahasiswaResponse GenerateResultFromValidation(Map<Mahasiswa, Object> validationResult)
+    {
+        Result.add(validationResult);
+        return this;
     }
 }

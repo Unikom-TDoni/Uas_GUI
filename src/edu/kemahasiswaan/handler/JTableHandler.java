@@ -6,10 +6,11 @@
 package edu.kemahasiswaan.handler;
 
 import java.util.Map;
-import java.util.HashSet;
 import java.util.HashMap;
 import javax.swing.JTable;
-import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,20 +22,23 @@ public final class JTableHandler<T extends Enum>
 {
     private final JTable _table;
     public final T TableColumnKey;
-    private final DefaultTableModel _tableModel;
     private final Enum[] _tableEnumConstant;
+    private final DefaultTableModel _tableModel;
+    private final TableRowSorter _tableRowSorter;
     
     public JTableHandler(JTable table, T tableColumnKey)
     {
         _table = table;
         TableColumnKey = tableColumnKey;
         _tableModel = (DefaultTableModel) table.getModel();
+        _tableRowSorter = new TableRowSorter(_tableModel);
+        _table.setRowSorter(_tableRowSorter);
         _tableEnumConstant = tableColumnKey.getClass().getEnumConstants();
     }
 
-    public void Load(HashSet<Map<T, Object>> dataCollection)
+    public void Load(LinkedList<Map<T, Object>> dataCollection)
     {
-        var row = new LinkedHashSet<>();
+        var row = new LinkedList<>();
         dataCollection.stream().map((data) -> {
             for (var item : _tableEnumConstant)
                 row.add(data.get(item));
@@ -62,12 +66,17 @@ public final class JTableHandler<T extends Enum>
         _tableModel.insertRow(rowIndex, newRow);
     }
     
-    public void Delete(Object dataKey)
+    public void Delete(Map<T, Object> dataCollection)
     {
-        _tableModel.removeRow(SearchRowIndex(dataKey));
+        _tableModel.removeRow(SearchRowIndex(dataCollection.get(TableColumnKey)));
     }
     
-    public Object GetValueAt(int row)
+    public final boolean IsRowValid(int row)
+    {
+        return row < _tableModel.getRowCount() && row >= 0;
+    }
+    
+    public Object GetValueAtColumnKey(int row)
     {
         return _tableModel.getValueAt(row, TableColumnKey.ordinal());
     }
@@ -86,14 +95,14 @@ public final class JTableHandler<T extends Enum>
         return _table.getSelectedRow();
     }
     
-    public int GetRowCount()
+    public void FilterTable(String filter)
     {
-        return _tableModel.getRowCount();
+        _tableRowSorter.setRowFilter(RowFilter.regexFilter("^"+filter+"$", 0));
     }
     
     private Object[] GenerateNewRow(Map<T, Object> keyValueData)
     {
-        var row = new LinkedHashSet<>();
+        var row = new LinkedList<>();
         for (var item : _tableEnumConstant)
             row.add(keyValueData.get(item));
         return row.toArray();
