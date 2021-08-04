@@ -15,11 +15,11 @@ import java.security.NoSuchAlgorithmException;
  */
 public final class HashFormatHelper 
 {
-    public static String HashMd5(String value) 
+    public static String HashSHA512(String value) 
     {
         try
         {
-            var hash = MessageDigest.getInstance("MD5");
+            var hash = MessageDigest.getInstance("SHA-512");
             hash.update(value.getBytes());
             var digest = hash.digest();
             var no = new BigInteger(1, digest);

@@ -1,9 +1,12 @@
 
-import edu.kemahasiswaan.handler.JTextFieldHandler;
-import edu.kemahasiswaan.table.Pengguna;
-import edu.kemahasiswaan.validation.PenggunaLoginValidation;
 import java.util.LinkedHashMap;
 import javax.swing.text.JTextComponent;
+import edu.kemahasiswaan.table.Pengguna;
+import edu.kemahasiswaan.handler.JTextFieldHandler;
+import edu.kemahasiswaan.controller.PenggunaController;
+import edu.kemahasiswaan.validation.PenggunaLoginValidation;
+import edu.kemahasiswaan.validation.PenggunaRegisterValidation;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,7 +21,10 @@ import javax.swing.text.JTextComponent;
 public class LoginFrame extends javax.swing.JFrame {
     
     public JTextFieldHandler<Pengguna> _textHandler;
-    public PenggunaLoginValidation _FormValidation;
+    public PenggunaLoginValidation _formValidation;
+    public PenggunaRegisterValidation _formRegisterValidation;
+    public PenggunaController _loginController;
+    
     /**
      * Creates new form LoginFrame
      */
@@ -29,6 +35,10 @@ public class LoginFrame extends javax.swing.JFrame {
             put(Pengguna.Username, TextFieldUsername);
             put(Pengguna.Password, PasswordFieldLogin);
         }});
+        
+        _formValidation = new PenggunaLoginValidation(_textHandler);
+        _loginController = new PenggunaController(_formValidation, null);
+        
     }
 
     /**
@@ -60,6 +70,11 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel3.setText("Password");
 
         ButtonLogin.setText("Login");
+        ButtonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelLoginLayout = new javax.swing.GroupLayout(PanelLogin);
         PanelLogin.setLayout(PanelLoginLayout);
@@ -113,6 +128,12 @@ public class LoginFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLoginActionPerformed
+        // TODO add your handling code here:
+        var response = _loginController.CheckLogin();
+        System.out.println(response.GetResult());
+    }//GEN-LAST:event_ButtonLoginActionPerformed
 
     /**
      * @param args the command line arguments

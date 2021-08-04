@@ -27,7 +27,7 @@ public final class PenggunaRepository extends Repository<Pengguna>
         var query = String.format("insert into %s values (?, ?)", TableName);
         var statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query);
         statement.setString(1, validData.get(Pengguna.Username).toString());
-        statement.setString(2, HashFormatHelper.HashMd5(validData.get(Pengguna.Password).toString()));
+        statement.setString(2, HashFormatHelper.HashSHA512(validData.get(Pengguna.Password).toString()));
         statement.executeUpdate();
         statement.close();
     }
@@ -38,7 +38,7 @@ public final class PenggunaRepository extends Repository<Pengguna>
                 TableName, Pengguna.Username.toString(), Pengguna.Password.toString());
         var statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query);
         statement.setString(1, validData.get(Pengguna.Username).toString());
-        statement.setString(2, HashFormatHelper.HashMd5(validData.get(Pengguna.Password).toString()));
+        statement.setString(2, HashFormatHelper.HashSHA512(validData.get(Pengguna.Password).toString()));
         
         var result = statement.executeQuery().next();
         statement.close();
