@@ -6,6 +6,7 @@
 package edu.kemahasiswaan.controller;
 
 import edu.kemahasiswaan.repository.Repository;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,4 +16,12 @@ import edu.kemahasiswaan.repository.Repository;
 public abstract class Controller<TRepository extends Repository>
 {
     protected TRepository Repository;
+    
+    protected void ShowSqlErrorMessage(Exception exception)
+    {
+        JOptionPane.showMessageDialog(null, 
+                exception.getMessage(), "Error", 
+                JOptionPane.INFORMATION_MESSAGE
+            );
+    }
 }

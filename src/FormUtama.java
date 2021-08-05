@@ -1,14 +1,19 @@
+import java.util.Date;
 import java.util.Map;
 import javax.swing.JPanel;
+import java.util.LinkedList;
+import java.util.AbstractMap;
 import javax.swing.JOptionPane;
 import java.util.LinkedHashMap;
+import java.awt.event.ItemEvent;
 import edu.kemahasiswaan.table.*;
 import edu.kemahasiswaan.handler.*;
 import edu.kemahasiswaan.controller.*;
 import edu.kemahasiswaan.validation.*;
-import javax.swing.text.JTextComponent;
-import edu.kemahasiswaan.helper.DateFormatHelper;
+import edu.kemahasiswaan.state.FormState;
 import edu.kemahasiswaan.response.Response;
+import edu.kemahasiswaan.helper.DateHelper;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,6 +28,10 @@ import edu.kemahasiswaan.response.Response;
  */
 public class FormUtama extends javax.swing.JFrame 
 {
+    private FormState _mahasiswaFormState;
+    private FormState _mataKuliahFormState;
+    private FormState _nilaiMahasiswaFormState;
+    
     private MahasiswaValidation _mahasiswaValidation;
     private MataKuliahValidation _mataKuliahValidation;
 
@@ -31,10 +40,14 @@ public class FormUtama extends javax.swing.JFrame
 
     private JTableHandler<Mahasiswa> _mahasiswaTableHandler;
     private JTableHandler<MataKuliah> _mataKuliahTableHandler;
+    private JTableHandler<NilaiMahasiswa> _nilaiMahasiswaTableHandler;
     
     private JTextFieldHandler<Mahasiswa> _mahasiswaTextFieldHandler;
-    private JTextFieldHandler<Mahasiswa> _mataKuliahTextFieldHandler;
-
+    private JTextFieldHandler<MataKuliah> _mataKuliahTextFieldHandler;
+    private JTextFieldHandler<NilaiMahasiswa> _nilaiMahasiswaTextFieldHandler;
+    
+    private JComboBoxHandler<NilaiMahasiswa> _nilaiMahasiswaComboBoxHandler;
+    
     public FormUtama() 
     {
         initComponents();
@@ -51,6 +64,15 @@ public class FormUtama extends javax.swing.JFrame
         InitializeTextFieldHandler();
     }
 
+    private void InitializeComboBoxHandler()
+    {
+        _nilaiMahasiswaComboBoxHandler = new JComboBoxHandler(new LinkedHashMap<>()
+        {{
+            put(NilaiMahasiswa.Nim, FormNilaiNama);
+            put(NilaiMahasiswa.Nim, FormNilaiNamaMataKuliah);
+        }});
+    }
+    
     private void InitializeTableHandler()
     {
         _mataKuliahTableHandler = new JTableHandler<>(TableMatkul, MataKuliah.No);
@@ -59,7 +81,7 @@ public class FormUtama extends javax.swing.JFrame
 
     private void InitializeTextFieldHandler()
     {
-        _mahasiswaTextFieldHandler = new JTextFieldHandler(new LinkedHashMap<Mahasiswa, JTextComponent>()
+        _mahasiswaTextFieldHandler = new JTextFieldHandler(new LinkedHashMap<>()
         {{
             put(Mahasiswa.Nim, FromMahasiswaNIM);
             put(Mahasiswa.Nama, FromMahasiswaNama);
@@ -68,10 +90,24 @@ public class FormUtama extends javax.swing.JFrame
             put(Mahasiswa.TanggalLahir, FromMahasiswaTanggalLahir);
         }});
 
-        _mataKuliahTextFieldHandler = new JTextFieldHandler(new LinkedHashMap<MataKuliah, JTextComponent>()
+        _mataKuliahTextFieldHandler = new JTextFieldHandler(new LinkedHashMap<>()
         {{
             put(MataKuliah.No, FromMataKuliahNomor);
             put(MataKuliah.Nama, FromMataKuliahNama);
+        }});
+        
+        _nilaiMahasiswaTextFieldHandler = new JTextFieldHandler(new LinkedHashMap<>()
+        {{
+            
+            put(NilaiMahasiswa.Nim, FormNilaiNim);
+            put(NilaiMahasiswa.NoMk, FormNilaiKodeMataKuliah);
+            put(NilaiMahasiswa.Kehadiran, FormNilaiKehadiran);
+            put(NilaiMahasiswa.TugasPertama, FormNilaiTugas1);
+            put(NilaiMahasiswa.TugasKedua, FormNilaiTugas2);
+            put(NilaiMahasiswa.TugasKetiga, FormNilaiTugas3);
+            put(NilaiMahasiswa.Uts, FormNilaiUTS);
+            put(NilaiMahasiswa.Uas, FormNilaiUAS);
+            put(NilaiMahasiswa.Angkatan, FormNilaiAngkatan);
         }});
     }
 
@@ -105,11 +141,19 @@ public class FormUtama extends javax.swing.JFrame
         NavigateTo(panel);
     }
     
-    private void UpdateButtonCallback(JTableHandler tableHandler, JTextFieldHandler textFieldHandler)
+    private void UpdateButtonCallback(JTableHandler tableHandler, JTextFieldHandler textFieldHandler, JPanel panel)
     {
-        var selectedRow = tableHandler.GetSelectedRowIndex();
-        var rowData = tableHandler.GetRow(selectedRow);
-        textFieldHandler.SetAllText(rowData);
+        int selectedRow = tableHandler.GetSelectedRowIndex();
+        if(selectedRow == -1)
+        {
+            JOptionPane.showMessageDialog(null, 
+                "Silahkan Select Row Terlebih Dahulu", "Error", 
+                JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+        }
+        textFieldHandler.SetAllText(tableHandler.GetRowValue(selectedRow));
+        NavigateTo(panel);
     }
     
     private void DeleteButtonCallback(Response response, JTableHandler tableHandler)
@@ -121,11 +165,21 @@ public class FormUtama extends javax.swing.JFrame
     
     private void LoadTable()
     {
-        var tableMahasiswaData = _mahasiswaController.SelectAll().GetResult();
+        LinkedList<Map<Mahasiswa, Object>> tableMahasiswaData = _mahasiswaController.SelectAll().GetResult();
         _mahasiswaTableHandler.Load(tableMahasiswaData);
         
-        var tableMataKuliahData = _mataKuliahController.SelectAll().GetResult();
+        LinkedList<Map<MataKuliah, Object>> tableMataKuliahData = _mataKuliahController.SelectAll().GetResult();
         _mataKuliahTableHandler.Load(tableMataKuliahData);
+    }
+    
+    public void LoadComboBox()
+    {
+        LinkedList<Object> _dataMahasiswa = _mahasiswaTableHandler.GetColumnValue(Mahasiswa.Nama);
+        LinkedList<Object> _dataMataKuliah = _mataKuliahTableHandler.GetColumnValue(MataKuliah.Nama);
+        
+        _nilaiMahasiswaComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(NilaiMahasiswa.Nim, _dataMahasiswa));
+        _nilaiMahasiswaComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(NilaiMahasiswa.NoMk, _dataMahasiswa));
+
     }
     
     public void NavigateTo(JPanel Destination)
@@ -187,7 +241,6 @@ public class FormUtama extends javax.swing.JFrame
         PanelMahasiswa = new javax.swing.JPanel();
         LabelTitleMahasiswa = new javax.swing.JLabel();
         FormSearchMahasiswa = new javax.swing.JTextField();
-        ButtonSearchMahasiswa = new javax.swing.JButton();
         ButtonMahasiswaHapus = new javax.swing.JButton();
         ButtonMahasiswaEdit = new javax.swing.JButton();
         ButtonMahasiswaTambah = new javax.swing.JButton();
@@ -247,7 +300,7 @@ public class FormUtama extends javax.swing.JFrame
         PanelAddNilai = new javax.swing.JPanel();
         LabelTitleAddNilai = new javax.swing.JLabel();
         LabelNilaiNIM = new javax.swing.JLabel();
-        FormNilaiNama = new javax.swing.JTextField();
+        FormNilaiNim = new javax.swing.JTextField();
         FormNilaiKehadiran = new javax.swing.JTextField();
         FormNilaiTugas1 = new javax.swing.JTextField();
         FormNilaiTugas2 = new javax.swing.JTextField();
@@ -269,7 +322,7 @@ public class FormUtama extends javax.swing.JFrame
         LabelNilaiPertemuan = new javax.swing.JLabel();
         ButtonNilaiCancel = new javax.swing.JButton();
         ButtonNilaiSimpan = new javax.swing.JButton();
-        FormNilaiNim = new javax.swing.JComboBox<>();
+        FormNilaiNama = new javax.swing.JComboBox<>();
         FormNilaiNamaMataKuliah = new javax.swing.JComboBox<>();
         PanelAddSimulasiAkhir = new javax.swing.JPanel();
         LabelTitleAddSimulasiAkhir = new javax.swing.JLabel();
@@ -465,13 +518,6 @@ public class FormUtama extends javax.swing.JFrame
         LabelTitleMahasiswa.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         LabelTitleMahasiswa.setText("Data Mahasiswa");
 
-        ButtonSearchMahasiswa.setText("Cari");
-        ButtonSearchMahasiswa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonSearchMahasiswaActionPerformed(evt);
-            }
-        });
-
         ButtonMahasiswaHapus.setText("Hapus");
         ButtonMahasiswaHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -521,9 +567,7 @@ public class FormUtama extends javax.swing.JFrame
                     .addGroup(PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(PanelMahasiswaLayout.createSequentialGroup()
                             .addComponent(FormSearchMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ButtonSearchMahasiswa)
-                            .addGap(137, 137, 137)
+                            .addGap(194, 194, 194)
                             .addComponent(ButtonMahasiswaHapus)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(ButtonMahasiswaEdit)
@@ -541,7 +585,6 @@ public class FormUtama extends javax.swing.JFrame
                 .addGap(26, 26, 26)
                 .addGroup(PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FormSearchMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonSearchMahasiswa)
                     .addComponent(ButtonMahasiswaHapus)
                     .addComponent(ButtonMahasiswaEdit)
                     .addComponent(ButtonMahasiswaTambah))
@@ -820,11 +863,19 @@ public class FormUtama extends javax.swing.JFrame
 
         LabelMahasiswaNIM.setText("NIM");
 
+        FromMahasiswaNIM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FromMahasiswaNIMKeyTyped(evt);
+            }
+        });
+
         LabelMahasiswaNama.setText("Nama");
 
         LabelMahasiswaTempatLahir.setText("Tempat Lahir");
 
         LabelMahasiswaTanggalLahir.setText("Tanggal Lahir");
+
+        FromMahasiswaTanggalLahir.setEditable(false);
 
         LabelMahasiswaAlamat.setText("Alamat");
 
@@ -929,7 +980,7 @@ public class FormUtama extends javax.swing.JFrame
         PanelAddMataKuliah.setBackground(new java.awt.Color(244, 245, 246));
 
         LabelTitleAddMataKuliah.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        LabelTitleAddMataKuliah.setText("Tambah Mahasiswa");
+        LabelTitleAddMataKuliah.setText("Tambah Mata Kuliah");
 
         LabelFromMataKuliahNomor.setText("Nomor Mata Kuliah");
 
@@ -997,6 +1048,32 @@ public class FormUtama extends javax.swing.JFrame
 
         LabelNilaiNIM.setText("Nim");
 
+        FormNilaiNim.setEditable(false);
+
+        FormNilaiKehadiran.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormNilaiKehadiranKeyTyped(evt);
+            }
+        });
+
+        FormNilaiTugas1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormNilaiTugas1KeyTyped(evt);
+            }
+        });
+
+        FormNilaiTugas2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormNilaiTugas2KeyTyped(evt);
+            }
+        });
+
+        FormNilaiTugas3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormNilaiTugas3KeyTyped(evt);
+            }
+        });
+
         LabelNilaiNama.setText("Nama");
 
         LabelNilaiKehadiran.setText("Kehadiran");
@@ -1009,13 +1086,29 @@ public class FormUtama extends javax.swing.JFrame
 
         LabelNilaiNamaMataKuliah.setText("Nama Mata Kuliah");
 
+        FormNilaiKodeMataKuliah.setEditable(false);
+
         LabelNilaiKodeMataKuliah.setText("Kode Mata Kuliah");
 
         LabelNilaiUTS.setText("UTS");
 
+        FormNilaiUTS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormNilaiUTSKeyTyped(evt);
+            }
+        });
+
         LabelNilaiUAS.setText("UAS");
 
+        FormNilaiUAS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormNilaiUASKeyTyped(evt);
+            }
+        });
+
         LabelNilaiAngkatan.setText("Angkatan");
+
+        FormNilaiAngkatan.setEditable(false);
 
         LabelNilaiPertemuan.setText("Pertemuan");
 
@@ -1027,9 +1120,10 @@ public class FormUtama extends javax.swing.JFrame
         });
 
         ButtonNilaiSimpan.setText("Simpan");
-        ButtonNilaiSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonNilaiSimpanActionPerformed(evt);
+
+        FormNilaiNama.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                FormNilaiNamaItemStateChanged(evt);
             }
         });
 
@@ -1039,63 +1133,61 @@ public class FormUtama extends javax.swing.JFrame
             PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAddNilaiLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(FormNilaiNama)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddNilaiLayout.createSequentialGroup()
-                        .addComponent(FormNilaiKehadiran, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(LabelNilaiPertemuan)
-                        .addGap(6, 6, 6))
-                    .addComponent(FormNilaiTugas1)
-                    .addComponent(FormNilaiTugas2)
-                    .addComponent(FormNilaiTugas3)
-                    .addComponent(FormNilaiNim, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
-                        .addComponent(ButtonNilaiCancel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonNilaiSimpan))
-                    .addComponent(LabelNilaiTugas3)
-                    .addComponent(LabelNilaiTugas2)
-                    .addComponent(LabelNilaiTugas1)
-                    .addComponent(LabelNilaiKehadiran)
-                    .addComponent(LabelNilaiNama)
-                    .addComponent(LabelNilaiNIM)
-                    .addComponent(LabelTitleAddNilai))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(FormNilaiNim)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddNilaiLayout.createSequentialGroup()
+                            .addComponent(FormNilaiKehadiran, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(LabelNilaiPertemuan)
+                            .addGap(6, 6, 6))
+                        .addComponent(FormNilaiTugas1)
+                        .addComponent(FormNilaiTugas2)
+                        .addComponent(FormNilaiTugas3)
+                        .addComponent(FormNilaiNama, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(PanelAddNilaiLayout.createSequentialGroup()
+                            .addComponent(ButtonNilaiCancel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonNilaiSimpan))
+                        .addComponent(LabelNilaiTugas3)
+                        .addComponent(LabelNilaiTugas2)
+                        .addComponent(LabelNilaiTugas1)
+                        .addComponent(LabelNilaiKehadiran)
+                        .addComponent(LabelTitleAddNilai)
+                        .addComponent(LabelNilaiNIM))
+                    .addComponent(LabelNilaiNama))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(LabelNilaiNamaMataKuliah)
                     .addComponent(LabelNilaiKodeMataKuliah)
-                    .addComponent(FormNilaiKodeMataKuliah, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                    .addComponent(FormNilaiKodeMataKuliah)
                     .addComponent(LabelNilaiUTS)
-                    .addComponent(FormNilaiUTS, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                    .addComponent(FormNilaiUTS)
                     .addComponent(LabelNilaiUAS)
-                    .addComponent(FormNilaiUAS, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                    .addComponent(FormNilaiUAS)
                     .addComponent(LabelNilaiAngkatan)
                     .addComponent(FormNilaiAngkatan)
-                    .addComponent(FormNilaiNamaMataKuliah, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(71, 71, 71))
+                    .addComponent(FormNilaiNamaMataKuliah, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77))
         );
         PanelAddNilaiLayout.setVerticalGroup(
             PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAddNilaiLayout.createSequentialGroup()
-                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
-                        .addComponent(LabelTitleAddNilai)
-                        .addGap(36, 36, 36)
-                        .addComponent(LabelNilaiNamaMataKuliah)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(FormNilaiNim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FormNilaiNamaMataKuliah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PanelAddNilaiLayout.createSequentialGroup()
-                        .addComponent(LabelNilaiNIM)
-                        .addGap(25, 25, 25)))
+                .addComponent(LabelTitleAddNilai)
+                .addGap(36, 36, 36)
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelNilaiNamaMataKuliah)
+                    .addComponent(LabelNilaiNama))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FormNilaiNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FormNilaiNamaMataKuliah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelAddNilaiLayout.createSequentialGroup()
-                        .addComponent(LabelNilaiNama)
+                        .addComponent(LabelNilaiNIM)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FormNilaiNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(FormNilaiNim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelAddNilaiLayout.createSequentialGroup()
                         .addComponent(LabelNilaiKodeMataKuliah)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1156,21 +1248,71 @@ public class FormUtama extends javax.swing.JFrame
 
         LabelSimulasiAkhirTugas1.setText("Tugas 1");
 
+        FormSimulasiAkhirTugas1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormSimulasiAkhirTugas1KeyTyped(evt);
+            }
+        });
+
         LabelSimulasiAkhirTugas2.setText("Tugas 2");
+
+        FormSimulasiAkhirTugas2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormSimulasiAkhirTugas2KeyTyped(evt);
+            }
+        });
 
         LabelSimulasiAkhirTugas3.setText("Tugas 3");
 
+        FormSimulasiAkhirTugas3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormSimulasiAkhirTugas3KeyTyped(evt);
+            }
+        });
+
         LabelSimulasiAkhirUTS.setText("UTS");
 
+        FormSimulasiAkhirUTS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormSimulasiAkhirUTSKeyTyped(evt);
+            }
+        });
+
         LabelSimulasiAkhirUAS.setText("UAS");
+
+        FormSimulasiAkhirUAS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormSimulasiAkhirUASKeyTyped(evt);
+            }
+        });
 
         LabelSimulasiAkhirNamaMataKuliah.setText("Nama Mata Kuliah");
 
         LabelSimulasiAkhirKodeMataKuliah.setText("Kode Mata Kuliah");
 
+        FormSimulasiAkhirKodeMataKuliah.setEditable(false);
+
         LabelSimulasiAkhirPresentaseAbsen.setText("Presentase Absen");
 
+        FormSimulasiAkhirPresentaseAbsen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormSimulasiAkhirPresentaseAbsenKeyTyped(evt);
+            }
+        });
+
         LabelSimulasiAkhirPresentaseUTS.setText("Presentase UTS");
+
+        FormSimulasiAkhirPresentaseUTS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormSimulasiAkhirPresentaseUTSKeyTyped(evt);
+            }
+        });
+
+        FormSimulasiAkhirPresentaseUAS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormSimulasiAkhirPresentaseUASKeyTyped(evt);
+            }
+        });
 
         LabelSimulasiAkhirPresentaseUAS.setText("Presentase UAS");
 
@@ -1349,21 +1491,22 @@ public class FormUtama extends javax.swing.JFrame
         ButtonDataMahasiswa.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMahasiswaCancelActionPerformed
 
-    private void ButtonNilaiSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiSimpanActionPerformed
-    }//GEN-LAST:event_ButtonNilaiSimpanActionPerformed
-
     private void ButtonSimulasiAkhirSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirSimpanActionPerformed
         
     }//GEN-LAST:event_ButtonSimulasiAkhirSimpanActionPerformed
 
     private void ButtonMahasiswaTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaTambahActionPerformed
         NavigateTo(PanelAddMahasiswa);
+        _mahasiswaFormState = FormState.Add;
+        FromMahasiswaNIM.setEditable(true);
         LabelTitleAddMahasiswa.setText("Tambah Mahasiswa");
         ButtonDataMahasiswa.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMahasiswaTambahActionPerformed
 
     private void ButtonMatkulTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMatkulTambahActionPerformed
         NavigateTo(PanelAddMataKuliah);
+        _mataKuliahFormState = FormState.Add;
+        FromMataKuliahNomor.setEditable(false);
         LabelTitleAddMataKuliah.setText("Tambah Mata Kuliah");
         ButtonDataMatkul.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMatkulTambahActionPerformed
@@ -1381,15 +1524,17 @@ public class FormUtama extends javax.swing.JFrame
     }//GEN-LAST:event_ButtonSimulasiAkhirTambahActionPerformed
 
     private void ButtonMahasiswaEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaEditActionPerformed
-        UpdateButtonCallback(_mahasiswaTableHandler, _mahasiswaTextFieldHandler);
-        NavigateTo(PanelAddMahasiswa);      
+        UpdateButtonCallback(_mahasiswaTableHandler, _mahasiswaTextFieldHandler, PanelAddMahasiswa);
+        _mahasiswaFormState = FormState.Update;
+        FromMahasiswaNIM.setEditable(false);
         LabelTitleAddMahasiswa.setText("Edit Mahasiswa");
         ButtonDataMahasiswa.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMahasiswaEditActionPerformed
 
     private void ButtonMatkulEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMatkulEditActionPerformed
-        UpdateButtonCallback(_mataKuliahTableHandler, _mataKuliahTextFieldHandler);
-        NavigateTo(PanelAddMataKuliah);
+        UpdateButtonCallback(_mataKuliahTableHandler, _mataKuliahTextFieldHandler, PanelAddMataKuliah);
+        _mataKuliahFormState = FormState.Update;
+        FromMataKuliahNomor.setEditable(false);
         LabelTitleAddMataKuliah.setText("Edit Mata Kuliah");
         ButtonDataMatkul.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMatkulEditActionPerformed
@@ -1426,15 +1571,17 @@ public class FormUtama extends javax.swing.JFrame
     }//GEN-LAST:event_ButtonDataMahasiswa1ActionPerformed
 
     private void ButtonMahasiswaSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaSimpanActionPerformed
-        //UpdateFormButtonCallback(_mahasiswaController.Update(), _mahasiswaTableHandler, _mahasiswaTextFieldHandler, PanelMahasiswa);
-        CreateFormButtonCallback(_mahasiswaController.Create(), _mahasiswaTableHandler, _mahasiswaTextFieldHandler, PanelMahasiswa);
+        if(_mahasiswaFormState == FormState.Update)
+            UpdateFormButtonCallback(_mahasiswaController.Update(), _mahasiswaTableHandler, _mahasiswaTextFieldHandler, PanelMahasiswa);
+        else
+            CreateFormButtonCallback(_mahasiswaController.Create(), _mahasiswaTableHandler, _mahasiswaTextFieldHandler, PanelMahasiswa);
     }//GEN-LAST:event_ButtonMahasiswaSimpanActionPerformed
     
     private void FormChooserTanggalLahirPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FormChooserTanggalLahirPropertyChange
         if(evt.getPropertyName().equals("date"))
         {
-            var date = FormChooserTanggalLahir.getDate();
-            FromMahasiswaTanggalLahir.setText(DateFormatHelper.GetFormatedDate(date));
+            Date date = FormChooserTanggalLahir.getDate();
+            FromMahasiswaTanggalLahir.setText(DateHelper.GetFormatedDate(date));
         }
     }//GEN-LAST:event_FormChooserTanggalLahirPropertyChange
 
@@ -1447,14 +1594,86 @@ public class FormUtama extends javax.swing.JFrame
     }//GEN-LAST:event_ButtonMatkulHapusActionPerformed
 
     private void ButtonMataKuliahSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMataKuliahSimpanActionPerformed
-        //UpdateFormButtonCallback(_mataKuliahController.Update(), _mataKuliahTableHandler, _mataKuliahTextFieldHandler, PanelMataKuliah);
-        CreateFormButtonCallback(_mataKuliahController.Create(), _mataKuliahTableHandler, _mataKuliahTextFieldHandler, PanelMataKuliah);
+        if(_mataKuliahFormState == FormState.Update)
+            UpdateFormButtonCallback(_mataKuliahController.Update(), _mataKuliahTableHandler, _mataKuliahTextFieldHandler, PanelMataKuliah);
+        else
+            CreateFormButtonCallback(_mataKuliahController.Create(), _mataKuliahTableHandler, _mataKuliahTextFieldHandler, PanelMataKuliah);
     }//GEN-LAST:event_ButtonMataKuliahSimpanActionPerformed
 
-    private void ButtonSearchMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSearchMahasiswaActionPerformed
-        // TODO add your handling code here:
-        _mahasiswaTableHandler.FilterTable(FormSearchMahasiswa.getText());
-    }//GEN-LAST:event_ButtonSearchMahasiswaActionPerformed
+    private void FromMahasiswaNIMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FromMahasiswaNIMKeyTyped
+        _mahasiswaTextFieldHandler.PreventFieldHaveNonNumberCharacter(evt, Mahasiswa.Nim, 8);
+    }//GEN-LAST:event_FromMahasiswaNIMKeyTyped
+
+    private void FormNilaiKehadiranKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormNilaiKehadiranKeyTyped
+        _nilaiMahasiswaTextFieldHandler.PreventFieldHaveNonNumberCharacter(evt, NilaiMahasiswa.NilaiKehadiran, 2);
+    }//GEN-LAST:event_FormNilaiKehadiranKeyTyped
+
+    private void FormNilaiTugas1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormNilaiTugas1KeyTyped
+        _nilaiMahasiswaTextFieldHandler.PreventFieldHaveNonNumberCharacter(evt, NilaiMahasiswa.NilaiTugasPertama, 3);
+    }//GEN-LAST:event_FormNilaiTugas1KeyTyped
+
+    private void FormNilaiTugas2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormNilaiTugas2KeyTyped
+        _nilaiMahasiswaTextFieldHandler.PreventFieldHaveNonNumberCharacter(evt, NilaiMahasiswa.NilaiTugasKedua, 3);
+    }//GEN-LAST:event_FormNilaiTugas2KeyTyped
+
+    private void FormNilaiTugas3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormNilaiTugas3KeyTyped
+        _nilaiMahasiswaTextFieldHandler.PreventFieldHaveNonNumberCharacter(evt, NilaiMahasiswa.NilaiTugasKetiga, 3);
+    }//GEN-LAST:event_FormNilaiTugas3KeyTyped
+
+    private void FormNilaiUTSKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormNilaiUTSKeyTyped
+        _nilaiMahasiswaTextFieldHandler.PreventFieldHaveNonNumberCharacter(evt, NilaiMahasiswa.NilaiUts, 3);
+    }//GEN-LAST:event_FormNilaiUTSKeyTyped
+
+    private void FormNilaiUASKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormNilaiUASKeyTyped
+        _nilaiMahasiswaTextFieldHandler.PreventFieldHaveNonNumberCharacter(evt, NilaiMahasiswa.NilaiUas, 3);
+    }//GEN-LAST:event_FormNilaiUASKeyTyped
+
+    private void FormSimulasiAkhirPresentaseAbsenKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormSimulasiAkhirPresentaseAbsenKeyTyped
+        if(!Character.isDigit(evt.getKeyChar()))
+            evt.consume();
+    }//GEN-LAST:event_FormSimulasiAkhirPresentaseAbsenKeyTyped
+
+    private void FormSimulasiAkhirPresentaseUTSKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormSimulasiAkhirPresentaseUTSKeyTyped
+        if(!Character.isDigit(evt.getKeyChar()))
+            evt.consume();
+    }//GEN-LAST:event_FormSimulasiAkhirPresentaseUTSKeyTyped
+
+    private void FormSimulasiAkhirPresentaseUASKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormSimulasiAkhirPresentaseUASKeyTyped
+        if(!Character.isDigit(evt.getKeyChar()))
+            evt.consume();
+    }//GEN-LAST:event_FormSimulasiAkhirPresentaseUASKeyTyped
+
+    private void FormSimulasiAkhirTugas1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormSimulasiAkhirTugas1KeyTyped
+        if(!Character.isDigit(evt.getKeyChar()))
+            evt.consume();
+    }//GEN-LAST:event_FormSimulasiAkhirTugas1KeyTyped
+
+    private void FormSimulasiAkhirTugas2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormSimulasiAkhirTugas2KeyTyped
+        if(!Character.isDigit(evt.getKeyChar()))
+            evt.consume();
+    }//GEN-LAST:event_FormSimulasiAkhirTugas2KeyTyped
+
+    private void FormSimulasiAkhirTugas3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormSimulasiAkhirTugas3KeyTyped
+        if(!Character.isDigit(evt.getKeyChar()))
+            evt.consume();
+    }//GEN-LAST:event_FormSimulasiAkhirTugas3KeyTyped
+
+    private void FormSimulasiAkhirUTSKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormSimulasiAkhirUTSKeyTyped
+        if(!Character.isDigit(evt.getKeyChar()))
+            evt.consume();
+    }//GEN-LAST:event_FormSimulasiAkhirUTSKeyTyped
+
+    private void FormSimulasiAkhirUASKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormSimulasiAkhirUASKeyTyped
+        if(!Character.isDigit(evt.getKeyChar()))
+            evt.consume();
+    }//GEN-LAST:event_FormSimulasiAkhirUASKeyTyped
+
+    private void FormNilaiNamaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FormNilaiNamaItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+          Object item = evt.getItem();
+          System.out.println(item);
+       }
+    }//GEN-LAST:event_FormNilaiNamaItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -1512,7 +1731,6 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JButton ButtonNilaiHapus;
     private javax.swing.JButton ButtonNilaiSimpan;
     private javax.swing.JButton ButtonNilaiTambah;
-    private javax.swing.JButton ButtonSearchMahasiswa;
     private javax.swing.JButton ButtonSearchMatkul;
     private javax.swing.JButton ButtonSearchNilai;
     private javax.swing.JButton ButtonSimulasiAkhir;
@@ -1526,9 +1744,9 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JFormattedTextField FormNilaiAngkatan;
     private javax.swing.JTextField FormNilaiKehadiran;
     private javax.swing.JTextField FormNilaiKodeMataKuliah;
-    private javax.swing.JTextField FormNilaiNama;
+    private javax.swing.JComboBox<String> FormNilaiNama;
     private javax.swing.JComboBox<String> FormNilaiNamaMataKuliah;
-    private javax.swing.JComboBox<String> FormNilaiNim;
+    private javax.swing.JTextField FormNilaiNim;
     private javax.swing.JTextField FormNilaiTugas1;
     private javax.swing.JTextField FormNilaiTugas2;
     private javax.swing.JTextField FormNilaiTugas3;

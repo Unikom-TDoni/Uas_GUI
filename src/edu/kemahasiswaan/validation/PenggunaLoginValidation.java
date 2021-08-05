@@ -28,12 +28,13 @@ public final class PenggunaLoginValidation extends Validation implements
     @Override
     public Map<Pengguna, Object> ValidateForm() 
     {
-        var nullField = _textFieldHandler.GetNullField();
+        String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
             ShowErrorValidationMessage("Text Field " + nullField + " Masih Kosong Silahkan Isi Terlebih Dahulu");   
             return Collections.emptyMap();
         }
-        return _textFieldHandler.GetTextFieldsValue();
+            
+        return _textFieldHandler.GetTextFields();
     }
 }

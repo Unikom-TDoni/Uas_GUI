@@ -30,17 +30,17 @@ public final class JTableHandler<T extends Enum>
     {
         _table = table;
         TableColumnKey = tableColumnKey;
-        _tableModel = (DefaultTableModel) table.getModel();
+        _tableModel = (DefaultTableModel)table.getModel();
         _tableRowSorter = new TableRowSorter(_tableModel);
-        _table.setRowSorter(_tableRowSorter);
         _tableEnumConstant = tableColumnKey.getClass().getEnumConstants();
+        _table.setRowSorter(_tableRowSorter);
     }
 
     public void Load(LinkedList<Map<T, Object>> dataCollection)
     {
-        var row = new LinkedList<>();
+        LinkedList<Object> row = new LinkedList<>();
         dataCollection.stream().map((data) -> {
-            for (var item : _tableEnumConstant)
+            for (Enum item : _tableEnumConstant)
                 row.add(data.get(item));
             return data;
         }).map(_item -> {
@@ -53,15 +53,15 @@ public final class JTableHandler<T extends Enum>
     
     public void Add(Map<T, Object> dataCollection)
     {
-        var newRow = GenerateNewRow(dataCollection);
+        Object[] newRow = GenerateNewRow(dataCollection);
         _tableModel.addRow(newRow);
     }
     
     public void Update(Map<T, Object> dataCollection)
     {
-        var dataKey = dataCollection.get(TableColumnKey);
-        var rowIndex = SearchRowIndex(dataKey);
-        var newRow = GenerateNewRow(dataCollection);
+        Object dataKey = dataCollection.get(TableColumnKey);
+        int rowIndex = SearchRowIndex(dataKey);
+        Object[] newRow = GenerateNewRow(dataCollection);
         _tableModel.removeRow(rowIndex);
         _tableModel.insertRow(rowIndex, newRow);
     }
@@ -81,12 +81,20 @@ public final class JTableHandler<T extends Enum>
         return _tableModel.getValueAt(row, TableColumnKey.ordinal());
     }
     
-    public Map<T, Object> GetRow(int row)
+    public LinkedList<Object> GetColumnValue(T columnKey)
     {
-        var columnIndex = 0;
-        var result = new HashMap<T, Object>();
-        for (var item : _tableEnumConstant) 
-            result.put((T)item, _tableModel.getValueAt(row, columnIndex++));
+        LinkedList<Object> result = new LinkedList<>();
+        for (int i = 0; i < _tableModel.getRowCount(); i++) 
+            result.add(_tableModel.getValueAt(i, columnKey.ordinal()));
+        return result;
+    }
+    
+    public Map<T, Object> GetRowValue(int rowIndex)
+    {
+        int columnIndex = 0;
+        HashMap<T, Object> result = new HashMap<>();
+        for (Enum item : _tableEnumConstant) 
+            result.put((T)item, _tableModel.getValueAt(rowIndex, columnIndex++));
         return result;
     }
     
@@ -102,8 +110,8 @@ public final class JTableHandler<T extends Enum>
     
     private Object[] GenerateNewRow(Map<T, Object> keyValueData)
     {
-        var row = new LinkedList<>();
-        for (var item : _tableEnumConstant)
+        LinkedList<Object> row = new LinkedList<>();
+        for (Enum item : _tableEnumConstant)
             row.add(keyValueData.get(item));
         return row.toArray();
     }

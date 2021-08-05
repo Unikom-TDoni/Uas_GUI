@@ -12,6 +12,7 @@ import edu.kemahasiswaan.table.MataKuliah;
 import edu.kemahasiswaan.response.MataKuliahResponse;
 import edu.kemahasiswaan.repository.MataKuliahRepository;
 import edu.kemahasiswaan.validation.MataKuliahValidation;
+import java.util.Map;
 
 /**
  *
@@ -33,17 +34,14 @@ public final class MataKuliahController extends Controller<MataKuliahRepository>
     {
         try
         {
-            var validationResult = _validation.ValidateForm();
+            Map<MataKuliah, Object> validationResult = _validation.ValidateForm();
             if(validationResult.isEmpty()) return null;
             Repository.Create(validationResult);
             return new MataKuliahResponse().GenerateResultFromValidation(validationResult);
         }
         catch(SQLException exception)
         {
-            JOptionPane.showMessageDialog(null, 
-                exception.getMessage(), "Error", 
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            ShowSqlErrorMessage(exception);
             return null;
         }
     }
@@ -57,10 +55,7 @@ public final class MataKuliahController extends Controller<MataKuliahRepository>
         }
         catch(SQLException exception)
         {
-            JOptionPane.showMessageDialog(null, 
-                exception.getMessage(), "Error", 
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            ShowSqlErrorMessage(exception);
             return null;
         }
     }
@@ -70,17 +65,14 @@ public final class MataKuliahController extends Controller<MataKuliahRepository>
     {
         try
         {
-            var validationResult = _validation.ValidateForm();
+            Map<MataKuliah, Object> validationResult = _validation.ValidateForm();
             if(validationResult.isEmpty()) return null;
             Repository.Update(validationResult);
             return new MataKuliahResponse().GenerateResultFromValidation(validationResult);
         }
         catch(SQLException exception)
         {
-            JOptionPane.showMessageDialog(null, 
-                exception.getMessage(), "Error", 
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            ShowSqlErrorMessage(exception);
             return null;
         }
     }
@@ -90,10 +82,10 @@ public final class MataKuliahController extends Controller<MataKuliahRepository>
     {
         try
         {
-            var validationResult = _validation.ValidateTable();
+            Map.Entry<MataKuliah, Object> validationResult = _validation.ValidateTable();
             if(validationResult == null) return null;
             Repository.Delete(validationResult);
-            var validationResponseResult = new HashMap<MataKuliah, Object>()
+            HashMap<MataKuliah, Object> validationResponseResult = new HashMap<>()
             {{
                 put(validationResult.getKey(), validationResult.getValue());
             }};
@@ -101,10 +93,7 @@ public final class MataKuliahController extends Controller<MataKuliahRepository>
         }
         catch(SQLException exception)
         {
-            JOptionPane.showMessageDialog(null, 
-                exception.getMessage(), "Error", 
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            ShowSqlErrorMessage(exception);
             return null;
         }
     }

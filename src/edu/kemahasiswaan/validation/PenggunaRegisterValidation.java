@@ -28,12 +28,19 @@ public final class PenggunaRegisterValidation extends Validation implements
     @Override
     public Map<Pengguna, Object> ValidateForm() 
     {
-        var nullField = _textFieldHandler.GetNullField();
+        String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
             ShowErrorValidationMessage("Text Field " + nullField + " Masih Kosong Silahkan Isi Terlebih Dahulu");   
             return Collections.emptyMap();
         }
-        return _textFieldHandler.GetTextFieldsValue();
+        
+        if(_textFieldHandler.GetTextField(Pengguna.Password).getText().length() < 8)
+        {
+            ShowErrorValidationMessage("Maaf Password Harus Memiliki minimal 8 character");   
+            return Collections.emptyMap();
+        }
+        
+        return _textFieldHandler.GetTextFields();
     }
 }

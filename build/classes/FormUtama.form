@@ -298,9 +298,7 @@
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="FormSearchMahasiswa" min="-2" pref="227" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ButtonSearchMahasiswa" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
                                   <Component id="ButtonMahasiswaHapus" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="ButtonMahasiswaEdit" min="-2" max="-2" attributes="0"/>
@@ -323,7 +321,6 @@
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="FormSearchMahasiswa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ButtonSearchMahasiswa" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonMahasiswaHapus" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonMahasiswaEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonMahasiswaTambah" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -345,14 +342,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSearchMahasiswa">
-            </Component>
-            <Component class="javax.swing.JButton" name="ButtonSearchMahasiswa">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cari"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSearchMahasiswaActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonMahasiswaHapus">
               <Properties>
@@ -1131,6 +1120,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FromMahasiswaNIM">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FromMahasiswaNIMKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="FromMahasiswaNama">
             </Component>
@@ -1152,6 +1144,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="FromMahasiswaTanggalLahir">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelMahasiswaAlamat">
               <Properties>
@@ -1263,7 +1258,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Tambah Mahasiswa"/>
+                <Property name="text" type="java.lang.String" value="Tambah Mata Kuliah"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelFromMataKuliahNomor">
@@ -1315,73 +1310,70 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="FormNilaiNama" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="FormNilaiKehadiran" pref="206" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="LabelNilaiPertemuan" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="FormNilaiNim" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="FormNilaiKehadiran" pref="206" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="LabelNilaiPertemuan" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="FormNilaiTugas1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="FormNilaiTugas2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="FormNilaiTugas3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="FormNilaiNama" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="ButtonNilaiCancel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ButtonNilaiSimpan" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="LabelNilaiTugas3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelNilaiTugas2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelNilaiTugas1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelNilaiKehadiran" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelTitleAddNilai" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelNilaiNIM" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="FormNilaiTugas1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="FormNilaiTugas2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="FormNilaiTugas3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="FormNilaiNim" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="ButtonNilaiCancel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ButtonNilaiSimpan" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="LabelNilaiTugas3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelNilaiTugas2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelNilaiTugas1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelNilaiKehadiran" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelNilaiNama" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelNilaiNIM" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelTitleAddNilai" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelNilaiNama" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="79" max="32767" attributes="0"/>
+                      <EmptySpace pref="73" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="LabelNilaiNamaMataKuliah" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="LabelNilaiKodeMataKuliah" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="FormNilaiKodeMataKuliah" alignment="0" pref="286" max="32767" attributes="0"/>
+                          <Component id="FormNilaiKodeMataKuliah" alignment="0" max="32767" attributes="0"/>
                           <Component id="LabelNilaiUTS" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="FormNilaiUTS" alignment="0" pref="286" max="32767" attributes="0"/>
+                          <Component id="FormNilaiUTS" alignment="0" max="32767" attributes="0"/>
                           <Component id="LabelNilaiUAS" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="FormNilaiUAS" alignment="0" pref="286" max="32767" attributes="0"/>
+                          <Component id="FormNilaiUAS" alignment="0" max="32767" attributes="0"/>
                           <Component id="LabelNilaiAngkatan" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="FormNilaiAngkatan" alignment="0" max="32767" attributes="0"/>
-                          <Component id="FormNilaiNamaMataKuliah" max="32767" attributes="0"/>
+                          <Component id="FormNilaiNamaMataKuliah" min="-2" pref="286" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="LabelTitleAddNilai" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="LabelNilaiNamaMataKuliah" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="FormNilaiNim" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="FormNilaiNamaMataKuliah" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="LabelNilaiNIM" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          </Group>
+                      <Component id="LabelTitleAddNilai" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LabelNilaiNamaMataKuliah" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelNilaiNama" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="FormNilaiNama" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FormNilaiNamaMataKuliah" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="LabelNilaiNama" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelNilaiNIM" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FormNilaiNama" min="-2" max="-2" attributes="0"/>
+                              <Component id="FormNilaiNim" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="LabelNilaiKodeMataKuliah" min="-2" max="-2" attributes="0"/>
@@ -1459,15 +1451,30 @@
                 <Property name="text" type="java.lang.String" value="Nim"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="FormNilaiNama">
+            <Component class="javax.swing.JTextField" name="FormNilaiNim">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormNilaiKehadiran">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormNilaiKehadiranKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="FormNilaiTugas1">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormNilaiTugas1KeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="FormNilaiTugas2">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormNilaiTugas2KeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="FormNilaiTugas3">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormNilaiTugas3KeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelNilaiNama">
               <Properties>
@@ -1500,6 +1507,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormNilaiKodeMataKuliah">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelNilaiKodeMataKuliah">
               <Properties>
@@ -1512,6 +1522,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormNilaiUTS">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormNilaiUTSKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelNilaiUAS">
               <Properties>
@@ -1519,6 +1532,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormNilaiUAS">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormNilaiUASKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelNilaiAngkatan">
               <Properties>
@@ -1526,6 +1542,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="FormNilaiAngkatan">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelNilaiPertemuan">
               <Properties>
@@ -1544,16 +1563,16 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Simpan"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonNilaiSimpanActionPerformed"/>
-              </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="FormNilaiNim">
+            <Component class="javax.swing.JComboBox" name="FormNilaiNama">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="FormNilaiNamaItemStateChanged"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -1738,6 +1757,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSimulasiAkhirTugas1">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormSimulasiAkhirTugas1KeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelSimulasiAkhirTugas2">
               <Properties>
@@ -1745,6 +1767,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSimulasiAkhirTugas2">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormSimulasiAkhirTugas2KeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelSimulasiAkhirTugas3">
               <Properties>
@@ -1752,6 +1777,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSimulasiAkhirTugas3">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormSimulasiAkhirTugas3KeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelSimulasiAkhirUTS">
               <Properties>
@@ -1759,6 +1787,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSimulasiAkhirUTS">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormSimulasiAkhirUTSKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelSimulasiAkhirUAS">
               <Properties>
@@ -1766,6 +1797,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSimulasiAkhirUAS">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormSimulasiAkhirUASKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelSimulasiAkhirNamaMataKuliah">
               <Properties>
@@ -1780,6 +1814,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSimulasiAkhirKodeMataKuliah">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelSimulasiAkhirPresentaseAbsen">
               <Properties>
@@ -1787,6 +1824,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSimulasiAkhirPresentaseAbsen">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormSimulasiAkhirPresentaseAbsenKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelSimulasiAkhirPresentaseUTS">
               <Properties>
@@ -1794,8 +1834,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSimulasiAkhirPresentaseUTS">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormSimulasiAkhirPresentaseUTSKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSimulasiAkhirPresentaseUAS">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormSimulasiAkhirPresentaseUASKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelSimulasiAkhirPresentaseUAS">
               <Properties>

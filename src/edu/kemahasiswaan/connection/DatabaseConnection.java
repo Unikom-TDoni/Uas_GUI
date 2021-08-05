@@ -60,17 +60,17 @@ public final class DatabaseConnection
     
     private String GetPanelSetting (String panelName) throws FileNotFoundException, IOException
     {
-        var myPanel = new Properties();
+        Properties myPanel = new Properties();
         myPanel.load(new FileInputStream("lib/database.ini"));
         return myPanel.getProperty(panelName);       
     }
     
     private void GenerateStatement() throws SQLException, ClassNotFoundException, IOException
     {
-        var driver = GetPanelSetting("DBDriver");
-        var username = GetPanelSetting("DBUsername");
-        var password = GetPanelSetting("DBPassword");
-        var databaseName = GetPanelSetting("DBDatabase");
+        String driver = GetPanelSetting("DBDriver");
+        String username = GetPanelSetting("DBUsername");
+        String password = GetPanelSetting("DBPassword");
+        String databaseName = GetPanelSetting("DBDatabase");
         
         Class.forName(driver);
         connection = DriverManager.getConnection(databaseName, username, password);

@@ -25,10 +25,9 @@ public final class StringCaseFormatHelper
 
     public static String GetTitleCase(String value, String inputSeparator, String outputSeparator)
     {
-        var words[] = value.split(inputSeparator);
-        var result = "";
- 
-        for(var word : words)
+        String words[] = value.split(inputSeparator);
+        String result = "";
+        for(String word : words)
         {
             String firstLetter = word.substring(0,1);
             String remainingLetters = word.substring(1);

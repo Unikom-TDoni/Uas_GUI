@@ -9,19 +9,53 @@ package edu.kemahasiswaan.utility;
  *
  * @author Theod
  */
-public abstract class KalkulatorNilaiUtility 
+public class KalkulatorNilaiUtility 
 {
-    public abstract float CalculateNilaiAbsen();
+    private final int _jumlahMinimumAbsen = 11;
     
-    public abstract float CalculateNilaiTugas();
+    public float CalculateNilaiAbsen(float jumlahAbsensi, float precentage)
+    {
+        return ((jumlahAbsensi/14) * 100 * precentage)/100;
+    }
     
-    public abstract float CalculateNilaiUts();
+    public float CalculateNilaiTugas(float tugas1, float tugas2, float tugas3, float precentage)
+    {
+        return ((tugas1+tugas2+tugas3)/3) * (precentage/100);
+    }
     
-    public abstract float CalculateNilaiUas();
+    public float CalculateNilaiUts(float uts, float precnetage)
+    {
+        return uts * (precnetage/100);
+    }
     
-    public abstract float CalculateNilaiAkhir();
+    public float CalculateNilaiUas(float uas, float precnetage)
+    {
+        return uas * (precnetage/100);
+    }
     
-    public abstract float GenerateIndex();
+    public float CalculateNilaiAkhir(float nilaiAbsen, float nilaiTugas, float nilaiUts, float nilaiUas)
+    {
+        return nilaiAbsen + nilaiTugas + nilaiUts + nilaiUas;
+    }
     
-    public abstract float GenerateKeterangan();
+    public IndeksNilai GenerateIndex(float nilaiAkhir)
+    {
+        if(nilaiAkhir >= 80 && nilaiAkhir <= 100)
+            return IndeksNilai.A;
+        else if(nilaiAkhir >= 68 && nilaiAkhir <= 79)
+            return IndeksNilai.B;
+        else if(nilaiAkhir >= 56 && nilaiAkhir <= 67)
+            return IndeksNilai.C;
+        else if(nilaiAkhir >= 45 && nilaiAkhir <= 55)
+            return IndeksNilai.D;
+        else
+            return IndeksNilai.E;
+    }
+    
+    public String GenerateKeterangan(IndeksNilai indeks, float jumlahAbsensi)
+    {
+        if(jumlahAbsensi < _jumlahMinimumAbsen)
+            return IndeksNilai.E.Keterangan;
+        return indeks.Keterangan;
+    }
 }

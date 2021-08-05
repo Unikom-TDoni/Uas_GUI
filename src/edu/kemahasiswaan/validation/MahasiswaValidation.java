@@ -32,21 +32,24 @@ public final class MahasiswaValidation extends Validation implements
     @Override
     public Map<Mahasiswa, Object> ValidateForm() 
     {
-        var nullField = _textFieldHandler.GetNullField();
+        String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
             ShowErrorValidationMessage("Text Field " + nullField + " Masih Kosong Silahkan Isi Terlebih Dahulu");
             return Collections.emptyMap();
         }
-        return _textFieldHandler.GetTextFieldsValue();
+        return _textFieldHandler.GetTextFields();
     }
     
     @Override
     public Map.Entry<Mahasiswa, Object> ValidateTable()
     {
-        var rowIndex = _tableHandler.GetSelectedRowIndex();
-        if(!_tableHandler.IsRowValid(rowIndex)) 
+        int rowIndex = _tableHandler.GetSelectedRowIndex();
+        if(!_tableHandler.IsRowValid(rowIndex))
+        {
+            ShowErrorValidationMessage("Silahkan Select Row Terlebih Dahulu");
             return new AbstractMap.SimpleEntry<>(null,null);
+        }
         return new AbstractMap.SimpleEntry<>((Mahasiswa)_tableHandler.TableColumnKey, _tableHandler.GetValueAtColumnKey(rowIndex));
     }
 }

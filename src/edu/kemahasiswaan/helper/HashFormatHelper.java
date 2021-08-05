@@ -19,10 +19,10 @@ public final class HashFormatHelper
     {
         try
         {
-            var hash = MessageDigest.getInstance("SHA-512");
+            MessageDigest hash = MessageDigest.getInstance("SHA-512");
             hash.update(value.getBytes());
-            var digest = hash.digest();
-            var no = new BigInteger(1, digest);
+            byte[] digest = hash.digest();
+            BigInteger no = new BigInteger(1, digest);
             String hashtext = no.toString(16);
             while (hashtext.length() < 32)
                 hashtext = "0" + hashtext;

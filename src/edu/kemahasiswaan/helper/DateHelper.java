@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
  *
  * @author Theod
  */
-public final class DateFormatHelper 
+public final class DateHelper 
 {
     public static final String DefaultDateFormat = "MMMM-d-y";
     
@@ -26,8 +26,8 @@ public final class DateFormatHelper
     {
         try
         {
-            var formatter = new SimpleDateFormat(DefaultDateFormat);
-            var dateStr = formatter.parse(date);
+            SimpleDateFormat formatter = new SimpleDateFormat(DefaultDateFormat);
+            Date dateStr = formatter.parse(date);
             return new java.sql.Date(dateStr.getTime());
         }
         catch(ParseException exception)

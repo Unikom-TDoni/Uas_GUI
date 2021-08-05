@@ -5,9 +5,9 @@
  */
 package edu.kemahasiswaan.controller;
 
+import java.util.Map;
 import java.util.HashMap;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import edu.kemahasiswaan.table.Mahasiswa;
 import edu.kemahasiswaan.response.MahasiswaResponse;
 import edu.kemahasiswaan.repository.MahasiswaRepository;
@@ -33,17 +33,14 @@ public final class MahasiswaController extends Controller<MahasiswaRepository>
     {
         try
         {
-            var validationResult = _validation.ValidateForm();
+            Map<Mahasiswa, Object> validationResult = _validation.ValidateForm();
             if(validationResult.isEmpty()) return null;
             Repository.Create(validationResult);
             return new MahasiswaResponse().GenerateResultFromValidation(validationResult);
         }
         catch(SQLException exception)
         {
-            JOptionPane.showMessageDialog(null, 
-                exception.getMessage(), "Error", 
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            ShowSqlErrorMessage(exception);
             return null;
         }
     }
@@ -57,10 +54,7 @@ public final class MahasiswaController extends Controller<MahasiswaRepository>
         }
         catch(SQLException exception)
         {
-            JOptionPane.showMessageDialog(null, 
-                exception.getMessage(), "Error", 
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            ShowSqlErrorMessage(exception);
             return null;
         }
     }
@@ -70,17 +64,14 @@ public final class MahasiswaController extends Controller<MahasiswaRepository>
     {
         try
         {
-            var validationResult = _validation.ValidateForm();
+            Map<Mahasiswa, Object> validationResult = _validation.ValidateForm();
             if(validationResult.isEmpty()) return null;
             Repository.Update(validationResult);
             return new MahasiswaResponse().GenerateResultFromValidation(validationResult);
         }
         catch(SQLException exception)
         {
-            JOptionPane.showMessageDialog(null, 
-                exception.getMessage(), "Error", 
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            ShowSqlErrorMessage(exception);
             return null;
         }
     }
@@ -90,10 +81,10 @@ public final class MahasiswaController extends Controller<MahasiswaRepository>
     {
         try
         {
-            var validationResult = _validation.ValidateTable();
+            Map.Entry<Mahasiswa, Object> validationResult = _validation.ValidateTable();
             if(validationResult == null) return null;
             Repository.Delete(validationResult);
-            var responseResult = new HashMap<Mahasiswa, Object>()
+            HashMap<Mahasiswa, Object> responseResult = new HashMap<>()
             {{
                 put(validationResult.getKey(), validationResult.getValue());
             }};
@@ -101,10 +92,20 @@ public final class MahasiswaController extends Controller<MahasiswaRepository>
         }
         catch(SQLException exception)
         {
-            JOptionPane.showMessageDialog(null, 
-                exception.getMessage(), "Error", 
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            ShowSqlErrorMessage(exception);
+            return null;
+        }
+    }
+    
+    public MahasiswaResponse SelectNimNamaFields()
+    {
+        try
+        {
+            return new MahasiswaResponse().GenerateResultFromQuery(Repository.SelectAll());
+        }
+        catch(SQLException exception)
+        {
+            ShowSqlErrorMessage(exception);
             return null;
         }
     }

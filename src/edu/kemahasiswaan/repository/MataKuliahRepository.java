@@ -27,39 +27,39 @@ public final class MataKuliahRepository extends Repository<MataKuliah>
     @Override
     public void Create(Map<MataKuliah, Object> validData) throws SQLException
     {
-        var query = String.format("insert into %s values (?, ?)", TableName);
-        var statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query);
-        statement.setString(1, validData.get(MataKuliah.No).toString());
-        statement.setString(2, validData.get(MataKuliah.Nama).toString());
-        statement.executeUpdate();
-        statement.close();
+        String query = String.format("insert into %s values (?, ?)", TableName);
+        try (java.sql.PreparedStatement statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query)) {
+            statement.setString(1, validData.get(MataKuliah.No).toString());
+            statement.setString(2, validData.get(MataKuliah.Nama).toString());
+            statement.executeUpdate();
+        }
     }
     
     @Override
     public ResultSet SelectAll() throws SQLException
     {
-        var query = String.format("select * from %s", TableName);
+        String query = String.format("select * from %s", TableName);
         return DatabaseConnection.GetInstance().GetConnection().prepareStatement(query).executeQuery(query);
     }
     
     @Override
     public void Update(Map<MataKuliah, Object> validData) throws SQLException
     {
-        var query = String.format("update %s set %s = ? where %s = ?", TableName, MataKuliah.Nama.toString(), MataKuliah.No.toString());
-        var statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query);
-        statement.setString(1, validData.get(MataKuliah.Nama).toString());
-        statement.setString(2, validData.get(MataKuliah.No).toString());
-        statement.executeUpdate();
-        statement.close();
+        String query = String.format("update %s set %s = ? where %s = ?", TableName, MataKuliah.Nama.toString(), MataKuliah.No.toString());
+        try (java.sql.PreparedStatement statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query)) {
+            statement.setString(1, validData.get(MataKuliah.Nama).toString());
+            statement.setString(2, validData.get(MataKuliah.No).toString());
+            statement.executeUpdate();
+        }
     }
     
     @Override
     public void Delete(Map.Entry<MataKuliah, Object> validData) throws SQLException
     {
-        var query = String.format("delete from %s where %s = ?", TableName, validData.getKey().toString());
-        var statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query);
-        statement.setString(1, validData.getValue().toString());
-        statement.executeUpdate();
-        statement.close();
+        String query = String.format("delete from %s where %s = ?", TableName, validData.getKey().toString());
+        try (java.sql.PreparedStatement statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query)) {
+            statement.setString(1, validData.getValue().toString());
+            statement.executeUpdate();
+        }
     }
 }

@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import edu.kemahasiswaan.table.Mahasiswa;
-import edu.kemahasiswaan.helper.DateFormatHelper;
+import edu.kemahasiswaan.helper.DateHelper;
 
 
 /**
@@ -26,13 +26,13 @@ public final class MahasiswaResponse extends Response<Mahasiswa>
         {
             while (queryResult.next())
             {
-                var rowData = new HashMap<Mahasiswa, Object>()
+                HashMap<Mahasiswa, Object> rowData = new HashMap<>()
                 {{
                     put(Mahasiswa.Nim, queryResult.getString(Mahasiswa.Nim.toString()));
                     put(Mahasiswa.Nama, queryResult.getString(Mahasiswa.Nama.toString()));
                     put(Mahasiswa.Alamat, queryResult.getString(Mahasiswa.Alamat.toString()));
                     put(Mahasiswa.TempatLahir, queryResult.getString(Mahasiswa.TempatLahir.toString()));
-                    put(Mahasiswa.TanggalLahir, DateFormatHelper.GetFormatedDate(queryResult.getDate(Mahasiswa.TanggalLahir.toString())));
+                    put(Mahasiswa.TanggalLahir, DateHelper.GetFormatedDate(queryResult.getDate(Mahasiswa.TanggalLahir.toString())));
                 }};
                 Result.add(rowData);
             }

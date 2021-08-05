@@ -1,8 +1,9 @@
-
+import javax.swing.JOptionPane;
 import java.util.LinkedHashMap;
 import javax.swing.text.JTextComponent;
 import edu.kemahasiswaan.table.Pengguna;
 import edu.kemahasiswaan.handler.JTextFieldHandler;
+import edu.kemahasiswaan.response.PenggunaResponse;
 import edu.kemahasiswaan.controller.PenggunaController;
 import edu.kemahasiswaan.validation.PenggunaLoginValidation;
 import edu.kemahasiswaan.validation.PenggunaRegisterValidation;
@@ -20,10 +21,12 @@ import edu.kemahasiswaan.validation.PenggunaRegisterValidation;
  */
 public class LoginFrame extends javax.swing.JFrame {
     
-    public JTextFieldHandler<Pengguna> _textHandler;
-    public PenggunaLoginValidation _formValidation;
-    public PenggunaRegisterValidation _formRegisterValidation;
+    private int maxLoginAttempt = 2;
+    
     public PenggunaController _loginController;
+    public PenggunaLoginValidation _formValidation;
+    public JTextFieldHandler<Pengguna> _textHandler;
+    public PenggunaRegisterValidation _formRegisterValidation;
     
     /**
      * Creates new form LoginFrame
@@ -38,7 +41,6 @@ public class LoginFrame extends javax.swing.JFrame {
         
         _formValidation = new PenggunaLoginValidation(_textHandler);
         _loginController = new PenggunaController(_formValidation, null);
-        
     }
 
     /**
@@ -131,8 +133,31 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void ButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLoginActionPerformed
         // TODO add your handling code here:
-        var response = _loginController.CheckLogin();
-        System.out.println(response.GetResult());
+        PenggunaResponse response = _loginController.CheckLogin();
+        if((boolean)response.GetResult().getFirst().get(Pengguna.Username))
+        {
+            new FormUtama().setVisible(true);
+            this.setVisible(false);
+        }
+        else 
+        {
+            
+            if(maxLoginAttempt-- == 0)
+            {
+                JOptionPane.showMessageDialog(null, 
+                "Terlalu Banyak melakukan login gagal system akan keluar", "Error", 
+                JOptionPane.INFORMATION_MESSAGE
+                );
+                System.exit(0);
+            }
+            else 
+            {
+                JOptionPane.showMessageDialog(null, 
+                "Silahkan Daftar Terlebih Dahulu", "Error", 
+                JOptionPane.INFORMATION_MESSAGE
+                );
+            }
+        }
     }//GEN-LAST:event_ButtonLoginActionPerformed
 
     /**

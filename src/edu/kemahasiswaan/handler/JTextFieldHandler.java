@@ -28,7 +28,7 @@ public final class JTextFieldHandler<T extends Enum>
     public void SetAllText(Map<T, Object> textInputData)
     {
         textInputData.entrySet().forEach(item -> {
-            var textComponent = _textFields.get(item.getKey());
+            JTextComponent textComponent = _textFields.get(item.getKey());
             textComponent.setText(item.getValue().toString());
         });
     }
@@ -40,9 +40,14 @@ public final class JTextFieldHandler<T extends Enum>
         });
     }
     
-    public LinkedHashMap<T, String> GetTextFieldsValue()
+    public JTextComponent GetTextField(T key)
     {
-        var result = new LinkedHashMap<T, String>();
+        return _textFields.get(key);
+    }
+    
+    public LinkedHashMap<T, String> GetTextFields()
+    {
+        LinkedHashMap<T, String> result = new LinkedHashMap<>();
         _textFields.entrySet().forEach(item ->
         {
             result.put(item.getKey(), item.getValue().getText());
@@ -50,9 +55,9 @@ public final class JTextFieldHandler<T extends Enum>
         return result;
     }
     
-    public final String GetNullField()
+    public String GetEmptyFieldName()
     {
-        var stringJoiner = new StringJoiner(", ");
+        StringJoiner stringJoiner = new StringJoiner(", ");
         
         _textFields.forEach((key, value) -> 
         {
@@ -61,5 +66,11 @@ public final class JTextFieldHandler<T extends Enum>
         });
         
         return stringJoiner.toString();
+    }
+    
+    public void PreventFieldHaveNonNumberCharacter(java.awt.event.KeyEvent evt, T key, int maxTextLength)
+    {
+        if(!Character.isDigit(evt.getKeyChar()) || _textFields.get(key).getText().length() >= maxTextLength)
+            evt.consume();
     }
 }

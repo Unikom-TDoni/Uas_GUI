@@ -5,8 +5,9 @@
  */
 package edu.kemahasiswaan.controller;
 
+import java.util.Map;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import edu.kemahasiswaan.table.Pengguna;
 import edu.kemahasiswaan.repository.PenggunaRepository;
 import edu.kemahasiswaan.response.PenggunaResponse;
 import edu.kemahasiswaan.validation.PenggunaLoginValidation;
@@ -24,24 +25,22 @@ public final class PenggunaController extends Controller<PenggunaRepository>
     public PenggunaController(PenggunaLoginValidation loginValidation, PenggunaRegisterValidation registerValidation)
     {
         _loginValidation = loginValidation;
-        _registerValidation = registerValidation;
         Repository = new PenggunaRepository();
+        _registerValidation = registerValidation;
     }
     
     public PenggunaResponse CheckLogin()
     {
         try
         {
-            var validationResult = _loginValidation.ValidateForm();
-            var loginResult = Repository.GetLoginAttempt(validationResult);
+            Map<Pengguna, Object> validationResult = _loginValidation.ValidateForm();
+            if(validationResult.isEmpty()) return null;
+            boolean loginResult = Repository.IsLoginSuccess(validationResult);
             return new PenggunaResponse().GenerateResultFromLoginStatus(loginResult);
         }
         catch(SQLException exception)
         {
-            JOptionPane.showMessageDialog(null, 
-                exception.getMessage(), "Error", 
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            ShowSqlErrorMessage(exception);
             return null;
         }
     }
@@ -50,17 +49,14 @@ public final class PenggunaController extends Controller<PenggunaRepository>
     {
         try
         {
-            var validationResult = _registerValidation.ValidateForm();
+            Map<Pengguna, Object> validationResult = _registerValidation.ValidateForm();
             if(validationResult.isEmpty()) return null;
             Repository.Create(validationResult);
             return new PenggunaResponse().GenerateResultFromValidation(validationResult);
         }
         catch(SQLException exception)
         {
-            JOptionPane.showMessageDialog(null, 
-                exception.getMessage(), "Error", 
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            ShowSqlErrorMessage(exception);
             return null;
         }
     }

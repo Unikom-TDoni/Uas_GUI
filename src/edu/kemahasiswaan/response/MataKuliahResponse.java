@@ -24,7 +24,7 @@ public class MataKuliahResponse extends Response<MataKuliah>
         {
             while (queryResult.next())
             {
-                var rowData = new HashMap<MataKuliah, Object>()
+                HashMap<MataKuliah, Object> rowData = new HashMap<>()
                 {{
                     put(MataKuliah.No, queryResult.getString(MataKuliah.No.toString()));
                     put(MataKuliah.Nama, queryResult.getString(MataKuliah.Nama.toString()));
