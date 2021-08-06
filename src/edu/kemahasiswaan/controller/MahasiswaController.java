@@ -82,7 +82,7 @@ public final class MahasiswaController extends Controller<MahasiswaRepository>
         try
         {
             Map.Entry<Mahasiswa, Object> validationResult = _validation.ValidateTable();
-            if(validationResult == null) return null;
+            if(validationResult.getKey() == null) return null;
             Repository.Delete(validationResult);
             HashMap<Mahasiswa, Object> responseResult = new HashMap<>()
             {{

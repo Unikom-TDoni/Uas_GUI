@@ -29,7 +29,8 @@ public final class JTextFieldHandler<T extends Enum>
     {
         textInputData.entrySet().forEach(item -> {
             JTextComponent textComponent = _textFields.get(item.getKey());
-            textComponent.setText(item.getValue().toString());
+            if(textComponent != null)
+                textComponent.setText(item.getValue().toString());
         });
     }
     
@@ -62,7 +63,7 @@ public final class JTextFieldHandler<T extends Enum>
         _textFields.forEach((key, value) -> 
         {
             if(value.getText().equals(""))
-                stringJoiner.add(StringCaseFormatHelper.GetSplitedCamelCase(key.toString(), " "));
+                stringJoiner.add(StringCaseFormatHelper.GetTitleCase(key.toString(), "_", " "));
         });
         
         return stringJoiner.toString();

@@ -35,4 +35,8 @@ public final class StringCaseFormatHelper
         }
         return result;
     }
+    
+    public static String GetFloatStringFormat(Float value){
+        return String.format("%.2f", value);
+    }
 }

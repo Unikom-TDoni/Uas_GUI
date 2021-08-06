@@ -14,7 +14,8 @@ import edu.kemahasiswaan.helper.StringCaseFormatHelper;
 public enum Pengguna 
 {
     Username,
-    Password;
+    Password,
+    PasswordValidation;
     
     @Override
     public String toString() 

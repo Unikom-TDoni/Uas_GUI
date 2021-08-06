@@ -35,7 +35,7 @@ public final class MahasiswaValidation extends Validation implements
         String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
-            ShowErrorValidationMessage("Text Field " + nullField + " Masih Kosong Silahkan Isi Terlebih Dahulu");
+            ShowErrorValidationMessage("Text field " + nullField + "masih kosong silahkan isi terlebih fahulu");
             return Collections.emptyMap();
         }
         return _textFieldHandler.GetTextFields();
@@ -47,9 +47,9 @@ public final class MahasiswaValidation extends Validation implements
         int rowIndex = _tableHandler.GetSelectedRowIndex();
         if(!_tableHandler.IsRowValid(rowIndex))
         {
-            ShowErrorValidationMessage("Silahkan Select Row Terlebih Dahulu");
+            ShowErrorValidationMessage("Silahkan pilih table baris terlebih dahulu");
             return new AbstractMap.SimpleEntry<>(null,null);
         }
-        return new AbstractMap.SimpleEntry<>((Mahasiswa)_tableHandler.TableColumnKey, _tableHandler.GetValueAtColumnKey(rowIndex));
+        return new AbstractMap.SimpleEntry<>((Mahasiswa)_tableHandler.TableColumnKey, _tableHandler.GetValueAt(_tableHandler.TableColumnKey, rowIndex));
     }
 }

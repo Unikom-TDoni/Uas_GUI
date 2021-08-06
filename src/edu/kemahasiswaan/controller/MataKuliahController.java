@@ -5,14 +5,13 @@
  */
 package edu.kemahasiswaan.controller;
 
+import java.util.Map;
 import java.util.HashMap;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import edu.kemahasiswaan.table.MataKuliah;
 import edu.kemahasiswaan.response.MataKuliahResponse;
 import edu.kemahasiswaan.repository.MataKuliahRepository;
 import edu.kemahasiswaan.validation.MataKuliahValidation;
-import java.util.Map;
 
 /**
  *
@@ -83,7 +82,7 @@ public final class MataKuliahController extends Controller<MataKuliahRepository>
         try
         {
             Map.Entry<MataKuliah, Object> validationResult = _validation.ValidateTable();
-            if(validationResult == null) return null;
+            if(validationResult.getKey() == null) return null;
             Repository.Delete(validationResult);
             HashMap<MataKuliah, Object> validationResponseResult = new HashMap<>()
             {{

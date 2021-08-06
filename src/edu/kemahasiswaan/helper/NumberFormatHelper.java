@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.kemahasiswaan.controller;
+package edu.kemahasiswaan.helper;
 
 /**
  *
  * @author Theod
  */
-public final class NilaiController 
-{
+public class NumberFormatHelper {
     
+    public static int ParseInteger(Object item)
+    {
+        return Integer.parseInt(item.toString());
+    }
 }

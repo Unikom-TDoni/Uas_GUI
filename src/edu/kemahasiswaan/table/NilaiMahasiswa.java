@@ -13,23 +13,26 @@ import edu.kemahasiswaan.helper.StringCaseFormatHelper;
  */
 public enum NilaiMahasiswa 
 {
-    Nim,
-    NoMk,
+    No,
+    NamaMhs,
+    NamaMk,
     Kehadiran,
     TugasPertama,
     TugasKedua,
     TugasKetiga,
     Uts,
     Uas,
-    Angkatan,
-    
     NilaiKehadiran,
-    NilaiTugasPertama,
-    NilaiTugasKedua,
-    NilaiTugasKetiga,
+    NilaiTugas,
     NilaiUts,
     NilaiUas,
-    Akhir;
+    NilaiAkhir,
+    Indeks,
+    Keterangan,
+    Angkatan,
+    Nim,
+    NoMk
+    ;
     
     @Override
     public String toString() 

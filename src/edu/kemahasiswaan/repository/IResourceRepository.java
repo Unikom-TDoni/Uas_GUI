@@ -16,7 +16,7 @@ import java.sql.SQLException;
  */
 public interface IResourceRepository<T extends Enum>
 {
-    public void Create(Map<T, Object> validData) throws SQLException;
+    public ResultSet Create(Map<T, Object> validData) throws SQLException;
     
     public ResultSet SelectAll() throws SQLException;
     

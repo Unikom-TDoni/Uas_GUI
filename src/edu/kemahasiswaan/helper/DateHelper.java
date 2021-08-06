@@ -8,6 +8,7 @@ package edu.kemahasiswaan.helper;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  *
@@ -35,5 +36,9 @@ public final class DateHelper
             System.out.println(exception);
             return null;
         }
+    }
+    
+    public static int GetCurrentYear(){
+        return Calendar.getInstance().get(Calendar.YEAR);
     }
 }

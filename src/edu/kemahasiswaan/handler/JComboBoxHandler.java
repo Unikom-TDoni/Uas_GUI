@@ -23,12 +23,18 @@ public final class JComboBoxHandler<T>
         _comboBoxes = comboBoxes;
     }
     
-    public void Load(Map.Entry<T, LinkedList<String>> inputData)
+    public void Load(Map.Entry<T, LinkedList<Object>> inputData)
     {
         JComboBox comboBox = _comboBoxes.get(inputData.getKey());
+        comboBox.removeAllItems();
         inputData.getValue().forEach(item -> 
         {
-            comboBox.addItem(this);
+            comboBox.addItem(item);
         });
+    }
+    
+    public Object GetSelectedItem(T key)
+    {
+        return _comboBoxes.get(key).getSelectedItem();
     }
 }

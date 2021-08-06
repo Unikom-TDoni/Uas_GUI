@@ -31,16 +31,25 @@ public final class PenggunaRegisterValidation extends Validation implements
         String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
-            ShowErrorValidationMessage("Text Field " + nullField + " Masih Kosong Silahkan Isi Terlebih Dahulu");   
+            ShowErrorValidationMessage("Text field " + nullField + "masih kosong silahkan isi terlebih dahulu");   
             return Collections.emptyMap();
         }
         
-        if(_textFieldHandler.GetTextField(Pengguna.Password).getText().length() < 8)
+        String password = _textFieldHandler.GetTextField(Pengguna.Password).getText();
+        String passwordValidation = _textFieldHandler.GetTextField(Pengguna.PasswordValidation).getText();
+        
+        if(password.length() < 8)
         {
-            ShowErrorValidationMessage("Maaf Password Harus Memiliki minimal 8 character");   
+            ShowErrorValidationMessage("Maaf password harus memiliki minimal 8 character");   
             return Collections.emptyMap();
         }
         
+        if(!passwordValidation.equals(password))
+        {
+            ShowErrorValidationMessage("Maaf validasi password yang anda masukan tidak sama dengan password anda");   
+            return Collections.emptyMap();
+        }
+            
         return _textFieldHandler.GetTextFields();
     }
 }

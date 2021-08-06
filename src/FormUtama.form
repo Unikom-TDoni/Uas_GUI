@@ -342,6 +342,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSearchMahasiswa">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormSearchMahasiswaKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonMahasiswaHapus">
               <Properties>
@@ -618,11 +621,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cari"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSearchNilaiActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonNilaiHapus">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Hapus"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonNilaiHapusActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonNilaiEdit">
               <Properties>
@@ -650,7 +659,8 @@
                 <Component class="javax.swing.JTable" name="TableNilai">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="15" rowCount="2">
+                      <Table columnCount="16" rowCount="0">
+                        <Column editable="false" title="No" type="java.lang.Object"/>
                         <Column editable="false" title="Nama" type="java.lang.Object"/>
                         <Column editable="false" title="Mata Kuliah" type="java.lang.Object"/>
                         <Column editable="false" title="Absensi" type="java.lang.Object"/>
@@ -665,7 +675,7 @@
                         <Column editable="false" title="Nilai UAS" type="java.lang.Object"/>
                         <Column editable="false" title="Nilai Akhir" type="java.lang.Object"/>
                         <Column editable="false" title="Indeks" type="java.lang.Object"/>
-                        <Column editable="false" title="Keterengan" type="java.lang.Object"/>
+                        <Column editable="false" title="Keterangan" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -825,25 +835,26 @@
                 <Component class="javax.swing.JTable" name="TableSimulasiAkhir">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="18" rowCount="2">
+                      <Table columnCount="19" rowCount="0">
+                        <Column editable="false" title="No" type="java.lang.Object"/>
                         <Column editable="false" title="Nama MK" type="java.lang.Object"/>
                         <Column editable="false" title="Absen (%)" type="java.lang.Object"/>
                         <Column editable="false" title="Tugas (%)" type="java.lang.Object"/>
                         <Column editable="false" title="UTS (%)" type="java.lang.Object"/>
                         <Column editable="false" title="UAS (%)" type="java.lang.Object"/>
-                        <Column editable="true" title="Absensi" type="java.lang.Object"/>
-                        <Column editable="true" title="Tgs1" type="java.lang.Object"/>
-                        <Column editable="true" title="Tgs2" type="java.lang.Object"/>
-                        <Column editable="true" title="Tgs3" type="java.lang.Object"/>
-                        <Column editable="true" title="UTS" type="java.lang.Object"/>
-                        <Column editable="true" title="UAS" type="java.lang.Object"/>
-                        <Column editable="true" title="Nilai Absen" type="java.lang.Object"/>
-                        <Column editable="true" title="Nilai Tugas" type="java.lang.Object"/>
-                        <Column editable="true" title="Niali UTS" type="java.lang.Object"/>
-                        <Column editable="true" title="Nilai UAS" type="java.lang.Object"/>
-                        <Column editable="true" title="Nilai Akhir" type="java.lang.Object"/>
-                        <Column editable="true" title="Indeks" type="java.lang.Object"/>
-                        <Column editable="true" title="Keterangan" type="java.lang.Object"/>
+                        <Column editable="false" title="Absensi" type="java.lang.Object"/>
+                        <Column editable="false" title="Tgs1" type="java.lang.Object"/>
+                        <Column editable="false" title="Tgs2" type="java.lang.Object"/>
+                        <Column editable="false" title="Tgs3" type="java.lang.Object"/>
+                        <Column editable="false" title="UTS" type="java.lang.Object"/>
+                        <Column editable="false" title="UAS" type="java.lang.Object"/>
+                        <Column editable="false" title="Nilai Absen" type="java.lang.Object"/>
+                        <Column editable="false" title="Nilai Tugas" type="java.lang.Object"/>
+                        <Column editable="false" title="Niali UTS" type="java.lang.Object"/>
+                        <Column editable="false" title="Nilai UAS" type="java.lang.Object"/>
+                        <Column editable="false" title="Nilai Akhir" type="java.lang.Object"/>
+                        <Column editable="false" title="Indeks" type="java.lang.Object"/>
+                        <Column editable="false" title="Keterangan" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -951,6 +962,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Hapus"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSimulasiAkhirHapusActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonSimulasiAkhirEdit">
               <Properties>
@@ -1468,6 +1482,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="FormNilaiTugas2">
               <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormNilaiTugas2ActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormNilaiTugas2KeyTyped"/>
               </Events>
             </Component>
@@ -1544,6 +1559,9 @@
             <Component class="javax.swing.JFormattedTextField" name="FormNilaiAngkatan">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="String.valueOf(DateHelper.GetCurrentYear())" type="code"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelNilaiPertemuan">
@@ -1563,6 +1581,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Simpan"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonNilaiSimpanActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="FormNilaiNama">
               <Properties>
@@ -1570,9 +1591,6 @@
                   <StringArray count="0"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="FormNilaiNamaItemStateChanged"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -1614,22 +1632,22 @@
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="LabelSimulasiAkhirKodeMataKuliah" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="LabelSimulasiAkhirNamaMataKuliah" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="LabelTitleAddSimulasiAkhir" min="-2" max="-2" attributes="0"/>
                                   <Component id="LabelSimulasiAkhirPresentaseAbsen" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="FormSimulasiAkhirPresentaseAbsen" alignment="0" min="-2" pref="286" max="-2" attributes="0"/>
+                                  <Component id="FormSimulasiAkhirPresentaseAbsen" alignment="0" pref="286" max="32767" attributes="0"/>
                                   <Component id="LabelSimulasiAkhirPresentaseUTS" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="FormSimulasiAkhirPresentaseUTS" alignment="0" min="-2" pref="286" max="-2" attributes="0"/>
+                                  <Component id="FormSimulasiAkhirPresentaseUTS" alignment="0" pref="286" max="32767" attributes="0"/>
                                   <Component id="LabelSimulasiAkhirPresentaseUAS" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="FormSimulasiAkhirPresentaseUAS" alignment="0" min="-2" pref="286" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="FormSimulasiAkhirNamaMataKuliah" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="FormSimulasiAkhirKodeMataKuliah" alignment="0" pref="286" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="FormSimulasiAkhirPresentaseUAS" alignment="0" pref="286" max="32767" attributes="0"/>
+                                  <Component id="FormSimulasiAkhirKodeMataKuliah" alignment="0" pref="286" max="32767" attributes="0"/>
+                                  <Component id="FormSimulasiAkhirNamaMataKuliah" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="LabelSimulasiAkhirPresentaseAbsen1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FormSimulasiAkhirPresentaseTugas" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="113" max="32767" attributes="0"/>
+                              <EmptySpace pref="120" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1691,16 +1709,6 @@
                               <Component id="FormSimulasiAkhirTugas2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="LabelSimulasiAkhirTugas3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FormSimulasiAkhirTugas3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabelSimulasiAkhirUTS" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FormSimulasiAkhirUTS" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabelSimulasiAkhirUAS" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FormSimulasiAkhirUAS" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="LabelSimulasiAkhirKodeMataKuliah" min="-2" max="-2" attributes="0"/>
@@ -1710,17 +1718,38 @@
                               <Component id="LabelSimulasiAkhirPresentaseAbsen" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="FormSimulasiAkhirPresentaseAbsen" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabelSimulasiAkhirPresentaseUTS" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FormSimulasiAkhirPresentaseUTS" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabelSimulasiAkhirPresentaseUAS" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FormSimulasiAkhirPresentaseUAS" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="LabelSimulasiAkhirPresentaseAbsen1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="FormSimulasiAkhirTugas3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="LabelSimulasiAkhirUTS" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelSimulasiAkhirPresentaseUTS" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="FormSimulasiAkhirUTS" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FormSimulasiAkhirPresentaseUTS" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="LabelSimulasiAkhirUAS" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelSimulasiAkhirPresentaseUAS" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="FormSimulasiAkhirUAS" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FormSimulasiAkhirPresentaseUAS" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="FormSimulasiAkhirPresentaseTugas" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="103" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="ButtonSimulasiAkhirCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonSimulasiAkhirSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1745,6 +1774,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSimulasiAkhirKehadiran">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormSimulasiAkhirKehadiranKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="LabelSimulasiAkhirPertemuan">
               <Properties>
@@ -1806,8 +1838,6 @@
                 <Property name="text" type="java.lang.String" value="Nama Mata Kuliah"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="FormSimulasiAkhirNamaMataKuliah">
-            </Component>
             <Component class="javax.swing.JLabel" name="LabelSimulasiAkhirKodeMataKuliah">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kode Mata Kuliah"/>
@@ -1862,6 +1892,26 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSimulasiAkhirSimpanActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="FormSimulasiAkhirNamaMataKuliah">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabelSimulasiAkhirPresentaseAbsen1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Presentase Tugas"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="FormSimulasiAkhirPresentaseTugas">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FormSimulasiAkhirPresentaseTugasKeyTyped"/>
               </Events>
             </Component>
           </SubComponents>

@@ -25,21 +25,22 @@ public final class MataKuliahRepository extends Repository<MataKuliah>
     }
     
     @Override
-    public void Create(Map<MataKuliah, Object> validData) throws SQLException
+    public ResultSet Create(Map<MataKuliah, Object> validData) throws SQLException
     {
         String query = String.format("insert into %s values (?, ?)", TableName);
         try (java.sql.PreparedStatement statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query)) {
-            statement.setString(1, validData.get(MataKuliah.No).toString());
-            statement.setString(2, validData.get(MataKuliah.Nama).toString());
+            statement.setObject(1, validData.get(MataKuliah.No));
+            statement.setObject(2, validData.get(MataKuliah.Nama));
             statement.executeUpdate();
         }
+        return null;
     }
     
     @Override
     public ResultSet SelectAll() throws SQLException
     {
         String query = String.format("select * from %s", TableName);
-        return DatabaseConnection.GetInstance().GetConnection().prepareStatement(query).executeQuery(query);
+        return DatabaseConnection.GetInstance().GetConnection().prepareStatement(query).executeQuery();
     }
     
     @Override
@@ -47,8 +48,8 @@ public final class MataKuliahRepository extends Repository<MataKuliah>
     {
         String query = String.format("update %s set %s = ? where %s = ?", TableName, MataKuliah.Nama.toString(), MataKuliah.No.toString());
         try (java.sql.PreparedStatement statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query)) {
-            statement.setString(1, validData.get(MataKuliah.Nama).toString());
-            statement.setString(2, validData.get(MataKuliah.No).toString());
+            statement.setObject(1, validData.get(MataKuliah.Nama));
+            statement.setObject(2, validData.get(MataKuliah.No));
             statement.executeUpdate();
         }
     }
@@ -58,7 +59,7 @@ public final class MataKuliahRepository extends Repository<MataKuliah>
     {
         String query = String.format("delete from %s where %s = ?", TableName, validData.getKey().toString());
         try (java.sql.PreparedStatement statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query)) {
-            statement.setString(1, validData.getValue().toString());
+            statement.setObject(1, validData.getValue());
             statement.executeUpdate();
         }
     }
