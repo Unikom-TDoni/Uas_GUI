@@ -14,10 +14,10 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        FormUtama FormUtama = new FormUtama(); 
-        FormUtama.setVisible(true);
-//        LoginFrame login = new LoginFrame();
-//        login.setVisible(true);
+//        FormUtama FormUtama = new FormUtama(); 
+//        FormUtama.setVisible(true);
+        LoginFrame login = new LoginFrame();
+        login.setVisible(true);
     }
     
 }

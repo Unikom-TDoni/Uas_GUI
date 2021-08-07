@@ -310,7 +310,7 @@ public class FormUtama extends javax.swing.JFrame
         ButtonSimulasiAkhir = new javax.swing.JButton();
         ButtonSimulasiKasus = new javax.swing.JButton();
         ButtonDataMahasiswa1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         PanelContent = new javax.swing.JPanel();
         PanelHomepage = new javax.swing.JPanel();
         LabelTitleHome = new javax.swing.JLabel();
@@ -355,6 +355,11 @@ public class FormUtama extends javax.swing.JFrame
         ButtonSimulasiAkhirTambah = new javax.swing.JButton();
         PanelSimulasiKasus = new javax.swing.JPanel();
         LabelTitleSimulasiKasus = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        TableSimulasiKasus = new javax.swing.JTable();
+        ButtonSimulasiKasusHapus = new javax.swing.JButton();
+        ButtonSimulasiKasusEdit = new javax.swing.JButton();
+        ButtonSimulasiKasusTambah = new javax.swing.JButton();
         PanelAddMahasiswa = new javax.swing.JPanel();
         LabelTitleAddMahasiswa = new javax.swing.JLabel();
         LabelMahasiswaNIM = new javax.swing.JLabel();
@@ -435,6 +440,20 @@ public class FormUtama extends javax.swing.JFrame
         FormSimulasiAkhirNamaMataKuliah = new javax.swing.JComboBox<>();
         LabelSimulasiAkhirPresentaseAbsen1 = new javax.swing.JLabel();
         FormSimulasiAkhirPresentaseTugas = new javax.swing.JTextField();
+        PanelAddSimulasiKasus = new javax.swing.JPanel();
+        LabelTitleAddSimulasiKasus = new javax.swing.JLabel();
+        LabelSimulasiKasusOperator = new javax.swing.JLabel();
+        FormSimulasiKasusOperator = new javax.swing.JComboBox<>();
+        LabelSimulasiKasusMetodePembayaran = new javax.swing.JLabel();
+        FormSimulasiKasusMetodePembayaran = new javax.swing.JComboBox<>();
+        LabelSimulasiKasusNoTelp = new javax.swing.JLabel();
+        LabelSimulasiKasusNominal = new javax.swing.JLabel();
+        FormSimulasiKasusNominal = new javax.swing.JComboBox<>();
+        LabelSimulasiKasusStatus = new javax.swing.JLabel();
+        FormSimulasiKasusStatus = new javax.swing.JComboBox<>();
+        FormSimulasiKasusNoTelp = new javax.swing.JTextField();
+        ButtonCancelSimulasiKasus = new javax.swing.JButton();
+        ButtonSimpanSimulasiKasus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(244, 245, 246));
@@ -491,6 +510,8 @@ public class FormUtama extends javax.swing.JFrame
             }
         });
 
+        logo.setIcon(new javax.swing.ImageIcon("/Users/aris/NetBeansProjects/latihan/assets/logo 1.png")); // NOI18N
+
         javax.swing.GroupLayout PanelMenuLayout = new javax.swing.GroupLayout(PanelMenu);
         PanelMenu.setLayout(PanelMenuLayout);
         PanelMenuLayout.setHorizontalGroup(
@@ -499,23 +520,23 @@ public class FormUtama extends javax.swing.JFrame
                 .addGap(6, 6, 6)
                 .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ButtonHomePage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ButtonDataMatkul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonDataMatkul, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                     .addComponent(ButtonDataNilai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonSimulasiAkhir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonSimulasiKasus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonDataMahasiswa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonDataMahasiswa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(16, 16, 16))
+            .addGroup(PanelMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelMenuLayout.setVerticalGroup(
             PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelMenuLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
+                .addGap(61, 61, 61)
+                .addComponent(logo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ButtonHomePage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -878,6 +899,25 @@ public class FormUtama extends javax.swing.JFrame
             }
         });
         jScrollPane4.setViewportView(TableSimulasiAkhir);
+        if (TableSimulasiAkhir.getColumnModel().getColumnCount() > 0) {
+            TableSimulasiAkhir.getColumnModel().getColumn(1).setHeaderValue("Nama MK");
+            TableSimulasiAkhir.getColumnModel().getColumn(2).setHeaderValue("Absen (%)");
+            TableSimulasiAkhir.getColumnModel().getColumn(3).setHeaderValue("Tugas (%)");
+            TableSimulasiAkhir.getColumnModel().getColumn(4).setHeaderValue("UTS (%)");
+            TableSimulasiAkhir.getColumnModel().getColumn(5).setHeaderValue("UAS (%)");
+            TableSimulasiAkhir.getColumnModel().getColumn(6).setHeaderValue("Absensi");
+            TableSimulasiAkhir.getColumnModel().getColumn(7).setHeaderValue("Tgs1");
+            TableSimulasiAkhir.getColumnModel().getColumn(8).setHeaderValue("Tgs2");
+            TableSimulasiAkhir.getColumnModel().getColumn(9).setHeaderValue("Tgs3");
+            TableSimulasiAkhir.getColumnModel().getColumn(10).setHeaderValue("UTS");
+            TableSimulasiAkhir.getColumnModel().getColumn(11).setHeaderValue("UAS");
+            TableSimulasiAkhir.getColumnModel().getColumn(12).setHeaderValue("Nilai Absen");
+            TableSimulasiAkhir.getColumnModel().getColumn(13).setHeaderValue("Nilai Tugas");
+            TableSimulasiAkhir.getColumnModel().getColumn(14).setHeaderValue("Niali UTS");
+            TableSimulasiAkhir.getColumnModel().getColumn(15).setHeaderValue("Nilai UAS");
+            TableSimulasiAkhir.getColumnModel().getColumn(16).setHeaderValue("Nilai Akhir");
+            TableSimulasiAkhir.getColumnModel().getColumn(17).setHeaderValue("Indeks");
+        }
 
         ButtonSimulasiAkhirHapus.setText("Hapus");
         ButtonSimulasiAkhirHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -940,6 +980,45 @@ public class FormUtama extends javax.swing.JFrame
         LabelTitleSimulasiKasus.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         LabelTitleSimulasiKasus.setText("Simulasi Kasus");
 
+        TableSimulasiKasus.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Transaksi", "No. Telp", "Operator", "Nominal", "Metode Bayar", "Tanggal", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(TableSimulasiKasus);
+
+        ButtonSimulasiKasusHapus.setText("Hapus");
+        ButtonSimulasiKasusHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSimulasiKasusHapusActionPerformed(evt);
+            }
+        });
+
+        ButtonSimulasiKasusEdit.setText("Edit");
+        ButtonSimulasiKasusEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSimulasiKasusEditActionPerformed(evt);
+            }
+        });
+
+        ButtonSimulasiKasusTambah.setText("Tambah");
+        ButtonSimulasiKasusTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSimulasiKasusTambahActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelSimulasiKasusLayout = new javax.swing.GroupLayout(PanelSimulasiKasus);
         PanelSimulasiKasus.setLayout(PanelSimulasiKasusLayout);
         PanelSimulasiKasusLayout.setHorizontalGroup(
@@ -947,14 +1026,38 @@ public class FormUtama extends javax.swing.JFrame
             .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(LabelTitleSimulasiKasus)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(573, Short.MAX_VALUE))
+            .addGroup(PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
+                    .addGroup(PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSimulasiKasusLayout.createSequentialGroup()
+                            .addGap(491, 491, 491)
+                            .addComponent(ButtonSimulasiKasusHapus)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonSimulasiKasusEdit)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonSimulasiKasusTambah))
+                        .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
+                            .addGap(28, 28, 28)
+                            .addComponent(jScrollPane6)))
+                    .addGap(29, 29, 29)))
         );
         PanelSimulasiKasusLayout.setVerticalGroup(
             PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(LabelTitleSimulasiKasus)
-                .addContainerGap(508, Short.MAX_VALUE))
+                .addContainerGap(577, Short.MAX_VALUE))
+            .addGroup(PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
+                    .addGap(129, 129, 129)
+                    .addGroup(PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ButtonSimulasiKasusHapus)
+                        .addComponent(ButtonSimulasiKasusEdit)
+                        .addComponent(ButtonSimulasiKasusTambah))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(81, Short.MAX_VALUE)))
         );
 
         PanelContent.add(PanelSimulasiKasus, "card7");
@@ -1264,7 +1367,7 @@ public class FormUtama extends javax.swing.JFrame
                         .addComponent(LabelTitleAddNilai)
                         .addComponent(LabelNilaiNIM))
                     .addComponent(LabelNilaiNama))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(LabelNilaiNamaMataKuliah)
                     .addComponent(LabelNilaiKodeMataKuliah)
@@ -1340,7 +1443,7 @@ public class FormUtama extends javax.swing.JFrame
                 .addGroup(PanelAddNilaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonNilaiCancel)
                     .addComponent(ButtonNilaiSimpan))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         PanelContent.add(PanelAddNilai, "card10");
@@ -1470,12 +1573,12 @@ public class FormUtama extends javax.swing.JFrame
                             .addComponent(LabelSimulasiAkhirNamaMataKuliah)
                             .addComponent(LabelTitleAddSimulasiAkhir)
                             .addComponent(LabelSimulasiAkhirPresentaseAbsen)
-                            .addComponent(FormSimulasiAkhirPresentaseAbsen, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                            .addComponent(FormSimulasiAkhirPresentaseAbsen)
                             .addComponent(LabelSimulasiAkhirPresentaseUTS)
-                            .addComponent(FormSimulasiAkhirPresentaseUTS, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                            .addComponent(FormSimulasiAkhirPresentaseUTS)
                             .addComponent(LabelSimulasiAkhirPresentaseUAS)
-                            .addComponent(FormSimulasiAkhirPresentaseUAS, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                            .addComponent(FormSimulasiAkhirKodeMataKuliah, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                            .addComponent(FormSimulasiAkhirPresentaseUAS)
+                            .addComponent(FormSimulasiAkhirKodeMataKuliah)
                             .addComponent(FormSimulasiAkhirNamaMataKuliah, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(LabelSimulasiAkhirPresentaseAbsen1)
                             .addComponent(FormSimulasiAkhirPresentaseTugas))
@@ -1569,6 +1672,93 @@ public class FormUtama extends javax.swing.JFrame
 
         PanelContent.add(PanelAddSimulasiAkhir, "card11");
 
+        LabelTitleAddSimulasiKasus.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LabelTitleAddSimulasiKasus.setText("Tambah Simulasi Kasus");
+
+        LabelSimulasiKasusOperator.setText("Operator");
+
+        LabelSimulasiKasusMetodePembayaran.setText("Metode Pembayaran");
+
+        LabelSimulasiKasusNoTelp.setText("No Telp");
+
+        LabelSimulasiKasusNominal.setText("Nominal");
+
+        LabelSimulasiKasusStatus.setText("Status");
+
+        ButtonCancelSimulasiKasus.setText("Cancel");
+        ButtonCancelSimulasiKasus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCancelSimulasiKasusActionPerformed(evt);
+            }
+        });
+
+        ButtonSimpanSimulasiKasus.setText("Simpan");
+
+        javax.swing.GroupLayout PanelAddSimulasiKasusLayout = new javax.swing.GroupLayout(PanelAddSimulasiKasus);
+        PanelAddSimulasiKasus.setLayout(PanelAddSimulasiKasusLayout);
+        PanelAddSimulasiKasusLayout.setHorizontalGroup(
+            PanelAddSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelAddSimulasiKasusLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(PanelAddSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddSimulasiKasusLayout.createSequentialGroup()
+                        .addComponent(ButtonCancelSimulasiKasus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ButtonSimpanSimulasiKasus)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PanelAddSimulasiKasusLayout.createSequentialGroup()
+                        .addGroup(PanelAddSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LabelSimulasiKasusNoTelp)
+                            .addComponent(LabelSimulasiKasusOperator)
+                            .addComponent(LabelTitleAddSimulasiKasus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(FormSimulasiKasusOperator, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(FormSimulasiKasusNoTelp))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addGroup(PanelAddSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelSimulasiKasusStatus)
+                            .addComponent(FormSimulasiKasusStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelSimulasiKasusMetodePembayaran)
+                            .addComponent(FormSimulasiKasusMetodePembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelSimulasiKasusNominal)
+                            .addComponent(FormSimulasiKasusNominal, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(82, 82, 82))))
+        );
+        PanelAddSimulasiKasusLayout.setVerticalGroup(
+            PanelAddSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAddSimulasiKasusLayout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addComponent(LabelTitleAddSimulasiKasus)
+                .addGap(40, 40, 40)
+                .addGroup(PanelAddSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAddSimulasiKasusLayout.createSequentialGroup()
+                        .addComponent(LabelSimulasiKasusOperator)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiKasusOperator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelSimulasiKasusNoTelp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(FormSimulasiKasusNoTelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelAddSimulasiKasusLayout.createSequentialGroup()
+                        .addComponent(LabelSimulasiKasusNominal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiKasusNominal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelSimulasiKasusMetodePembayaran)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiKasusMetodePembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelSimulasiKasusStatus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FormSimulasiKasusStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(95, 95, 95)
+                .addGroup(PanelAddSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonCancelSimulasiKasus)
+                    .addComponent(ButtonSimpanSimulasiKasus))
+                .addGap(206, 206, 206))
+        );
+
+        PanelContent.add(PanelAddSimulasiKasus, "card12");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1588,6 +1778,7 @@ public class FormUtama extends javax.swing.JFrame
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonDataMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDataMahasiswaActionPerformed
@@ -1863,6 +2054,30 @@ public class FormUtama extends javax.swing.JFrame
         _simulasiNilaiTextFieldHandler.PreventFieldHaveNonNumberCharacter(evt, SimulasiNilai.Kehadiran, 2);
     }//GEN-LAST:event_FormSimulasiAkhirKehadiranKeyTyped
 
+    private void ButtonSimulasiKasusHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusHapusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonSimulasiKasusHapusActionPerformed
+
+    private void ButtonSimulasiKasusEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusEditActionPerformed
+        // TODO add your handling code here:
+        NavigateTo(PanelAddSimulasiKasus);
+        LabelTitleAddSimulasiKasus.setText("Edit Simulasi Akhir");
+        ButtonSimulasiKasus.requestFocusInWindow();
+    }//GEN-LAST:event_ButtonSimulasiKasusEditActionPerformed
+
+    private void ButtonSimulasiKasusTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusTambahActionPerformed
+        // TODO add your handling code here:
+        NavigateTo(PanelAddSimulasiKasus);
+        LabelTitleAddSimulasiKasus.setText("Tambah Simulasi Akhir");
+        ButtonSimulasiKasus.requestFocusInWindow();
+    }//GEN-LAST:event_ButtonSimulasiKasusTambahActionPerformed
+
+    private void ButtonCancelSimulasiKasusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelSimulasiKasusActionPerformed
+        // TODO add your handling code here:
+        CancelConfirmation(_simulasiNilaiTextFieldHandler, PanelSimulasiKasus);
+        ButtonSimulasiKasus.requestFocusInWindow();
+    }//GEN-LAST:event_ButtonCancelSimulasiKasusActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1899,6 +2114,7 @@ public class FormUtama extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonCancelSimulasiKasus;
     private javax.swing.JButton ButtonDataMahasiswa;
     private javax.swing.JButton ButtonDataMahasiswa1;
     private javax.swing.JButton ButtonDataMatkul;
@@ -1921,6 +2137,7 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JButton ButtonNilaiTambah;
     private javax.swing.JButton ButtonSearchMatkul;
     private javax.swing.JButton ButtonSearchNilai;
+    private javax.swing.JButton ButtonSimpanSimulasiKasus;
     private javax.swing.JButton ButtonSimulasiAkhir;
     private javax.swing.JButton ButtonSimulasiAkhirCancel;
     private javax.swing.JButton ButtonSimulasiAkhirEdit;
@@ -1928,6 +2145,9 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JButton ButtonSimulasiAkhirSimpan;
     private javax.swing.JButton ButtonSimulasiAkhirTambah;
     private javax.swing.JButton ButtonSimulasiKasus;
+    private javax.swing.JButton ButtonSimulasiKasusEdit;
+    private javax.swing.JButton ButtonSimulasiKasusHapus;
+    private javax.swing.JButton ButtonSimulasiKasusTambah;
     private com.toedter.calendar.JDateChooser FormChooserTanggalLahir;
     private javax.swing.JFormattedTextField FormNilaiAngkatan;
     private javax.swing.JTextField FormNilaiKehadiran;
@@ -1953,6 +2173,11 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JTextField FormSimulasiAkhirTugas3;
     private javax.swing.JTextField FormSimulasiAkhirUAS;
     private javax.swing.JTextField FormSimulasiAkhirUTS;
+    private javax.swing.JComboBox<String> FormSimulasiKasusMetodePembayaran;
+    private javax.swing.JTextField FormSimulasiKasusNoTelp;
+    private javax.swing.JComboBox<String> FormSimulasiKasusNominal;
+    private javax.swing.JComboBox<String> FormSimulasiKasusOperator;
+    private javax.swing.JComboBox<String> FormSimulasiKasusStatus;
     private javax.swing.JTextArea FromMahasiswaAlamat;
     private javax.swing.JTextField FromMahasiswaNIM;
     private javax.swing.JTextField FromMahasiswaNama;
@@ -1992,10 +2217,16 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JLabel LabelSimulasiAkhirTugas3;
     private javax.swing.JLabel LabelSimulasiAkhirUAS;
     private javax.swing.JLabel LabelSimulasiAkhirUTS;
+    private javax.swing.JLabel LabelSimulasiKasusMetodePembayaran;
+    private javax.swing.JLabel LabelSimulasiKasusNoTelp;
+    private javax.swing.JLabel LabelSimulasiKasusNominal;
+    private javax.swing.JLabel LabelSimulasiKasusOperator;
+    private javax.swing.JLabel LabelSimulasiKasusStatus;
     private javax.swing.JLabel LabelTitleAddMahasiswa;
     private javax.swing.JLabel LabelTitleAddMataKuliah;
     private javax.swing.JLabel LabelTitleAddNilai;
     private javax.swing.JLabel LabelTitleAddSimulasiAkhir;
+    private javax.swing.JLabel LabelTitleAddSimulasiKasus;
     private javax.swing.JLabel LabelTitleHome;
     private javax.swing.JLabel LabelTitleMahasiswa;
     private javax.swing.JLabel LabelTitleMataKuliah;
@@ -2006,6 +2237,7 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JPanel PanelAddMataKuliah;
     private javax.swing.JPanel PanelAddNilai;
     private javax.swing.JPanel PanelAddSimulasiAkhir;
+    private javax.swing.JPanel PanelAddSimulasiKasus;
     private javax.swing.JPanel PanelContent;
     private javax.swing.JPanel PanelDataNilai;
     private javax.swing.JPanel PanelHomepage;
@@ -2020,9 +2252,9 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JTable TableMatkul;
     private javax.swing.JTable TableNilai;
     private javax.swing.JTable TableSimulasiAkhir;
+    private javax.swing.JTable TableSimulasiKasus;
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JCalendar jCalendar2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2034,5 +2266,7 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JLabel logo;
     // End of variables declaration//GEN-END:variables
 }
