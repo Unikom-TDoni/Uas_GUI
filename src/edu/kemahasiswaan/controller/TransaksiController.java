@@ -34,7 +34,7 @@ public final class TransaksiController extends Controller<TransaksiRepository>
     {
         try
         {
-            Map<Transaksi, Object> validationResult = _validation.ValidateForm();
+            Map<Transaksi, Object> validationResult = _validation.validateFormCreate();
             if(validationResult.isEmpty()) return null;
             return new TransaksiResponse().GenerateResultFromQueryCreate(Repository.Create(validationResult), validationResult);
         }

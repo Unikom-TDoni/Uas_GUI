@@ -56,6 +56,24 @@ public final class TransaksiValidation extends Validation implements
         result.put(Transaksi.id, _tableHandler.GetValueAt(Transaksi.id, _tableHandler.GetSelectedRowIndex()));
         return result;
     }
+    
+    public Map<Transaksi, Object> validateFormCreate(){
+        String nullField = _textFieldHandler.GetEmptyFieldName();
+        if(nullField.length() != 0)
+        {
+            ShowErrorValidationMessage("Text field " + nullField + "masih kosong silahkan isi terlebih dahulu");
+            return Collections.emptyMap();
+        }
+        
+        Map<Transaksi, Object> result = new HashMap<>(_textFieldHandler.GetTextFields());
+        result.put(Transaksi.MetodePembayaran, _comboBoxHandler.GetSelectedItem(Transaksi.MetodePembayaran));
+        result.put(Transaksi.Nominal, _comboBoxHandler.GetSelectedItem(Transaksi.Nominal));
+        result.put(Transaksi.Operator, _comboBoxHandler.GetSelectedItem(Transaksi.Operator));
+        result.put(Transaksi.Status, _comboBoxHandler.GetSelectedItem(Transaksi.Status));
+        result.put(Transaksi.Tanggal, DateHelper.GetCurrentDate());
+        return result;
+    }
+    
 
     public Map<Transaksi, Object> ValidateFormUpdate(){
         String nullField = _textFieldHandler.GetEmptyFieldName();
