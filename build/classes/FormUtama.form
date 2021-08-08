@@ -36,7 +36,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
               <Component id="PanelMenu" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="PanelContent" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -66,7 +66,7 @@
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="ButtonHomePage" alignment="0" max="32767" attributes="0"/>
-                      <Component id="ButtonDataMatkul" alignment="0" pref="156" max="32767" attributes="0"/>
+                      <Component id="ButtonDataMatkul" alignment="0" max="32767" attributes="0"/>
                       <Component id="ButtonDataNilai" alignment="0" max="32767" attributes="0"/>
                       <Component id="ButtonSimulasiAkhir" alignment="0" max="32767" attributes="0"/>
                       <Component id="ButtonSimulasiKasus" alignment="0" max="32767" attributes="0"/>
@@ -85,9 +85,9 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="logo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="ButtonHomePage" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ButtonDataMahasiswa" min="-2" max="-2" attributes="0"/>
@@ -99,9 +99,9 @@
                   <Component id="ButtonSimulasiAkhir" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ButtonSimulasiKasus" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="ButtonDataMahasiswa1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -164,6 +164,11 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="logo">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/assets/logo 1.png"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
