@@ -315,8 +315,8 @@ public class FormUtama extends javax.swing.JFrame
         {
             if (evt.getStateChange() == ItemEvent.SELECTED) 
             {
-                var rowIndex = _mahasiswaTableHandler.GetRowIndex(Mahasiswa.Nama, FormNilaiNama.getSelectedItem());
-                var value = _mahasiswaTableHandler.GetValueAt(Mahasiswa.Nim, rowIndex);
+                int rowIndex = _mahasiswaTableHandler.GetRowIndex(Mahasiswa.Nama, FormNilaiNama.getSelectedItem());
+                Object value = _mahasiswaTableHandler.GetValueAt(Mahasiswa.Nim, rowIndex);
                 FormNilaiNim.setText(value.toString());
             }
         });
@@ -325,8 +325,8 @@ public class FormUtama extends javax.swing.JFrame
         {
             if (evt.getStateChange() == ItemEvent.SELECTED) 
             {
-                var rowIndex = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormNilaiNamaMataKuliah.getSelectedItem());
-                var value = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndex);
+                int rowIndex = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormNilaiNamaMataKuliah.getSelectedItem());
+                Object value = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndex);
                 FormNilaiKodeMataKuliah.setText(value.toString());
             }
         });
@@ -335,8 +335,8 @@ public class FormUtama extends javax.swing.JFrame
         {
             if (evt.getStateChange() == ItemEvent.SELECTED) 
             {
-                var rowIndex = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormSimulasiAkhirNamaMataKuliah.getSelectedItem());
-                var value = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndex);
+                int rowIndex = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormSimulasiAkhirNamaMataKuliah.getSelectedItem());
+                Object value = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndex);
                 FormSimulasiAkhirKodeMataKuliah.setText(value.toString());
             }
         });
@@ -1900,12 +1900,12 @@ public class FormUtama extends javax.swing.JFrame
 
     private void ButtonNilaiTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiTambahActionPerformed
         NavigateTo(PanelAddNilai);
-        var rowIndex = _mahasiswaTableHandler.GetRowIndex(Mahasiswa.Nama, FormNilaiNama.getItemAt(1));
-        var value = _mahasiswaTableHandler.GetValueAt(Mahasiswa.Nim, rowIndex);
+        int rowIndex = _mahasiswaTableHandler.GetRowIndex(Mahasiswa.Nama, FormNilaiNama.getItemAt(1));
+        Object value = _mahasiswaTableHandler.GetValueAt(Mahasiswa.Nim, rowIndex);
         FormNilaiNim.setText(value.toString());
         
-        var rowIndexM = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormNilaiNamaMataKuliah.getItemAt(1));
-        var valueM = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndexM);
+        int rowIndexM = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormNilaiNamaMataKuliah.getItemAt(1));
+        Object valueM = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndexM);
         FormNilaiKodeMataKuliah.setText(valueM.toString());
         
         FormNilaiAngkatan.setText(String.valueOf(DateHelper.GetCurrentYear()));
@@ -1917,8 +1917,8 @@ public class FormUtama extends javax.swing.JFrame
     private void ButtonSimulasiAkhirTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirTambahActionPerformed
         NavigateTo(PanelAddSimulasiAkhir);
         
-        var rowIndex = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormSimulasiAkhirNamaMataKuliah.getItemAt(1));
-        var value = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndex);
+        int rowIndex = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormSimulasiAkhirNamaMataKuliah.getItemAt(1));
+        Object value = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndex);
         FormSimulasiAkhirKodeMataKuliah.setText(value.toString());
         
         _simulasiNilaiFormState = FormState.Add;
@@ -1949,13 +1949,13 @@ public class FormUtama extends javax.swing.JFrame
         if(rowIndex == -1)
             return;
         
-        var value = _nilaiMahasiswaTableHandler.GetValueAt(NilaiMahasiswa.NamaMhs, rowIndex);
-        var namaMhs = _mahasiswaTableHandler.GetValueAt(Mahasiswa.Nim, _mahasiswaTableHandler.GetRowIndex(Mahasiswa.Nama, value));
+        Object value = _nilaiMahasiswaTableHandler.GetValueAt(NilaiMahasiswa.NamaMhs, rowIndex);
+        Object namaMhs = _mahasiswaTableHandler.GetValueAt(Mahasiswa.Nim, _mahasiswaTableHandler.GetRowIndex(Mahasiswa.Nama, value));
         FormNilaiNama.setSelectedItem(value);
         FormNilaiNim.setText(namaMhs.toString());
         
-        var valueM = _nilaiMahasiswaTableHandler.GetValueAt(NilaiMahasiswa.NamaMk, rowIndex);
-        var kodeMk = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, valueM));
+        Object valueM = _nilaiMahasiswaTableHandler.GetValueAt(NilaiMahasiswa.NamaMk, rowIndex);
+        Object kodeMk = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, valueM));
         FormNilaiNamaMataKuliah.setSelectedItem(valueM);
         FormNilaiKodeMataKuliah.setText(kodeMk.toString());
         
