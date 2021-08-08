@@ -164,11 +164,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="logo">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/aris/NetBeansProjects/latihan/assets/logo 1.png"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -2213,6 +2208,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Simpan"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSimpanSimulasiKasusActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

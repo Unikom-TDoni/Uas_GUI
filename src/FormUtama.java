@@ -13,6 +13,7 @@ import edu.kemahasiswaan.validation.*;
 import edu.kemahasiswaan.state.FormState;
 import edu.kemahasiswaan.response.Response;
 import edu.kemahasiswaan.helper.DateHelper;
+import java.util.HashMap;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,32 +29,41 @@ import edu.kemahasiswaan.helper.DateHelper;
 public class FormUtama extends javax.swing.JFrame 
 {
     private FormState _mahasiswaFormState;
+    private FormState _transaksiFormState;
     private FormState _mataKuliahFormState;
     private FormState _nilaiMahasiswaFormState;
     private FormState _simulasiNilaiFormState;
     
     private MahasiswaValidation _mahasiswaValidation;
+    private TransaksiValidation _transaksiValidation;
     private MataKuliahValidation _mataKuliahValidation;
-    private NilaiMahasiswaValidation _nilaiMahasiswaValidation;
     private SimulasiNilaiValidation _simulasiNilaiValidation;
-
+    private NilaiMahasiswaValidation _nilaiMahasiswaValidation;
+    
     private MahasiswaController _mahasiswaController;
+    private TransaksiController _transaksiController;
     private MataKuliahController _mataKuliahController;
     private SimulasiNilaiController _simulasiNilaiController;
     private NilaiMahasiswaController _nilaiMahasiswaController;
     
     private JTableHandler<Mahasiswa> _mahasiswaTableHandler;
+    private JTableHandler<Transaksi> _transaksiTableHandler;
     private JTableHandler<MataKuliah> _mataKuliahTableHandler;
     private JTableHandler<SimulasiNilai> _simulasiNilaiTableHandler;
     private JTableHandler<NilaiMahasiswa> _nilaiMahasiswaTableHandler;
     
     private JTextFieldHandler<Mahasiswa> _mahasiswaTextFieldHandler;
+    private JTextFieldHandler<Transaksi> _transaksiTextFieldHandler;
     private JTextFieldHandler<MataKuliah> _mataKuliahTextFieldHandler;
     private JTextFieldHandler<SimulasiNilai> _simulasiNilaiTextFieldHandler;
     private JTextFieldHandler<NilaiMahasiswa> _nilaiMahasiswaTextFieldHandler;
     
+    private JComboBoxHandler<Transaksi> _transaksiComboBoxHandler;
     private JComboBoxHandler<SimulasiNilai> _simulasiNilaiComboBoxHandler;
     private JComboBoxHandler<NilaiMahasiswa> _nilaiMahasiswaComboBoxHandler;
+    
+    private final HashMap<String, LinkedList<Integer>> _operatorNilaiData;
+    
     
     public FormUtama() 
     {
@@ -62,8 +72,9 @@ public class FormUtama extends javax.swing.JFrame
         InitializeFormValidation();
         InitializeController();
         LoadTable();
-        LoadComboBoxNilaiMahasiswa();
-        LoadComboBoxSimulasiNilai();
+        
+        _operatorNilaiData = (HashMap<String, LinkedList<Integer>>) _transaksiController.SelectAllOperatorNominal().GetResult().getFirst().get(Transaksi.Operator);
+        LoadComboBox();
         LoadComboBoxEvent();
     }
     
@@ -86,6 +97,13 @@ public class FormUtama extends javax.swing.JFrame
         _simulasiNilaiComboBoxHandler = new JComboBoxHandler(new LinkedHashMap<>() {{
             put(SimulasiNilai.NamaMk, FormSimulasiAkhirNamaMataKuliah);
         }});
+        
+        _transaksiComboBoxHandler = new JComboBoxHandler(new LinkedHashMap<>() {{
+            put(Transaksi.Operator, FormSimulasiKasusOperator);
+            put(Transaksi.Nominal, FormSimulasiKasusNominal);
+            put(Transaksi.MetodePembayaran, FormSimulasiKasusMetodePembayaran);
+            put(Transaksi.Status, FormSimulasiKasusStatus);
+        }});
     }
     
     private void InitializeTableHandler()
@@ -98,6 +116,8 @@ public class FormUtama extends javax.swing.JFrame
         
         _simulasiNilaiTableHandler = new JTableHandler<>(TableSimulasiAkhir, SimulasiNilai.No);
         TableSimulasiAkhir.removeColumn(TableSimulasiAkhir.getColumnModel().getColumn(0));
+        
+        _transaksiTableHandler = new JTableHandler<>(TableSimulasiKasus, Transaksi.id);
     }
 
     private void InitializeTextFieldHandler()
@@ -143,12 +163,18 @@ public class FormUtama extends javax.swing.JFrame
             put(SimulasiNilai.Uts, FormSimulasiAkhirUTS);
             put(SimulasiNilai.Uas, FormSimulasiAkhirUAS);
         }});
+        
+        _transaksiTextFieldHandler = new JTextFieldHandler<>(new LinkedHashMap<>()
+        {{
+            put(Transaksi.NomorTelp, FormSimulasiKasusNoTelp);
+        }});
     }
 
     private void InitializeFormValidation()
     {
         _mahasiswaValidation = new MahasiswaValidation(_mahasiswaTableHandler, _mahasiswaTextFieldHandler);
         _mataKuliahValidation = new MataKuliahValidation(_mataKuliahTableHandler, _mataKuliahTextFieldHandler);
+        _transaksiValidation = new TransaksiValidation(_transaksiTableHandler, _transaksiTextFieldHandler, _transaksiComboBoxHandler);
         _simulasiNilaiValidation = new SimulasiNilaiValidation(_simulasiNilaiTableHandler, _simulasiNilaiTextFieldHandler, _simulasiNilaiComboBoxHandler);
         _nilaiMahasiswaValidation = new NilaiMahasiswaValidation(_nilaiMahasiswaTableHandler, _nilaiMahasiswaTextFieldHandler, _nilaiMahasiswaComboBoxHandler);
     }
@@ -156,6 +182,7 @@ public class FormUtama extends javax.swing.JFrame
     private void InitializeController()
     {
         _mahasiswaController = new MahasiswaController(_mahasiswaValidation);
+        _transaksiController = new TransaksiController(_transaksiValidation);
         _mataKuliahController = new MataKuliahController(_mataKuliahValidation);
         _simulasiNilaiController = new SimulasiNilaiController(_simulasiNilaiValidation);
         _nilaiMahasiswaController = new NilaiMahasiswaController(_nilaiMahasiswaValidation);
@@ -214,21 +241,46 @@ public class FormUtama extends javax.swing.JFrame
          
         LinkedList<Map<SimulasiNilai, Object>> tableSimulasiNilai = _simulasiNilaiController.SelectAll().GetResult();
         _simulasiNilaiTableHandler.Load(tableSimulasiNilai);
+        
+        LinkedList<Map<Transaksi, Object>> tableTransaksi = _transaksiController.SelectAll().GetResult();
+        _transaksiTableHandler.Load(tableTransaksi);
+    }
+    
+    private void LoadComboBox()
+    {
+        LoadComboBoxNilaiMahasiswa();
+        LoadComboBoxSimulasiNilai();
+        LoadComboBoxTransaksi();
+        LoadNominalComboBox();
     }
     
     private void LoadComboBoxNilaiMahasiswa()
     {
-        LinkedList<Object> _dataMahasiswa = _mahasiswaTableHandler.GetColumnValue(Mahasiswa.Nama);
-        LinkedList<Object> _dataMataKuliah = _mataKuliahTableHandler.GetColumnValue(MataKuliah.Nama);
+        LinkedList<Object> dataMahasiswa = _mahasiswaTableHandler.GetColumnValue(Mahasiswa.Nama);
+        LinkedList<Object> dataMataKuliah = _mataKuliahTableHandler.GetColumnValue(MataKuliah.Nama);
         
-        _nilaiMahasiswaComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(NilaiMahasiswa.NamaMhs, _dataMahasiswa));
-        _nilaiMahasiswaComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(NilaiMahasiswa.NamaMk, _dataMataKuliah));
+        _nilaiMahasiswaComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(NilaiMahasiswa.NamaMhs, dataMahasiswa));
+        _nilaiMahasiswaComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(NilaiMahasiswa.NamaMk, dataMataKuliah));
     }
     
     private void LoadComboBoxSimulasiNilai()
     {
-        LinkedList<Object> _dataMataKuliah = _mataKuliahTableHandler.GetColumnValue(MataKuliah.Nama);
-        _simulasiNilaiComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(SimulasiNilai.NamaMk, _dataMataKuliah));
+        LinkedList<Object> dataMataKuliah = _mataKuliahTableHandler.GetColumnValue(MataKuliah.Nama);
+        _simulasiNilaiComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(SimulasiNilai.NamaMk, dataMataKuliah));
+    }
+    
+    private void LoadComboBoxTransaksi(){
+        _transaksiComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(Transaksi.Operator, new LinkedList<>(_operatorNilaiData.keySet())));
+        
+        LinkedList<Object> result = (LinkedList<Object>)_transaksiController.SelectAllMetodePembayaran().GetResult().getFirst().get(Transaksi.MetodePembayaran);
+        _transaksiComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(Transaksi.MetodePembayaran,  result));
+        
+        _transaksiComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(Transaksi.Status,  new LinkedList<Object>() {{add("Lunas"); add("Belum Lunas");}}));
+    }
+    
+    private void LoadNominalComboBox()
+    {
+        _transaksiComboBoxHandler.Load(new AbstractMap.SimpleEntry<>(Transaksi.Nominal, new LinkedList<>(_operatorNilaiData.get(_transaksiComboBoxHandler.GetSelectedItem(Transaksi.Operator)))));
     }
     
     public void NavigateTo(JPanel Destination)
@@ -286,6 +338,14 @@ public class FormUtama extends javax.swing.JFrame
                 var rowIndex = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormSimulasiAkhirNamaMataKuliah.getSelectedItem());
                 var value = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndex);
                 FormSimulasiAkhirKodeMataKuliah.setText(value.toString());
+            }
+        });
+        
+        FormSimulasiKasusOperator.addItemListener((ItemEvent evt) -> 
+        {
+            if (evt.getStateChange() == ItemEvent.SELECTED) 
+            {
+                LoadNominalComboBox();
             }
         });
     }
@@ -509,8 +569,6 @@ public class FormUtama extends javax.swing.JFrame
                 ButtonDataMahasiswa1ActionPerformed(evt);
             }
         });
-
-        logo.setIcon(new javax.swing.ImageIcon("/Users/aris/NetBeansProjects/latihan/assets/logo 1.png")); // NOI18N
 
         javax.swing.GroupLayout PanelMenuLayout = new javax.swing.GroupLayout(PanelMenu);
         PanelMenu.setLayout(PanelMenuLayout);
@@ -1693,6 +1751,11 @@ public class FormUtama extends javax.swing.JFrame
         });
 
         ButtonSimpanSimulasiKasus.setText("Simpan");
+        ButtonSimpanSimulasiKasus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSimpanSimulasiKasusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelAddSimulasiKasusLayout = new javax.swing.GroupLayout(PanelAddSimulasiKasus);
         PanelAddSimulasiKasus.setLayout(PanelAddSimulasiKasusLayout);
@@ -1837,11 +1900,11 @@ public class FormUtama extends javax.swing.JFrame
 
     private void ButtonNilaiTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiTambahActionPerformed
         NavigateTo(PanelAddNilai);
-        var rowIndex = _mahasiswaTableHandler.GetRowIndex(Mahasiswa.Nama, FormNilaiNama.getSelectedItem());
+        var rowIndex = _mahasiswaTableHandler.GetRowIndex(Mahasiswa.Nama, FormNilaiNama.getItemAt(1));
         var value = _mahasiswaTableHandler.GetValueAt(Mahasiswa.Nim, rowIndex);
         FormNilaiNim.setText(value.toString());
         
-        var rowIndexM = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormNilaiNamaMataKuliah.getSelectedItem());
+        var rowIndexM = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormNilaiNamaMataKuliah.getItemAt(1));
         var valueM = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndexM);
         FormNilaiKodeMataKuliah.setText(valueM.toString());
         
@@ -1854,7 +1917,7 @@ public class FormUtama extends javax.swing.JFrame
     private void ButtonSimulasiAkhirTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirTambahActionPerformed
         NavigateTo(PanelAddSimulasiAkhir);
         
-        var rowIndex = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormSimulasiAkhirNamaMataKuliah.getSelectedItem());
+        var rowIndex = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormSimulasiAkhirNamaMataKuliah.getItemAt(1));
         var value = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndex);
         FormSimulasiAkhirKodeMataKuliah.setText(value.toString());
         
@@ -1878,17 +1941,23 @@ public class FormUtama extends javax.swing.JFrame
         LabelTitleAddMataKuliah.setText("Edit Mata Kuliah");
         ButtonDataMatkul.requestFocusInWindow();
     }//GEN-LAST:event_ButtonMatkulEditActionPerformed
-
+    
     private void ButtonNilaiEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiEditActionPerformed
         UpdateButtonCallback(_nilaiMahasiswaTableHandler, _nilaiMahasiswaTextFieldHandler, PanelAddNilai);
         
-        var rowIndex = _mahasiswaTableHandler.GetRowIndex(Mahasiswa.Nama, FormNilaiNama.getSelectedItem());
-        var value = _mahasiswaTableHandler.GetValueAt(Mahasiswa.Nim, rowIndex);
-        FormNilaiNim.setText(value.toString());
+        int rowIndex = _nilaiMahasiswaTableHandler.GetSelectedRowIndex();
+        if(rowIndex == -1)
+            return;
         
-        var rowIndexM = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormNilaiNamaMataKuliah.getSelectedItem());
-        var valueM = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndexM);
-        FormNilaiKodeMataKuliah.setText(valueM.toString());
+        var value = _nilaiMahasiswaTableHandler.GetValueAt(NilaiMahasiswa.NamaMhs, rowIndex);
+        var namaMhs = _mahasiswaTableHandler.GetValueAt(Mahasiswa.Nim, _mahasiswaTableHandler.GetRowIndex(Mahasiswa.Nama, value));
+        FormNilaiNama.setSelectedItem(value);
+        FormNilaiNim.setText(namaMhs.toString());
+        
+        var valueM = _nilaiMahasiswaTableHandler.GetValueAt(NilaiMahasiswa.NamaMk, rowIndex);
+        var kodeMk = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, valueM));
+        FormNilaiNamaMataKuliah.setSelectedItem(valueM);
+        FormNilaiKodeMataKuliah.setText(kodeMk.toString());
         
         FormNilaiAngkatan.setText(String.valueOf(DateHelper.GetCurrentYear()));
         
@@ -1900,9 +1969,13 @@ public class FormUtama extends javax.swing.JFrame
     private void ButtonSimulasiAkhirEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirEditActionPerformed
         UpdateButtonCallback(_simulasiNilaiTableHandler, _simulasiNilaiTextFieldHandler, PanelAddSimulasiAkhir);
         
-        var rowIndex = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormSimulasiAkhirNamaMataKuliah.getSelectedItem());
-        var value = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndex);
-        FormSimulasiAkhirKodeMataKuliah.setText(value.toString());
+        int rowIndex = _simulasiNilaiTableHandler.GetSelectedRowIndex();
+        if(rowIndex == -1)
+            return;
+        Object valueM = _simulasiNilaiTableHandler.GetValueAt(SimulasiNilai.NamaMk, rowIndex);
+        Object kodeMk = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, valueM));
+        FormSimulasiAkhirNamaMataKuliah.setSelectedItem(valueM);
+        FormSimulasiAkhirKodeMataKuliah.setText(kodeMk.toString());
         
         _simulasiNilaiFormState = FormState.Update;
         LabelTitleAddSimulasiAkhir.setText("Edit Simulasi Akhir");
@@ -2055,11 +2128,22 @@ public class FormUtama extends javax.swing.JFrame
     }//GEN-LAST:event_FormSimulasiAkhirKehadiranKeyTyped
 
     private void ButtonSimulasiKasusHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusHapusActionPerformed
-        // TODO add your handling code here:
+        DeleteButtonCallback(_transaksiController.Delete(), _transaksiTableHandler);
     }//GEN-LAST:event_ButtonSimulasiKasusHapusActionPerformed
 
     private void ButtonSimulasiKasusEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusEditActionPerformed
         // TODO add your handling code here:
+        UpdateButtonCallback(_transaksiTableHandler, _transaksiTextFieldHandler, PanelAddSimulasiKasus);
+        
+        int currentRowIndex = _transaksiTableHandler.GetSelectedRowIndex();
+        if(currentRowIndex == -1)
+            return;
+        FormSimulasiKasusOperator.setSelectedItem(_transaksiTableHandler.GetValueAt(Transaksi.Operator, currentRowIndex));
+        FormSimulasiKasusNominal.setSelectedItem(_transaksiTableHandler.GetValueAt(Transaksi.Nominal, currentRowIndex));
+        FormSimulasiKasusMetodePembayaran.setSelectedItem(_transaksiTableHandler.GetValueAt(Transaksi.MetodePembayaran, currentRowIndex));
+        FormSimulasiKasusStatus.setSelectedItem(_transaksiTableHandler.GetValueAt(Transaksi.Status, currentRowIndex));
+               
+        _transaksiFormState = FormState.Update;
         NavigateTo(PanelAddSimulasiKasus);
         LabelTitleAddSimulasiKasus.setText("Edit Simulasi Akhir");
         ButtonSimulasiKasus.requestFocusInWindow();
@@ -2068,6 +2152,8 @@ public class FormUtama extends javax.swing.JFrame
     private void ButtonSimulasiKasusTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusTambahActionPerformed
         // TODO add your handling code here:
         NavigateTo(PanelAddSimulasiKasus);
+        _transaksiTextFieldHandler.ResetAllText();
+        _transaksiFormState = FormState.Add;
         LabelTitleAddSimulasiKasus.setText("Tambah Simulasi Akhir");
         ButtonSimulasiKasus.requestFocusInWindow();
     }//GEN-LAST:event_ButtonSimulasiKasusTambahActionPerformed
@@ -2077,6 +2163,14 @@ public class FormUtama extends javax.swing.JFrame
         CancelConfirmation(_simulasiNilaiTextFieldHandler, PanelSimulasiKasus);
         ButtonSimulasiKasus.requestFocusInWindow();
     }//GEN-LAST:event_ButtonCancelSimulasiKasusActionPerformed
+
+    private void ButtonSimpanSimulasiKasusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimpanSimulasiKasusActionPerformed
+        if(_transaksiFormState == FormState.Update)
+            UpdateFormButtonCallback(_transaksiController.Update(), _transaksiTableHandler, _transaksiTextFieldHandler, PanelSimulasiKasus);
+        else
+            CreateFormButtonCallback(_transaksiController.Create(), _transaksiTableHandler, _transaksiTextFieldHandler, PanelSimulasiKasus);
+    
+    }//GEN-LAST:event_ButtonSimpanSimulasiKasusActionPerformed
 
     /**
      * @param args the command line arguments

@@ -38,7 +38,15 @@ public final class DateHelper
         }
     }
     
-    public static int GetCurrentYear(){
+    public static int GetCurrentYear()
+    {
         return Calendar.getInstance().get(Calendar.YEAR);
+    }
+    
+    public static java.sql.Date GetCurrentDate()
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat(DefaultDateFormat);
+        String formatedDate = formatter.format(Calendar.getInstance().getTime());
+        return GetSqlFormatedDate(formatedDate);
     }
 }

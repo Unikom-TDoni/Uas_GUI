@@ -73,6 +73,7 @@ public class NilaiMahasiswaValidation extends Validation implements
         result.put(NilaiMahasiswa.NamaMk, _comboBoxHandler.GetSelectedItem(NilaiMahasiswa.NamaMk));
         if(_tableHandler.GetSelectedRowIndex() != -1)
             result.put(NilaiMahasiswa.No, _tableHandler.GetValueAt(NilaiMahasiswa.No, _tableHandler.GetSelectedRowIndex()));
+        
         return result;
     }
 
