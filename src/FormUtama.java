@@ -305,8 +305,14 @@ public class FormUtama extends javax.swing.JFrame
     private void LogOutConfirmation(JPanel Destination)
     {
         int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin untuk keluar?", "Warning", JOptionPane.YES_NO_OPTION);
-        if(CancelDialog == JOptionPane.YES_OPTION)
-            NavigateTo(Destination);
+        if(CancelDialog == JOptionPane.YES_OPTION){
+            LoginFrame LoginFrame = new LoginFrame();
+            LoginFrame.setVisible(true);
+            this.setVisible(false);
+        }
+    }
+    private void DeleteConfirmation(JPanel Destination){
+        
     }
     
     private void LoadComboBoxEvent()
@@ -421,6 +427,8 @@ public class FormUtama extends javax.swing.JFrame
         ButtonSimulasiKasusHapus = new javax.swing.JButton();
         ButtonSimulasiKasusEdit = new javax.swing.JButton();
         ButtonSimulasiKasusTambah = new javax.swing.JButton();
+        FieldSimulasiKasusPencarian = new javax.swing.JTextField();
+        ButtonSimulasiKasusCari = new javax.swing.JButton();
         PanelAddMahasiswa = new javax.swing.JPanel();
         LabelTitleAddMahasiswa = new javax.swing.JLabel();
         ButtonMahasiswaSimpan = new javax.swing.JButton();
@@ -636,16 +644,20 @@ public class FormUtama extends javax.swing.JFrame
         LabelTitleHome.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         LabelTitleHome.setText("Home Page");
 
-        jLabel3.setText("Photo");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/doni.png"))); // NOI18N
 
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel4.setText("10119907");
 
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("T Doni Indrapasta");
 
-        jLabel6.setText("Photo");
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/aris.png"))); // NOI18N
 
+        jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel7.setText("Aris Prabowo");
 
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel8.setText("10119914");
 
         javax.swing.GroupLayout PanelHomepageLayout = new javax.swing.GroupLayout(PanelHomepage);
@@ -653,42 +665,49 @@ public class FormUtama extends javax.swing.JFrame
         PanelHomepageLayout.setHorizontalGroup(
             PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelHomepageLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
-                .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addGap(265, 265, 265))
-            .addGroup(PanelHomepageLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(282, 282, 282)
                 .addComponent(LabelTitleHome)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PanelHomepageLayout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelHomepageLayout.createSequentialGroup()
+                        .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelHomepageLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(118, 118, 118)
+                                .addComponent(jLabel6))
+                            .addGroup(PanelHomepageLayout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel5)
+                                .addGap(195, 195, 195)
+                                .addComponent(jLabel7)))
+                        .addContainerGap(167, Short.MAX_VALUE))
+                    .addGroup(PanelHomepageLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8)
+                        .addGap(225, 225, 225))))
         );
         PanelHomepageLayout.setVerticalGroup(
             PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelHomepageLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(46, 46, 46)
                 .addComponent(LabelTitleHome)
-                .addGap(143, 143, 143)
+                .addGap(60, 60, 60)
                 .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelHomepageLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4))
-                    .addGroup(PanelHomepageLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)))
-                .addContainerGap(364, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelHomepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel4))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         PanelContent.add(PanelHomepage, "card2");
@@ -1111,24 +1130,32 @@ public class FormUtama extends javax.swing.JFrame
             }
         });
 
+        ButtonSimulasiKasusCari.setText("Cari");
+        ButtonSimulasiKasusCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSimulasiKasusCariActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelSimulasiKasusLayout = new javax.swing.GroupLayout(PanelSimulasiKasus);
         PanelSimulasiKasus.setLayout(PanelSimulasiKasusLayout);
         PanelSimulasiKasusLayout.setHorizontalGroup(
             PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
-                .addGroup(PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addGroup(PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSimulasiKasusLayout.createSequentialGroup()
+                        .addComponent(FieldSimulasiKasusPencarian, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonSimulasiKasusCari)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ButtonSimulasiKasusHapus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ButtonSimulasiKasusEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ButtonSimulasiKasusTambah))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelSimulasiKasusLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelTitleSimulasiKasus))))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelTitleSimulasiKasus))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         PanelSimulasiKasusLayout.setVerticalGroup(
@@ -1136,14 +1163,21 @@ public class FormUtama extends javax.swing.JFrame
             .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(LabelTitleSimulasiKasus)
-                .addGap(24, 24, 24)
-                .addGroup(PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonSimulasiKasusHapus)
-                    .addComponent(ButtonSimulasiKasusEdit)
-                    .addComponent(ButtonSimulasiKasusTambah))
+                .addGroup(PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelSimulasiKasusLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ButtonSimulasiKasusHapus)
+                            .addComponent(ButtonSimulasiKasusEdit)
+                            .addComponent(ButtonSimulasiKasusTambah)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSimulasiKasusLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelSimulasiKasusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FieldSimulasiKasusPencarian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ButtonSimulasiKasusCari))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         PanelContent.add(PanelSimulasiKasus, "card7");
@@ -1692,7 +1726,7 @@ public class FormUtama extends javax.swing.JFrame
         });
 
         LayoutPresensi.setBackground(new java.awt.Color(244, 245, 246));
-        LayoutPresensi.setBorder(javax.swing.BorderFactory.createTitledBorder("Presensi"));
+        LayoutPresensi.setBorder(javax.swing.BorderFactory.createTitledBorder("Presentase"));
 
         LabelSimulasiAkhirPresentaseAbsen1.setText("Presentase Tugas");
 
@@ -2279,11 +2313,17 @@ public class FormUtama extends javax.swing.JFrame
     }//GEN-LAST:event_FormChooserTanggalLahirPropertyChange
 
     private void ButtonMahasiswaHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaHapusActionPerformed
-        DeleteButtonCallback(_mahasiswaController.Delete(), _mahasiswaTableHandler);
+        int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin untuk mengahapus data?", "Warning", JOptionPane.YES_NO_OPTION);
+        if(CancelDialog == JOptionPane.YES_OPTION){
+            DeleteButtonCallback(_mahasiswaController.Delete(), _mahasiswaTableHandler);
+        }
     }//GEN-LAST:event_ButtonMahasiswaHapusActionPerformed
 
     private void ButtonMatkulHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMatkulHapusActionPerformed
-        DeleteButtonCallback(_mataKuliahController.Delete(), _mataKuliahTableHandler);
+        int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin untuk mengahapus data?", "Warning", JOptionPane.YES_NO_OPTION);
+        if(CancelDialog == JOptionPane.YES_OPTION){
+            DeleteButtonCallback(_mataKuliahController.Delete(), _mataKuliahTableHandler);
+        }
     }//GEN-LAST:event_ButtonMatkulHapusActionPerformed
 
     private void ButtonMataKuliahSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMataKuliahSimpanActionPerformed
@@ -2365,7 +2405,10 @@ public class FormUtama extends javax.swing.JFrame
     }//GEN-LAST:event_FormSearchMahasiswaKeyTyped
 
     private void ButtonNilaiHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiHapusActionPerformed
-        DeleteButtonCallback(_nilaiMahasiswaController.Delete(), _nilaiMahasiswaTableHandler);
+        int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin untuk mengahapus data?", "Warning", JOptionPane.YES_NO_OPTION);
+        if(CancelDialog == JOptionPane.YES_OPTION){
+            DeleteButtonCallback(_nilaiMahasiswaController.Delete(), _nilaiMahasiswaTableHandler);
+        }
     }//GEN-LAST:event_ButtonNilaiHapusActionPerformed
 
     private void FormNilaiTugas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormNilaiTugas2ActionPerformed
@@ -2378,7 +2421,10 @@ public class FormUtama extends javax.swing.JFrame
 
     private void ButtonSimulasiAkhirHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirHapusActionPerformed
         // TODO add your handling code here:
-        DeleteButtonCallback(_simulasiNilaiController.Delete(), _simulasiNilaiTableHandler);
+        int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin untuk mengahapus data?", "Warning", JOptionPane.YES_NO_OPTION);
+        if(CancelDialog == JOptionPane.YES_OPTION){
+            DeleteButtonCallback(_simulasiNilaiController.Delete(), _simulasiNilaiTableHandler);
+        }
     }//GEN-LAST:event_ButtonSimulasiAkhirHapusActionPerformed
 
     private void FormSimulasiAkhirPresentaseTugasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormSimulasiAkhirPresentaseTugasKeyTyped
@@ -2390,7 +2436,10 @@ public class FormUtama extends javax.swing.JFrame
     }//GEN-LAST:event_FormSimulasiAkhirKehadiranKeyTyped
 
     private void ButtonSimulasiKasusHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusHapusActionPerformed
-        DeleteButtonCallback(_transaksiController.Delete(), _transaksiTableHandler);
+        int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin untuk mengahapus data?", "Warning", JOptionPane.YES_NO_OPTION);
+        if(CancelDialog == JOptionPane.YES_OPTION){
+            DeleteButtonCallback(_transaksiController.Delete(), _transaksiTableHandler);
+        }
     }//GEN-LAST:event_ButtonSimulasiKasusHapusActionPerformed
 
     private void ButtonSimulasiKasusEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusEditActionPerformed
@@ -2441,6 +2490,10 @@ public class FormUtama extends javax.swing.JFrame
     private void ButtonMahasiswaCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaCariActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtonMahasiswaCariActionPerformed
+
+    private void ButtonSimulasiKasusCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonSimulasiKasusCariActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2510,9 +2563,11 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JButton ButtonSimulasiAkhirSimpan;
     private javax.swing.JButton ButtonSimulasiAkhirTambah;
     private javax.swing.JButton ButtonSimulasiKasus;
+    private javax.swing.JButton ButtonSimulasiKasusCari;
     private javax.swing.JButton ButtonSimulasiKasusEdit;
     private javax.swing.JButton ButtonSimulasiKasusHapus;
     private javax.swing.JButton ButtonSimulasiKasusTambah;
+    private javax.swing.JTextField FieldSimulasiKasusPencarian;
     private com.toedter.calendar.JDateChooser FormChooserTanggalLahir;
     private javax.swing.JFormattedTextField FormNilaiAngkatan;
     private javax.swing.JTextField FormNilaiKehadiran;
