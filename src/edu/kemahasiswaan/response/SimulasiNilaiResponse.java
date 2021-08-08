@@ -95,7 +95,7 @@ public final class SimulasiNilaiResponse extends Response<SimulasiNilai>
         try
         {
             queryResult.next();
-            var result = GenerateTableCalculatorResult(validationResult);
+            Map<SimulasiNilai, Object> result = GenerateTableCalculatorResult(validationResult);
             result.put(SimulasiNilai.No, queryResult.getLong(1));
             Result.add(result);
         }

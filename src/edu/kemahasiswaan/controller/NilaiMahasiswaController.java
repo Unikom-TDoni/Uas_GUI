@@ -35,8 +35,7 @@ public final class NilaiMahasiswaController extends Controller<NilaiMahasiswaRep
         {
             Map<NilaiMahasiswa, Object> validationResult = _validation.ValidateForm();
             if(validationResult.isEmpty()) return null;
-            var queryResult = Repository.Create(validationResult);
-            return new NilaiMahasiswaResponse().GenerateResultFromQueryCreate(queryResult, validationResult);
+            return new NilaiMahasiswaResponse().GenerateResultFromQueryCreate(Repository.Create(validationResult), validationResult);
         }
         catch(SQLException exception)
         {
