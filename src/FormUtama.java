@@ -388,6 +388,7 @@ public class FormUtama extends javax.swing.JFrame
         ButtonMahasiswaTambah = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableMahasiswa = new javax.swing.JTable();
+        ButtonMahasiswaCari = new javax.swing.JButton();
         PanelMataKuliah = new javax.swing.JPanel();
         LabelTitleMataKuliah = new javax.swing.JLabel();
         SearchMatkul = new javax.swing.JTextField();
@@ -742,23 +743,33 @@ public class FormUtama extends javax.swing.JFrame
         });
         jScrollPane1.setViewportView(TableMahasiswa);
 
+        ButtonMahasiswaCari.setText("Cari");
+        ButtonMahasiswaCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMahasiswaCariActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelMahasiswaLayout = new javax.swing.GroupLayout(PanelMahasiswa);
         PanelMahasiswa.setLayout(PanelMahasiswaLayout);
         PanelMahasiswaLayout.setHorizontalGroup(
             PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelMahasiswaLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LabelTitleMahasiswa)
-                    .addGroup(PanelMahasiswaLayout.createSequentialGroup()
-                        .addComponent(FormSearchMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(245, 245, 245)
-                        .addComponent(ButtonMahasiswaHapus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonMahasiswaEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonMahasiswaTambah))
-                    .addComponent(jScrollPane1))
+                    .addGroup(PanelMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelMahasiswaLayout.createSequentialGroup()
+                            .addComponent(FormSearchMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonMahasiswaCari)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtonMahasiswaHapus)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonMahasiswaEdit)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonMahasiswaTambah))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         PanelMahasiswaLayout.setVerticalGroup(
@@ -771,10 +782,11 @@ public class FormUtama extends javax.swing.JFrame
                     .addComponent(FormSearchMahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButtonMahasiswaHapus)
                     .addComponent(ButtonMahasiswaEdit)
-                    .addComponent(ButtonMahasiswaTambah))
+                    .addComponent(ButtonMahasiswaTambah)
+                    .addComponent(ButtonMahasiswaCari))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         PanelContent.add(PanelMahasiswa, "card3");
@@ -1024,23 +1036,19 @@ public class FormUtama extends javax.swing.JFrame
         PanelSimulasiAkhir.setLayout(PanelSimulasiAkhirLayout);
         PanelSimulasiAkhirLayout.setHorizontalGroup(
             PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSimulasiAkhirLayout.createSequentialGroup()
+            .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addGroup(PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelSimulasiAkhirLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
-                                .addComponent(LabelTitleSimulasiAkhir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 557, Short.MAX_VALUE))
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(PanelSimulasiAkhirLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ButtonSimulasiAkhirHapus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ButtonSimulasiAkhirEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonSimulasiAkhirTambah)))
-                .addGap(24, 24, 24))
+                        .addComponent(ButtonSimulasiAkhirTambah))
+                    .addGroup(PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabelTitleSimulasiAkhir)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         PanelSimulasiAkhirLayout.setVerticalGroup(
             PanelSimulasiAkhirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2430,6 +2438,10 @@ public class FormUtama extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_FormNilaiNamaMataKuliahActionPerformed
 
+    private void ButtonMahasiswaCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMahasiswaCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonMahasiswaCariActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2473,6 +2485,7 @@ public class FormUtama extends javax.swing.JFrame
     private javax.swing.JButton ButtonDataNilai;
     private javax.swing.JButton ButtonHomePage;
     private javax.swing.JButton ButtonMahasiswaCancel;
+    private javax.swing.JButton ButtonMahasiswaCari;
     private javax.swing.JButton ButtonMahasiswaEdit;
     private javax.swing.JButton ButtonMahasiswaHapus;
     private javax.swing.JButton ButtonMahasiswaSimpan;
