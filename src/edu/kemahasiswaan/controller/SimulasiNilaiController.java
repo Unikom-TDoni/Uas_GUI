@@ -12,6 +12,7 @@ import edu.kemahasiswaan.table.SimulasiNilai;
 import edu.kemahasiswaan.response.SimulasiNilaiResponse;
 import edu.kemahasiswaan.repository.SimulasiNilaiRepository;
 import edu.kemahasiswaan.validation.SimulasiNilaiValidation;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -83,6 +84,8 @@ public final class SimulasiNilaiController extends Controller<SimulasiNilaiRepos
         {
             Map.Entry<SimulasiNilai, Object> validationResult = _validation.ValidateTable();
             if(validationResult.getKey() == null) return null;
+            int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah anda yakin untuk mengahapus data simulasi nilai yang anda pilih?", "Warning", JOptionPane.YES_NO_OPTION);
+            if(CancelDialog == JOptionPane.NO_OPTION) return null;
             Repository.Delete(validationResult);
             HashMap<SimulasiNilai, Object> validationResponseResult = new HashMap<>()
             {{

@@ -42,11 +42,11 @@ public class KalkulatorNilaiUtility
     {
         if(nilaiAkhir >= 80 && nilaiAkhir <= 100)
             return IndeksNilai.A;
-        else if(nilaiAkhir >= 68 && nilaiAkhir <= 79)
+        else if(nilaiAkhir >= 68 && nilaiAkhir < 80)
             return IndeksNilai.B;
-        else if(nilaiAkhir >= 56 && nilaiAkhir <= 67)
+        else if(nilaiAkhir >= 56 && nilaiAkhir < 68)
             return IndeksNilai.C;
-        else if(nilaiAkhir >= 45 && nilaiAkhir <= 55)
+        else if(nilaiAkhir >= 45 && nilaiAkhir < 56)
             return IndeksNilai.D;
         else
             return IndeksNilai.E;

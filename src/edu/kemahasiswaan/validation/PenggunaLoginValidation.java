@@ -31,7 +31,7 @@ public final class PenggunaLoginValidation extends Validation implements
         String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
-            ShowErrorValidationMessage("Text field " + nullField + "masih kosong silahkan isi terlebih dahulu");   
+            ShowErrorValidationMessage("Maaf, text field " + nullField + "masih kosong silahkan isi terlebih dahulu");   
             return Collections.emptyMap();
         }
         return _textFieldHandler.GetTextFields();

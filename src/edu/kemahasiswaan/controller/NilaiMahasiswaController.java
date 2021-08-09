@@ -12,6 +12,7 @@ import edu.kemahasiswaan.table.NilaiMahasiswa;
 import edu.kemahasiswaan.response.NilaiMahasiswaResponse;
 import edu.kemahasiswaan.repository.NilaiMahasiswaRepository;
 import edu.kemahasiswaan.validation.NilaiMahasiswaValidation;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -82,6 +83,8 @@ public final class NilaiMahasiswaController extends Controller<NilaiMahasiswaRep
         {
             Map.Entry<NilaiMahasiswa, Object> validationResult = _validation.ValidateTable();
             if(validationResult.getKey() == null) return null;
+            int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah anda yakin untuk mengahapus data nilai mahasiswa yang anda pilih?", "Warning", JOptionPane.YES_NO_OPTION);
+            if(CancelDialog == JOptionPane.NO_OPTION) return null;
             Repository.Delete(validationResult);
             HashMap<NilaiMahasiswa, Object> validationResponseResult = new HashMap<>()
             {{

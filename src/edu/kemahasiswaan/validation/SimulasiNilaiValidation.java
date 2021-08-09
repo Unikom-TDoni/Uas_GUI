@@ -44,7 +44,7 @@ public final class SimulasiNilaiValidation extends Validation implements
         String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
-            ShowErrorValidationMessage("Text field " + nullField + "masih kosong silahkan isi terlebih dahulu");
+            ShowErrorValidationMessage("Maaf, text field " + nullField + "masih kosong silahkan isi terlebih dahulu");
             return Collections.emptyMap();
         }
                
@@ -59,7 +59,7 @@ public final class SimulasiNilaiValidation extends Validation implements
         
         if(notValidNilaiField.length() != 0)
         {
-            ShowErrorValidationMessage("Maaf text field " + notValidNilaiField + "harus memiliki nilai kurang dari 100");
+            ShowErrorValidationMessage("Maaf, text field " + notValidNilaiField + "harus memiliki nilai kurang dari 100");
             return Collections.emptyMap();
         }
         
@@ -72,12 +72,12 @@ public final class SimulasiNilaiValidation extends Validation implements
         
         if(!isPresentaseNilaiValid)
         {
-            ShowErrorValidationMessage("Maaf total presentase tidak boleh lebih dari 100");
+            ShowErrorValidationMessage("Maaf, total presentase harus memiliki nilai 100");
             return Collections.emptyMap();
         }
         
         if(Integer.valueOf(result.get(SimulasiNilai.Kehadiran).toString())  > 14){
-            ShowErrorValidationMessage("Maaf maksimal kehadiran yang bisa anda dimasukan adalah 14");
+            ShowErrorValidationMessage("Maaf, maksimal kehadiran yang bisa anda masukan adalah 14");
             return Collections.emptyMap();
         }
         
@@ -93,7 +93,7 @@ public final class SimulasiNilaiValidation extends Validation implements
         int rowIndex = _tableHandler.GetSelectedRowIndex();
         if(!_tableHandler.IsRowValid(rowIndex))
         {
-            ShowErrorValidationMessage("Silahkan pilih baris table terlebih dahulu");
+            ShowErrorValidationMessage("Maaf, silahkan pilih baris pada tabel Simulasi Nilai terlebih dahulu");
             return new AbstractMap.SimpleEntry<>(null, null);
         }
         return new AbstractMap.SimpleEntry<>((SimulasiNilai)_tableHandler.TableColumnKey, _tableHandler.GetValueAt(_tableHandler.TableColumnKey, rowIndex));
@@ -104,7 +104,7 @@ public final class SimulasiNilaiValidation extends Validation implements
         int result = 0;
         for (String item : presentaseTeks)
             result += Integer.valueOf(item);
-        return result <= 100;
+        return result == 100;
     }
     
     private String GetNotValidNilaiField(LinkedHashMap<SimulasiNilai, String> nilaiTextFields)

@@ -110,14 +110,14 @@ public final class JTableHandler<T extends Enum>
         return _table.getSelectedRow();
     }
     
-    public void FilterTable(String filter, T column)
+    public void FilterTable(String filter, T... column)
     {
         if(filter.trim().isEmpty()){
             _tableRowSorter.setRowFilter(null);
             return;
         }
-        System.out.println(filter);
-        _tableRowSorter.setRowFilter(RowFilter.regexFilter(filter, column.ordinal()));
+        
+        _tableRowSorter.setRowFilter(RowFilter.regexFilter(filter, column[0].ordinal(), column[1].ordinal()));
     }
     
     private Object[] GenerateNewRow(Map<T, Object> keyValueData)

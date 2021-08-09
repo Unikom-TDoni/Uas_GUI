@@ -43,7 +43,7 @@ public final class TransaksiValidation extends Validation implements
         String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
-            ShowErrorValidationMessage("Text field " + nullField + "masih kosong silahkan isi terlebih dahulu");
+            ShowErrorValidationMessage("Maaf, text field " + nullField + "masih kosong silahkan isi terlebih dahulu");
             return Collections.emptyMap();
         }
         
@@ -61,7 +61,7 @@ public final class TransaksiValidation extends Validation implements
         String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
-            ShowErrorValidationMessage("Text field " + nullField + "masih kosong silahkan isi terlebih dahulu");
+            ShowErrorValidationMessage("Maaf, text field " + nullField + "masih kosong silahkan isi terlebih dahulu");
             return Collections.emptyMap();
         }
         
@@ -79,7 +79,7 @@ public final class TransaksiValidation extends Validation implements
         String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
-            ShowErrorValidationMessage("Text field " + nullField + "masih kosong silahkan isi terlebih dahulu");
+            ShowErrorValidationMessage("Maaf, text field " + nullField + "masih kosong silahkan isi terlebih dahulu");
             return Collections.emptyMap();
         }
         
@@ -98,7 +98,7 @@ public final class TransaksiValidation extends Validation implements
         int rowIndex = _tableHandler.GetSelectedRowIndex();
         if(!_tableHandler.IsRowValid(rowIndex))
         {
-            ShowErrorValidationMessage("Silahkan pilih baris table terlebih dahulu");
+            ShowErrorValidationMessage("Maaf, silahkan pilih baris pada tabel Transaksi terlebih dahulu");
             return new AbstractMap.SimpleEntry<>(null, null);
         }
         return new AbstractMap.SimpleEntry<>((Transaksi)_tableHandler.TableColumnKey, _tableHandler.GetValueAt(_tableHandler.TableColumnKey, rowIndex));

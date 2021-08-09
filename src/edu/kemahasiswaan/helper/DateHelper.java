@@ -16,7 +16,7 @@ import java.util.Calendar;
  */
 public final class DateHelper 
 {
-    public static final String DefaultDateFormat = "MMMM-d-y";
+    public static final String DefaultDateFormat = "d MMMM y";
     
     public static String GetFormatedDate(Date date)
     {

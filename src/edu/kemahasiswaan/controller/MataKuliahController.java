@@ -12,6 +12,7 @@ import edu.kemahasiswaan.table.MataKuliah;
 import edu.kemahasiswaan.response.MataKuliahResponse;
 import edu.kemahasiswaan.repository.MataKuliahRepository;
 import edu.kemahasiswaan.validation.MataKuliahValidation;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -83,6 +84,8 @@ public final class MataKuliahController extends Controller<MataKuliahRepository>
         {
             Map.Entry<MataKuliah, Object> validationResult = _validation.ValidateTable();
             if(validationResult.getKey() == null) return null;
+            int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah anda yakin untuk mengahapus data mata kuliah yang anda pilih?", "Warning", JOptionPane.YES_NO_OPTION);
+            if(CancelDialog == JOptionPane.NO_OPTION) return null;
             Repository.Delete(validationResult);
             HashMap<MataKuliah, Object> validationResponseResult = new HashMap<>()
             {{

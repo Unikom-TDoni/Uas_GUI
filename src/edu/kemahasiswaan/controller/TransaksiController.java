@@ -12,6 +12,7 @@ import edu.kemahasiswaan.table.Transaksi;
 import edu.kemahasiswaan.response.TransaksiResponse;
 import edu.kemahasiswaan.repository.TransaksiRepository;
 import edu.kemahasiswaan.validation.TransaksiValidation;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -83,6 +84,8 @@ public final class TransaksiController extends Controller<TransaksiRepository>
         {
             Map.Entry<Transaksi, Object> validationResult = _validation.ValidateTable();
             if(validationResult.getKey() == null) return null;
+            int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah anda yakin untuk mengahapus data transaksi yang anda pilih?", "Warning", JOptionPane.YES_NO_OPTION);
+            if(CancelDialog == JOptionPane.NO_OPTION) return null;
             Repository.Delete(validationResult);
             HashMap<Transaksi, Object> validationResponseResult = new HashMap<>()
             {{

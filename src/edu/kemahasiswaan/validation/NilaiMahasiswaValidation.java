@@ -44,7 +44,7 @@ public class NilaiMahasiswaValidation extends Validation implements
         String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
-            ShowErrorValidationMessage("Text field " + nullField + "masih kosong silahkan isi terlebih dahulu");
+            ShowErrorValidationMessage("Maaf, text field " + nullField + "masih kosong silahkan isi terlebih dahulu");
             return Collections.emptyMap();
         }
         
@@ -60,12 +60,12 @@ public class NilaiMahasiswaValidation extends Validation implements
         
         if(notValidNilaiField.length() != 0)
         {
-            ShowErrorValidationMessage("Maaf text field " + notValidNilaiField + "harus memiliki nilai kurang dari 100");
+            ShowErrorValidationMessage("Maaf, text field " + notValidNilaiField + "harus memiliki nilai kurang dari 100");
             return Collections.emptyMap();
         }
         
         if(Integer.valueOf(result.get(NilaiMahasiswa.Kehadiran).toString())  > 14){
-            ShowErrorValidationMessage("Maaf maksimal kehadiran yang bisa anda dimasukan adalah 14");
+            ShowErrorValidationMessage("Maaf, maksimal kehadiran yang bisa anda masukan adalah 14");
             return Collections.emptyMap();
         }
          
@@ -83,7 +83,7 @@ public class NilaiMahasiswaValidation extends Validation implements
         int rowIndex = _tableHandler.GetSelectedRowIndex();
         if(!_tableHandler.IsRowValid(rowIndex))
         {
-            ShowErrorValidationMessage("Silahkan pilih baris table terlebih dahulu");
+            ShowErrorValidationMessage("Maaf, silahkan pilih baris pada tabel Nilai terlebih dahulu");
             return new AbstractMap.SimpleEntry<>(null, null);
         }
         return new AbstractMap.SimpleEntry<>((NilaiMahasiswa)_tableHandler.TableColumnKey, _tableHandler.GetValueAt(_tableHandler.TableColumnKey, rowIndex));

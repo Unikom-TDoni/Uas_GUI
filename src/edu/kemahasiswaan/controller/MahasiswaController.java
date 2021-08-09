@@ -12,6 +12,7 @@ import edu.kemahasiswaan.table.Mahasiswa;
 import edu.kemahasiswaan.response.MahasiswaResponse;
 import edu.kemahasiswaan.repository.MahasiswaRepository;
 import edu.kemahasiswaan.validation.MahasiswaValidation;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -83,6 +84,8 @@ public final class MahasiswaController extends Controller<MahasiswaRepository>
         {
             Map.Entry<Mahasiswa, Object> validationResult = _validation.ValidateTable();
             if(validationResult.getKey() == null) return null;
+            int CancelDialog = JOptionPane.showConfirmDialog(null, "Apakah anda yakin untuk mengahapus data mahasiswa yang anda pilih?", "Warning", JOptionPane.YES_NO_OPTION);
+            if(CancelDialog == JOptionPane.NO_OPTION) return null;
             Repository.Delete(validationResult);
             HashMap<Mahasiswa, Object> responseResult = new HashMap<>()
             {{

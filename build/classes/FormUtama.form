@@ -117,7 +117,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="ButtonDataMahasiswa">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Data Mahasiswa"/>
+            <Property name="text" type="java.lang.String" value="Mahasiswa"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDataMahasiswaActionPerformed"/>
@@ -125,7 +125,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="ButtonDataMatkul">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Data Mata Kuliah"/>
+            <Property name="text" type="java.lang.String" value="Mata Kuliah"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDataMatkulActionPerformed"/>
@@ -133,7 +133,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="ButtonDataNilai">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Data Nilai"/>
+            <Property name="text" type="java.lang.String" value="Nilai Mahasiswa"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDataNilaiActionPerformed"/>
@@ -141,7 +141,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="ButtonSimulasiAkhir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Simulasi Akhir"/>
+            <Property name="text" type="java.lang.String" value="Simulasi Nilai"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSimulasiAkhirActionPerformed"/>
@@ -252,7 +252,7 @@
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="198" max="32767" attributes="0"/>
+                      <EmptySpace pref="191" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -367,7 +367,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="480" max="-2" attributes="0"/>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -378,7 +378,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Data Mahasiswa"/>
+                <Property name="text" type="java.lang.String" value="Mahasiswa"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FormSearchMahasiswa">
@@ -396,7 +396,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="ButtonMahasiswaEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Edit"/>
+                <Property name="text" type="java.lang.String" value="Ubah"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonMahasiswaEditActionPerformed"/>
@@ -506,7 +506,7 @@
                           </Group>
                           <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -536,15 +536,21 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Data Mata Kuliah"/>
+                <Property name="text" type="java.lang.String" value="Mata Kuliah"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="SearchMatkul">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonSearchMatkul">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cari"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSearchMatkulActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonMatkulHapus">
               <Properties>
@@ -556,7 +562,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="ButtonMatkulEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Edit"/>
+                <Property name="text" type="java.lang.String" value="Ubah"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonMatkulEditActionPerformed"/>
@@ -672,7 +678,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Data Nilai"/>
+                <Property name="text" type="java.lang.String" value="Nilai Mahasiswa"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="SearchNilai">
@@ -695,7 +701,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="ButtonNilaiEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Edit"/>
+                <Property name="text" type="java.lang.String" value="Ubah"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonNilaiEditActionPerformed"/>
@@ -884,8 +890,11 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Simulasi Akhir"/>
+                <Property name="text" type="java.lang.String" value="Simulasi Nilai"/>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Simulasi Nilai"/>
+              </AccessibilityProperties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane4">
               <AuxValues>
@@ -1030,7 +1039,8 @@
             </Component>
             <Component class="javax.swing.JButton" name="ButtonSimulasiAkhirEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Edit"/>
+                <Property name="text" type="java.lang.String" value="Ubah"/>
+                <Property name="actionCommand" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSimulasiAkhirEditActionPerformed"/>
@@ -1106,7 +1116,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane6" min="-2" pref="480" max="-2" attributes="0"/>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1196,7 +1206,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="ButtonSimulasiKasusEdit">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Edit"/>
+                <Property name="text" type="java.lang.String" value="Ubah"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonSimulasiKasusEditActionPerformed"/>
@@ -1273,7 +1283,7 @@
                           <Component id="ButtonMahasiswaSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonMahasiswaCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="229" max="32767" attributes="0"/>
+                      <EmptySpace pref="280" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1523,7 +1533,7 @@
                           <Component id="ButtonMataKuliahCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonMataKuliahSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="345" max="32767" attributes="0"/>
+                      <EmptySpace pref="371" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1635,7 +1645,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="LabelTitleAddNilai" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="598" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -1675,7 +1685,7 @@
                           <Component id="ButtonNilaiCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonNilaiSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                      <EmptySpace pref="103" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2092,7 +2102,7 @@
                               <Component id="LayoutPresensi" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace pref="93" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="ButtonSimulasiAkhirSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonSimulasiAkhirCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2493,7 +2503,7 @@
                           <Component id="ButtonCancelSimulasiKasus" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonSimpanSimulasiKasus" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="272" max="32767" attributes="0"/>
+                      <EmptySpace pref="306" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

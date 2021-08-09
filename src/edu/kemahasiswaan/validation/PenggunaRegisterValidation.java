@@ -31,7 +31,7 @@ public final class PenggunaRegisterValidation extends Validation implements
         String nullField = _textFieldHandler.GetEmptyFieldName();
         if(nullField.length() != 0)
         {
-            ShowErrorValidationMessage("Text field " + nullField + "masih kosong silahkan isi terlebih dahulu");   
+            ShowErrorValidationMessage("Maaf, text field " + nullField + "masih kosong silahkan isi terlebih dahulu");   
             return Collections.emptyMap();
         }
         
@@ -40,13 +40,13 @@ public final class PenggunaRegisterValidation extends Validation implements
         
         if(password.length() < 8)
         {
-            ShowErrorValidationMessage("Maaf password harus memiliki minimal 8 character");   
+            ShowErrorValidationMessage("Maaf, password harus memiliki minimal 8 karakter");   
             return Collections.emptyMap();
         }
         
         if(!passwordValidation.equals(password))
         {
-            ShowErrorValidationMessage("Maaf validasi password yang anda masukan tidak sama dengan password anda");   
+            ShowErrorValidationMessage("Maaf, validasi password yang anda masukan tidak sama dengan password anda");   
             return Collections.emptyMap();
         }
             

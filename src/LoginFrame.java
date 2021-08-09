@@ -112,7 +112,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel7.setText("Password");
 
-        ButtonLogin.setText("Login");
+        ButtonLogin.setText("Masuk");
         ButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonLoginActionPerformed(evt);
@@ -163,13 +163,13 @@ public class LoginFrame extends javax.swing.JFrame {
         PanelLogin.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        jLabel1.setText("Login");
+        jLabel1.setText("Daftar");
 
         jLabel2.setText("Username");
 
         jLabel3.setText("Password");
 
-        ButtonRegister.setText("Register");
+        ButtonRegister.setText("Daftar");
         ButtonRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonRegisterActionPerformed(evt);
@@ -218,14 +218,14 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RegisterPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addComponent(ButtonRegister)
                 .addGap(10, 10, 10)
                 .addComponent(jLabel4)
                 .addGap(34, 34, 34))
         );
 
-        TabLoginRegister.addTab("Register", PanelLogin);
+        TabLoginRegister.addTab("Daftar", PanelLogin);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -262,8 +262,13 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void ButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLoginActionPerformed
         PenggunaResponse response = _penggunaController.CheckLogin();
+        if(response == null) return;
         if((boolean)response.GetResult().getFirst().get(Pengguna.Username))
         {
+            JOptionPane.showMessageDialog(null, 
+                "Berhasil masuk", "Info", 
+                JOptionPane.INFORMATION_MESSAGE
+            );
             new FormUtama().setVisible(true);
             this.setVisible(false);
         }
@@ -272,7 +277,7 @@ public class LoginFrame extends javax.swing.JFrame {
             if(maxLoginAttempt-- == 0)
             {
                 JOptionPane.showMessageDialog(null, 
-                "Terlalu Banyak melakukan login gagal system akan keluar", "Error", 
+                "Terlalu banyak melakukan login, system akan keluar", "Error", 
                 JOptionPane.INFORMATION_MESSAGE
                 );
                 System.exit(0);
@@ -280,7 +285,7 @@ public class LoginFrame extends javax.swing.JFrame {
             else 
             {
                 JOptionPane.showMessageDialog(null, 
-                "Silahkan Daftar Terlebih Dahulu", "Error", 
+                "Nama pengguna dan password tidak ditemukan silahkan daftar terlebih dahulu", "Error", 
                 JOptionPane.INFORMATION_MESSAGE
                 );
             }
