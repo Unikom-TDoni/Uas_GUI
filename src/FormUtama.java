@@ -647,7 +647,7 @@ public class FormUtama extends javax.swing.JFrame
         jLabel4.setText("10119907");
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel5.setText("T Doni Indrapasta");
+        jLabel5.setText("T Doni Indraprasta");
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/aris.png"))); // NOI18N
 

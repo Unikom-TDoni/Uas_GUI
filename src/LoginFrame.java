@@ -252,7 +252,7 @@ public class LoginFrame extends javax.swing.JFrame {
         PenggunaResponse response = _penggunaController.Register();
         if(response == null) return;
         JOptionPane.showMessageDialog(null, 
-            "Register Berhasi", "Error", 
+            "Register Berhasil", "Error", 
             JOptionPane.INFORMATION_MESSAGE
         );
         _registerTextHandler.ResetAllText();

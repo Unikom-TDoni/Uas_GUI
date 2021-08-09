@@ -28,11 +28,14 @@ public final class JTableHandler<T extends Enum>
     
     public JTableHandler(JTable table, T tableColumnKey)
     {
+        table.getTableHeader().setReorderingAllowed(false);
         _table = table;
         TableColumnKey = tableColumnKey;
         _tableModel = (DefaultTableModel)table.getModel();
         _tableRowSorter = new TableRowSorter(_tableModel);
         _tableEnumConstant = tableColumnKey.getClass().getEnumConstants();
+        for (int i = 0; i < table.getColumnCount(); i++)
+            _tableRowSorter.setSortable(i, false);
         _table.setRowSorter(_tableRowSorter);
     }
 
