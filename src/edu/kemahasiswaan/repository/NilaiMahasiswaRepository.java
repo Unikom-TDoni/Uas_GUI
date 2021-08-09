@@ -80,8 +80,8 @@ public class NilaiMahasiswaRepository extends Repository<NilaiMahasiswa>
                );
        
         try (java.sql.PreparedStatement statement = DatabaseConnection.GetInstance().GetConnection().prepareStatement(query)) {
-            statement.setObject(1, validData.get(NilaiMahasiswa.Nim).toString());
-            statement.setObject(2, validData.get(NilaiMahasiswa.NoMk).toString());
+            statement.setObject(1, validData.get(NilaiMahasiswa.Nim));
+            statement.setObject(2, validData.get(NilaiMahasiswa.NoMk));
             statement.setObject(3, validData.get(NilaiMahasiswa.Kehadiran));
             statement.setObject(4, validData.get(NilaiMahasiswa.TugasPertama));
             statement.setObject(5, validData.get(NilaiMahasiswa.TugasKedua));

@@ -311,10 +311,7 @@ public class FormUtama extends javax.swing.JFrame
             this.setVisible(false);
         }
     }
-    private void DeleteConfirmation(JPanel Destination){
-        
-    }
-    
+
     private void LoadComboBoxEvent()
     {
         FormNilaiNama.addItemListener((ItemEvent evt) -> 
@@ -1091,8 +1088,6 @@ public class FormUtama extends javax.swing.JFrame
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        LabelTitleSimulasiAkhir.getAccessibleContext().setAccessibleName("Simulasi Nilai");
 
         PanelContent.add(PanelSimulasiAkhir, "card6");
 
@@ -2206,6 +2201,10 @@ public class FormUtama extends javax.swing.JFrame
 
     private void ButtonNilaiTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiTambahActionPerformed
         NavigateTo(PanelAddNilai);
+        
+        FormNilaiNama.setEnabled(true);
+        FormNilaiNamaMataKuliah.setEnabled(true);
+        
         int rowIndex = _mahasiswaTableHandler.GetRowIndex(Mahasiswa.Nama, FormNilaiNama.getItemAt(1));
         Object value = _mahasiswaTableHandler.GetValueAt(Mahasiswa.Nim, rowIndex);
         FormNilaiNim.setText(value.toString());
@@ -2223,6 +2222,7 @@ public class FormUtama extends javax.swing.JFrame
     private void ButtonSimulasiAkhirTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirTambahActionPerformed
         NavigateTo(PanelAddSimulasiAkhir);
         
+        FormSimulasiAkhirNamaMataKuliah.setEnabled(true);
         int rowIndex = _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, FormSimulasiAkhirNamaMataKuliah.getItemAt(1));
         Object value = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, rowIndex);
         FormSimulasiAkhirKodeMataKuliah.setText(value.toString());
@@ -2251,6 +2251,9 @@ public class FormUtama extends javax.swing.JFrame
     private void ButtonNilaiEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNilaiEditActionPerformed
         UpdateButtonCallback(_nilaiMahasiswaTableHandler, _nilaiMahasiswaTextFieldHandler, PanelAddNilai, "Nilai");
         
+        FormNilaiNama.setEnabled(false);
+        FormNilaiNamaMataKuliah.setEnabled(false);
+        
         int rowIndex = _nilaiMahasiswaTableHandler.GetSelectedRowIndex();
         if(rowIndex == -1)
             return;
@@ -2274,7 +2277,7 @@ public class FormUtama extends javax.swing.JFrame
 
     private void ButtonSimulasiAkhirEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiAkhirEditActionPerformed
         UpdateButtonCallback(_simulasiNilaiTableHandler, _simulasiNilaiTextFieldHandler, PanelAddSimulasiAkhir, "Simulasi Nilai");
-        
+                
         int rowIndex = _simulasiNilaiTableHandler.GetSelectedRowIndex();
         if(rowIndex == -1)
             return;
@@ -2282,6 +2285,7 @@ public class FormUtama extends javax.swing.JFrame
         Object kodeMk = _mataKuliahTableHandler.GetValueAt(MataKuliah.No, _mataKuliahTableHandler.GetRowIndex(MataKuliah.Nama, valueM));
         FormSimulasiAkhirNamaMataKuliah.setSelectedItem(valueM);
         FormSimulasiAkhirKodeMataKuliah.setText(kodeMk.toString());
+        FormSimulasiAkhirNamaMataKuliah.setEnabled(false);
         
         _simulasiNilaiFormState = FormState.Update;
         LabelTitleAddSimulasiAkhir.setText("Ubah Simulasi Nilai");
@@ -2440,6 +2444,11 @@ public class FormUtama extends javax.swing.JFrame
         // TODO add your handling code here:
         UpdateButtonCallback(_transaksiTableHandler, _transaksiTextFieldHandler, PanelAddSimulasiKasus, "Transaksi");
         
+        FormSimulasiKasusOperator.setEnabled(false);
+        FormSimulasiKasusNominal.setEnabled(false);
+        FormSimulasiKasusMetodePembayaran.setEnabled(false);
+        FormSimulasiKasusNoTelp.setEditable(false);
+
         int currentRowIndex = _transaksiTableHandler.GetSelectedRowIndex();
         if(currentRowIndex == -1)
             return;
@@ -2457,6 +2466,11 @@ public class FormUtama extends javax.swing.JFrame
     private void ButtonSimulasiKasusTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSimulasiKasusTambahActionPerformed
         // TODO add your handling code here:
         NavigateTo(PanelAddSimulasiKasus);
+        FormSimulasiKasusOperator.setEnabled(true);
+        FormSimulasiKasusNominal.setEnabled(true);
+        FormSimulasiKasusMetodePembayaran.setEnabled(true);
+        FormSimulasiKasusNoTelp.setEditable(true);
+        
         _transaksiTextFieldHandler.ResetAllText();
         _transaksiFormState = FormState.Add;
         LabelTitleAddSimulasiKasus.setText("Tambah Simulasi Kasus");

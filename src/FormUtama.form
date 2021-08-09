@@ -892,9 +892,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Simulasi Nilai"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Simulasi Nilai"/>
-              </AccessibilityProperties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane4">
               <AuxValues>
